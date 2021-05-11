@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/monogram.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+outline_color = Color( 0.972549, 0.0313726, 0.0313726, 1 )
+use_mipmaps = true
+font_data = ExtResource( 2 )
 
 [node name="HealthDisplay" type="Node2D"]
 position = Vector2( 862.051, 480.414 )
@@ -18,11 +25,13 @@ __meta__ = {
 }
 
 [node name="HealthBarLabel" type="RichTextLabel" parent="."]
-margin_left = 11.8921
-margin_top = 5.94604
-margin_right = 124.892
-margin_bottom = 22.946
+margin_left = 12.0
+margin_top = 3.75513
+margin_right = 125.0
+margin_bottom = 21.7551
+custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.635294, 0.627451, 0.627451, 1 )
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
