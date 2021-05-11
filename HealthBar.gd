@@ -5,12 +5,24 @@ var bar_green = preload("res://assets/barHorizontal_green.png")
 var bar_yellow = preload("res://assets/barHorizontal_yellow.png")
 
 export (float) var multiplier = 1
+export (String) var label = ""
+export (float) var percentage = 1
 
 onready var healthbar = $HealthBar
+onready var healthbar_textlabel = $HealthBarLabel
 
-func initialize(timer:Timer, progress_multiplier:float):
-	multiplier = progress_multiplier
+func set_timer(timer:Timer):
 	timer.connect("timeout", self, "_update_value")
+
+func set_value(value:float):
+	healthbar.value = value
+	_update_healthbar()
+
+func get_value():
+	return healthbar.value * percentage
+
+func _ready():
+	healthbar_textlabel.set_text(label)
 
 func _update_value():
 	healthbar.value += 1 * multiplier
