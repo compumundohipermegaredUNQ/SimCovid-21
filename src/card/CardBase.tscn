@@ -1,0 +1,172 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/card/Card.gd" type="Script" id=1]
+[ext_resource path="res://assets/Card/card.png" type="Texture" id=2]
+[ext_resource path="res://assets/Card/check_grey.png" type="Texture" id=3]
+[ext_resource path="res://assets/Card/x_grey.png" type="Texture" id=4]
+[ext_resource path="res://assets/Card/check_green.png" type="Texture" id=5]
+[ext_resource path="res://assets/Card/x_red.png" type="Texture" id=6]
+[ext_resource path="res://assets/Card/background_text.png" type="Texture" id=7]
+[ext_resource path="res://assets/Fonts/kenvector_future.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://src/Bar/HealthBar.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_space = 1
+font_data = ExtResource( 8 )
+
+[node name="CardBase" type="MarginContainer"]
+anchor_left = -0.123
+anchor_top = -0.292
+anchor_right = 0.115
+anchor_bottom = 0.339
+margin_left = 1.5709
+margin_top = -0.247192
+margin_right = 0.858894
+margin_bottom = 0.152786
+rect_pivot_offset = Vector2( 125, 175 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+health_bar = ExtResource( 9 )
+
+[node name="Card" type="Sprite" parent="."]
+position = Vector2( 121.257, 189.028 )
+scale = Vector2( 0.267629, 0.267629 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CheckButton" type="TextureButton" parent="Card"]
+anchor_left = 0.62
+anchor_top = 0.805
+anchor_right = 0.831
+anchor_bottom = 0.933
+margin_left = -448.796
+margin_top = -704.075
+margin_right = -600.063
+margin_bottom = -848.171
+rect_scale = Vector2( 5, 5 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XButton" type="TextureButton" parent="Card"]
+anchor_left = 0.174
+anchor_top = 0.805
+anchor_right = 0.386
+anchor_bottom = 0.933
+margin_left = -448.734
+margin_top = -704.075
+margin_right = -600.898
+margin_bottom = -848.171
+rect_scale = Vector2( 5, 5 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texts" type="VBoxContainer" parent="Card"]
+anchor_left = 0.118
+anchor_top = 0.073
+anchor_right = 0.897
+anchor_bottom = 0.168
+margin_left = -448.502
+margin_top = -704.151
+margin_right = -648.265
+margin_bottom = -792.816
+rect_scale = Vector2( 1.4, 3 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Align" type="HBoxContainer" parent="Card/Texts"]
+margin_right = 499.0
+margin_bottom = 45.0
+
+[node name="Title" type="MarginContainer" parent="Card/Texts/Align"]
+margin_right = 499.0
+margin_bottom = 45.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Card/Texts/Align/Title"]
+margin_right = 499.0
+margin_bottom = 45.0
+texture = ExtResource( 7 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Card/Texts/Align/Title"]
+margin_right = 499.0
+margin_bottom = 45.0
+
+[node name="TitleLabel" type="Label" parent="Card/Texts/Align/Title/CenterContainer"]
+margin_right = 499.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.988235, 0.988235, 0.988235, 1 )
+custom_colors/font_color_shadow = Color( 0.223529, 0.247059, 0.956863, 1 )
+text = "Limitar Comercios"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texts2" type="VBoxContainer" parent="Card"]
+anchor_left = 0.118
+anchor_top = 0.286
+anchor_right = 0.898
+anchor_bottom = 0.382
+margin_left = -448.502
+margin_top = -703.842
+margin_right = -648.162
+margin_bottom = -793.914
+rect_scale = Vector2( 1.4, 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="MarginContainer" parent="Card/Texts2"]
+margin_right = 500.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 500, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Card/Texts2/Text"]
+margin_right = 500.0
+margin_bottom = 45.0
+texture = ExtResource( 7 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Card/Texts2/Text"]
+margin_right = 500.0
+margin_bottom = 45.0
+
+[node name="TextLabel" type="Label" parent="Card/Texts2/Text/CenterContainer"]
+margin_right = 499.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.988235, 0.988235, 0.988235, 1 )
+custom_colors/font_color_shadow = Color( 0.223529, 0.247059, 0.956863, 1 )
+text = "Limitar Comercios"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Card/CheckButton" to="." method="_on_CheckButton_pressed"]
+[connection signal="pressed" from="Card/XButton" to="." method="_on_XButton_pressed"]
