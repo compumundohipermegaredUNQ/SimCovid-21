@@ -1,6 +1,6 @@
 extends MarginContainer
 
-onready var cards_database = preload("res://src/card/CardsDatabase.gd")
+onready var cards_database = preload("res://src/Card/CardsDatabase.gd")
 export var health_bar: PackedScene
 onready var card_info = cards_database.DATA[cards_database.get(card_name)]
 var card_name = "Social"

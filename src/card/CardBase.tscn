@@ -17,39 +17,35 @@ extra_spacing_space = 1
 font_data = ExtResource( 8 )
 
 [node name="CardBase" type="MarginContainer"]
-anchor_left = -0.123
-anchor_top = -0.292
-anchor_right = 0.115
-anchor_bottom = 0.339
-margin_left = 1.5709
-margin_top = -0.247192
-margin_right = 0.858894
-margin_bottom = 0.152786
+anchor_left = -0.137
+anchor_top = -0.37
+anchor_right = 0.141
+anchor_bottom = 0.377
+margin_left = 0.28801
+margin_top = -2.0
+margin_right = 1.616
+margin_bottom = -0.199997
 rect_pivot_offset = Vector2( 125, 175 )
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 health_bar = ExtResource( 9 )
 
 [node name="Card" type="Sprite" parent="."]
-position = Vector2( 121.257, 189.028 )
-scale = Vector2( 0.267629, 0.267629 )
+position = Vector2( 140.326, 223.571 )
+scale = Vector2( 0.318138, 0.318138 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CheckButton" type="TextureButton" parent="Card"]
-anchor_left = 0.62
-anchor_top = 0.805
-anchor_right = 0.831
-anchor_bottom = 0.933
-margin_left = -448.796
-margin_top = -704.075
-margin_right = -600.063
-margin_bottom = -848.171
+anchor_left = 0.609
+anchor_top = 0.804
+anchor_right = 0.821
+anchor_bottom = 0.932
+margin_left = -448.574
+margin_top = -703.977
+margin_right = -600.738
+margin_bottom = -848.073
 rect_scale = Vector2( 5, 5 )
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
@@ -59,14 +55,14 @@ __meta__ = {
 }
 
 [node name="XButton" type="TextureButton" parent="Card"]
-anchor_left = 0.174
-anchor_top = 0.805
-anchor_right = 0.386
-anchor_bottom = 0.933
-margin_left = -448.734
-margin_top = -704.075
-margin_right = -600.898
-margin_bottom = -848.171
+anchor_left = 0.163
+anchor_top = 0.804
+anchor_right = 0.375
+anchor_bottom = 0.932
+margin_left = -448.512
+margin_top = -703.977
+margin_right = -600.676
+margin_bottom = -848.073
 rect_scale = Vector2( 5, 5 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 6 )
@@ -76,14 +72,14 @@ __meta__ = {
 }
 
 [node name="Texts" type="VBoxContainer" parent="Card"]
-anchor_left = 0.118
-anchor_top = 0.073
-anchor_right = 0.897
+anchor_left = 0.107
+anchor_top = 0.072
+anchor_right = 0.886
 anchor_bottom = 0.168
-margin_left = -448.502
-margin_top = -704.151
-margin_right = -648.265
-margin_bottom = -792.816
+margin_left = -448.28
+margin_top = -704.053
+margin_right = -648.043
+margin_bottom = -794.125
 rect_scale = Vector2( 1.4, 3 )
 alignment = 1
 __meta__ = {
@@ -125,14 +121,14 @@ __meta__ = {
 }
 
 [node name="Texts2" type="VBoxContainer" parent="Card"]
-anchor_left = 0.118
-anchor_top = 0.286
-anchor_right = 0.898
-anchor_bottom = 0.382
-margin_left = -448.502
-margin_top = -703.842
-margin_right = -648.162
-margin_bottom = -793.914
+anchor_left = 0.107
+anchor_top = 0.285
+anchor_right = 0.888
+anchor_bottom = 0.381
+margin_left = -448.28
+margin_top = -703.744
+margin_right = -648.837
+margin_bottom = -793.816
 rect_scale = Vector2( 1.4, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
