@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/background.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/City/background.jpg" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
-[ext_resource path="res://HealthBarGroup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Clock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Bar/HealthBarGroup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Clock/Clock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Card/DeckOfCards.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -12,8 +13,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1035.0
-margin_bottom = 607.0
+anchor_right = 1.011
+anchor_bottom = 1.012
+margin_right = -0.264038
+margin_bottom = -0.200073
 texture = ExtResource( 1 )
 stretch_mode = 1
 __meta__ = {
@@ -27,3 +30,6 @@ autostart = true
 
 [node name="Clock" parent="." instance=ExtResource( 4 )]
 seconds_per_day = 5.0
+
+[node name="DeckOfCards" parent="." instance=ExtResource( 5 )]
+position = Vector2( 520.347, 267.103 )
