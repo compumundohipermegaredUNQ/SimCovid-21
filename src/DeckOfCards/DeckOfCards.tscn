@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/DeckOfCards/DeckOfCards.gd" type="Script" id=1]
-[ext_resource path="res://src/card/CardBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Card/CardBase.tscn" type="PackedScene" id=2]
 
 [node name="DeckOfCards" type="Node2D"]
 position = Vector2( 0, 3 )
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="CardBase" parent="." instance=ExtResource( 2 )]

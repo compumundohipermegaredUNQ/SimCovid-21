@@ -33,3 +33,4 @@ seconds_per_day = 5.0
 
 [node name="DeckOfCards" parent="." instance=ExtResource( 5 )]
 position = Vector2( 524, 260 )
+scale = Vector2( 1, 1 )

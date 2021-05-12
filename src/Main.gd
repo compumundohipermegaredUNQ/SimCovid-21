@@ -7,6 +7,8 @@ onready var deck_of_cards = $DeckOfCards
 
 func _ready():
 	deck_of_cards.initialize(self)
+	$DeckOfCards.scale.x = 2
+	$DeckOfCards.scale.y = 2
 	
 func _startGame():
 	clock.initialize(timer)
