@@ -14,8 +14,9 @@ onready var healthbar_textlabel = $HealthBarLabel
 var global_clock
 var speed_multiplier
 
-func initialize(timer:Timer, clock:Node2D):
+func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	speed_multiplier = 1
+	multiplier = deck_multiplier
 	global_clock = clock
 	global_clock.connect("speed_updated", self, "_set_speed_multiplier")
 	_update_value()
@@ -40,7 +41,14 @@ func _set_speed_multiplier(hours_per_second):
 	speed_multiplier = hours_per_second
 
 func _update_value():
-	healthbar.value += speed_multiplier * multiplier
+	if (multiplier > 0):
+		multiplier = clamp(multiplier, 0.1, 1)
+	else:
+		multiplier = clamp(multiplier, -1, -0.1)
+	print(multiplier)
+	print(healthbar.value)
+	healthbar.value = healthbar.value + speed_multiplier * multiplier
+	print(healthbar.value)
 	_update_healthbar()
 
 func _update_healthbar():

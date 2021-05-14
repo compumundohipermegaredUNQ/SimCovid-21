@@ -10,8 +10,8 @@ func _ready():
 	$DeckOfCards.scale.x = 2
 	$DeckOfCards.scale.y = 2
 	
-func _startGame():
+func _startGame(multipliers):
 	clock.initialize(timer)
 	# Esto eventualmente se elegirá desde el menú antes de arrancar
-	healt_bar_group.initialize(timer, clock)
-	clock.set_seconds_per_day(5)
+	healt_bar_group.initialize(timer, clock, multipliers)
+	clock.set_seconds_per_day(15)

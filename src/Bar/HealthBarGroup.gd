@@ -7,11 +7,11 @@ onready var social_bar = $SocialBar
 onready var overall_bar = $OverallBar
 var global_timer
 
-func initialize(timer:Timer, clock:Node2D):
-	economia_bar.initialize(timer, clock)
-	salud_bar.initialize(timer, clock)
-	cultural_bar.initialize(timer, clock)
-	social_bar.initialize(timer, clock)
+func initialize(timer:Timer, clock:Node2D, multipliers):
+	economia_bar.initialize(timer, clock, multipliers['Economico'])
+	salud_bar.initialize(timer, clock, multipliers['Salud'])
+	cultural_bar.initialize(timer, clock, multipliers['Cultural'])
+	social_bar.initialize(timer, clock, multipliers['Social'])
 	_update_overall_value()
 	timer.connect("timeout", self, "_update_overall_value")
 
