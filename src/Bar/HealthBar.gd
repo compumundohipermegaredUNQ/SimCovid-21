@@ -45,10 +45,7 @@ func _update_value():
 #		multiplier = clamp(multiplier, 0.1, 1)
 #	else:
 #		multiplier = clamp(multiplier, -1, -0.1)
-	print(multiplier)
-	print(healthbar.value)
 	healthbar.value = healthbar.value + speed_multiplier * multiplier
-	print(healthbar.value)
 	_update_healthbar()
 
 func _update_healthbar():

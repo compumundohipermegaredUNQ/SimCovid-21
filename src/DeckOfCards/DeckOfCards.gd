@@ -18,14 +18,14 @@ func initialize(main):
 	
 func getNextCard():
 	castCard(initial_deck[cardNumber])
-	cardNumber+=1
+	cardNumber += 1
 
 func castCard(card):
 	var card_instance = cardScene.instance()
 	card_instance.initialize(card[0], card[1], card[2], self)
 	parent.add_child(card_instance)
 
-func checked(type, multiplier):
+func checked(multiplier):
 	multipliers.Social += multiplier[0]
 	multipliers.Cultural += multiplier[1]
 	multipliers.Economico += multiplier[2]

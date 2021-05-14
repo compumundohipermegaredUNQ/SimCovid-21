@@ -1,11 +1,6 @@
 extends Node
 
-enum {Social, Economico, Cultural, Salud}
-
-#const DATA = {
-#	Social:
-#		["Comercio", "Limitar Comercios"]
-#}
+#Multipliers order Social, Economico, Cultural, Salud
 
 const INITIAL_DECK = {
 	
