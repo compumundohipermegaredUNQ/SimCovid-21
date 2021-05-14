@@ -41,10 +41,10 @@ func _set_speed_multiplier(hours_per_second):
 	speed_multiplier = hours_per_second
 
 func _update_value():
-	if (multiplier > 0):
-		multiplier = clamp(multiplier, 0.1, 1)
-	else:
-		multiplier = clamp(multiplier, -1, -0.1)
+#	if (multiplier > 0):
+#		multiplier = clamp(multiplier, 0.1, 1)
+#	else:
+#		multiplier = clamp(multiplier, -1, -0.1)
 	print(multiplier)
 	print(healthbar.value)
 	healthbar.value = healthbar.value + speed_multiplier * multiplier
