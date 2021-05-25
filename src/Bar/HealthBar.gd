@@ -15,6 +15,7 @@ onready var healthbar_textlabel = $HealthBarLabel
 
 var global_clock
 var speed_multiplier
+var remaining_ticks_before_emit = 10
 
 func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	speed_multiplier = 1
@@ -32,13 +33,11 @@ func set_value(value:float):
 func get_value():
 	return healthbar.value * percentage
 
+func set_multiplier(deck_multiplier):
+	multiplier = deck_multiplier
+
 func _ready():
 	healthbar_textlabel.set_text(label)
-
-# Es un tema para que discutamos entre todos
-# Idea: Si queremos que 1 día sean 20s (eventualmente), serían 1.2hs por segundo. 
-# Eso sería una partida en vel. normal. Por lo tanto, "tiene sentido" que la velocidad sean
-# las horas por segundo.
 
 func _set_speed_multiplier(hours_per_second):
 	speed_multiplier = hours_per_second
@@ -48,9 +47,17 @@ func _is_low():
 
 func _update_value():
 	healthbar.value = healthbar.value + speed_multiplier * multiplier
-	if _is_low():
-		emit_signal("low_bar", healthbar_textlabel)
+	remaining_ticks_before_emit = clamp(remaining_ticks_before_emit-1, 0, 10)
+	if _can_emit() && _is_low():
+		_restart_emit_count()
+		emit_signal("low_bar", healthbar_textlabel.text)
 	_update_healthbar()
+
+func _can_emit():
+	return remaining_ticks_before_emit == 0
+
+func _restart_emit_count():
+	remaining_ticks_before_emit = 10
 
 func _update_healthbar():
 	healthbar.texture_progress = bar_green
