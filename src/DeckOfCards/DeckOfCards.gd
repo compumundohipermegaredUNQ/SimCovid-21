@@ -3,7 +3,6 @@ extends Node2D
 export (PackedScene) var cardScene
 
 var parent
-var initial_deck = CardsDatabaseDeck.get_initial_deck()
 var cardNumber = 0
 var multipliers = {
 	'Social': 1,
@@ -14,23 +13,21 @@ var multipliers = {
 
 func initialize(main):
 	parent = main
-	getNextCard()
+	getNextInitialCard()
 	
-func getNextCard():
-	castCard(initial_deck[cardNumber])
-	cardNumber += 1
-
-func castCard(card):
-	var card_instance = cardScene.instance()
-	card_instance.initialize(card[0], card[1], card[2], self)
-	parent.add_child(card_instance)
+func getNextInitialCard():
+	var card = CardsDatabaseDeck.getNextInitialCard()
+	parent.add_child(card)
 
 func checked(multiplier):
 	multipliers.Social += multiplier[0]
 	multipliers.Cultural += multiplier[1]
 	multipliers.Economico += multiplier[2]
 	multipliers.Salud += multiplier[3]
-	if (cardNumber == 13):
+	if CardsDatabaseDeck.has_more_initial_cards():
 		parent._startGame(multipliers)
 	else:
-		getNextCard()
+		getNextInitialCard()
+
+func raise_card(card_type):
+	print("Levantar carta de tipo " + card_type)

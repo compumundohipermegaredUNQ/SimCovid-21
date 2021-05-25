@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 CardsDatabaseDeck="*res://src/Card/CardsDatabase.gd"
+DeckOfCards="*res://src/DeckOfCards/DeckOfCards.gd"
 
 [display]
 

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal low_bar(bar_type)
+
 var bar_red = preload("res://assets/Bar/barHorizontal_red.png")
 var bar_green = preload("res://assets/Bar/barHorizontal_green.png")
 var bar_yellow = preload("res://assets/Bar/barHorizontal_yellow.png")
@@ -21,6 +23,7 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	global_clock.connect("speed_updated", self, "_set_speed_multiplier")
 	_update_value()
 	timer.connect("timeout", self, "_update_value")
+	self.connect("low_bar", DeckOfCards, "raise_card")
 
 func set_value(value:float):
 	healthbar.value = value
@@ -40,12 +43,13 @@ func _ready():
 func _set_speed_multiplier(hours_per_second):
 	speed_multiplier = hours_per_second
 
+func _is_low():
+	return healthbar.value < healthbar.max_value * 0.30
+
 func _update_value():
-#	if (multiplier > 0):
-#		multiplier = clamp(multiplier, 0.1, 1)
-#	else:
-#		multiplier = clamp(multiplier, -1, -0.1)
 	healthbar.value = healthbar.value + speed_multiplier * multiplier
+	if _is_low():
+		emit_signal("low_bar", healthbar_textlabel)
 	_update_healthbar()
 
 func _update_healthbar():
