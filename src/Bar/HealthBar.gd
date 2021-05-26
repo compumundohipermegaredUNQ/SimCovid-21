@@ -54,3 +54,10 @@ func _update_healthbar():
 		healthbar.texture_progress = bar_yellow
 	if healthbar.value < healthbar.max_value * 0.35:
 		healthbar.texture_progress = bar_red
+
+func change_color():
+	healthbar_textlabel.clear()
+	healthbar_textlabel.append_bbcode("[color=red]"+label+"[/color]")
+
+func update_state():
+	healthbar_textlabel.set_text(label)
