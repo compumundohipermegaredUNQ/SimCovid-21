@@ -16,7 +16,7 @@ var multipliers = {
 func initialize(main, timer):
 	parent = main
 	main_timer = timer
-	get_next_initial_card()
+	parent.add_child(CardsDatabaseDeck.set_initial_deck())
 	
 func get_next_initial_card():
 	var card = CardsDatabaseDeck.get_next_initial_card()
@@ -36,7 +36,15 @@ func checked(multiplier):
 		game_started = true
 		parent._startGame(multipliers)
 
-func raise_card(card_type):
+func raise_card():
 	main_timer.stop()
-	var card = CardsDatabaseDeck.get_random_event_card_from_type(card_type)
+	var card = CardsDatabaseDeck.get_random_card_and_type()
 	parent.add_child(card)
+
+func raise_low_card(card_type):
+	main_timer.stop()
+	var card = CardsDatabaseDeck.get_low_event_card_from_type(card_type)
+	parent.add_child(card)
+
+func _on_Clock_morning():
+	raise_card()

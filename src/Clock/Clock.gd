@@ -10,11 +10,19 @@ var hours_per_second
 
 signal day_change
 signal speed_updated
+signal morning
+
+func morningCard():
+#	print("Antes del if")
+	if(hour_count == 8 ):
+		emit_signal("morning")
+#		print("Despues del if y la señal")
 
 func initialize(timer:Timer):
 	set_seconds_per_day(seconds_per_day)
 	_do_update()
 	timer.connect("timeout", self, "_update")
+	self.connect("morning", DeckOfCards, "raise_card")
 
 func set_seconds_per_day(seconds_in_a_day:float):
 	hours_per_second = round(24/seconds_in_a_day)
@@ -26,6 +34,8 @@ func _update():
 		emit_signal("day_change")
 		day_count += 1
 		hour_count -= 24
+	morningCard()
+#	print(hour_count)
 	_do_update()
 
 func _do_update():

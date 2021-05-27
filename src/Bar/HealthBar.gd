@@ -24,7 +24,7 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	global_clock.connect("speed_updated", self, "_set_speed_multiplier")
 	_update_value()
 	timer.connect("timeout", self, "_update_value")
-	self.connect("low_bar", DeckOfCards, "raise_card")
+	self.connect("low_bar", DeckOfCards, "raise_low_card")
 
 func set_value(value:float):
 	healthbar.value = value
