@@ -13,10 +13,8 @@ signal speed_updated
 signal morning
 
 func morningCard():
-#	print("Antes del if")
 	if(hour_count == 8 ):
 		emit_signal("morning")
-#		print("Despues del if y la señal")
 
 func initialize(timer:Timer):
 	set_seconds_per_day(seconds_per_day)

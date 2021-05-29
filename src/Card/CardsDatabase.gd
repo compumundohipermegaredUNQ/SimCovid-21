@@ -128,6 +128,9 @@ func _set_deck(deck):
 func _get_deck():
 	return current_deck
 
+func _get_used_deck():
+	return current_used_deck
+
 func _set_current_used_deck(deck):
 	current_used_deck = deck
 
@@ -151,13 +154,13 @@ func _get_card_instance_from_info(card_type, card_info:Array):
 	return card
 
 func get_next_initial_card():
-	var card_type = current_deck.keys().front()
-	var card = _get_card_instance_from_info(card_type, current_deck[card_type])
-	current_deck.erase(card_type)
+	var card_type = _get_deck().keys().front()
+	var card = _get_card_instance_from_info(card_type, _get_deck()[card_type])
+	_get_deck().erase(card_type)
 	return card
 
 func has_more_initial_cards():
-	return !current_deck.keys().empty()
+	return !_get_deck().keys().empty()
 
 # Retorna una carta random de un tipo de carta random.
 func get_random_card_and_type():
@@ -184,7 +187,7 @@ func _get_random_card(card_type:String, move_to_used = true):
 	var card_info = cards[index]
 	cards.remove(index)
 	if move_to_used:
-		USED_RANDOM_DECK[card_type].append(card_info)
+		_get_used_deck()[card_type].append(card_info)
 	if _get_deck()[card_type].empty():
 		_get_deck().erase(card_type)
 	return _get_card_instance_from_info(card_type, card_info)
@@ -195,19 +198,27 @@ func get_random_card_from_type(card_type:String, move_to_used = true):
 	if get_types().has(card_type):
 		return _get_random_card(card_type, move_to_used)
 	else:
-		var card_info = _get_random(current_used_deck[card_type])
+		var card_info = _get_random(_get_used_deck()[card_type])
 		return _get_card_instance_from_info(card_type, card_info)
 
 # Retorno carta random de evento negativo
 func get_low_event_card_from_type(card_type:String):
 	_set_deck(BAD_EVENT_DECK)
 	_set_current_used_deck(USED_BAD_EVENT_DECK)
-	var card = get_random_card_from_type(card_type, false)
+	var card = get_random_card_from_type(card_type)
+	_set_deck(RANDOM_DECK)
+	_set_current_used_deck(USED_RANDOM_DECK)
+	return card
+
+func get_good_event_card_from_type(card_type:String):
+	_set_deck(GOOD_EVENT_DECK)
+	_set_current_used_deck(USED_GOOD_EVENT_DECK)
+	var card = get_random_card_from_type(card_type)
 	_set_deck(RANDOM_DECK)
 	_set_current_used_deck(USED_RANDOM_DECK)
 	return card
 
 func _restart_deck():
-	RANDOM_DECK = USED_RANDOM_DECK
-	for num in USED_RANDOM_DECK.keys():
-		USED_RANDOM_DECK[num] = []
+	_set_deck(_get_used_deck())
+	for key in _get_used_deck().keys():
+		_get_used_deck()[key] = []

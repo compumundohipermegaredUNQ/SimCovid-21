@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 CardsDatabaseDeck="*res://src/Card/CardsDatabase.gd"
 DeckOfCards="*res://src/DeckOfCards/DeckOfCards.gd"
+GoodEventDecider="*res://src/Card/GoodEventDecider.gd"
 
 [display]
 

@@ -8,7 +8,7 @@ script = ExtResource( 2 )
 
 [node name="EconomiaBar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 757.4, 480.414 )
-label = "Economia"
+label = "Economico"
 percentage = 0.3
 
 [node name="SaludBar" parent="." instance=ExtResource( 1 )]

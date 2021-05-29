@@ -46,5 +46,7 @@ func raise_low_card(card_type):
 	var card = CardsDatabaseDeck.get_low_event_card_from_type(card_type)
 	parent.add_child(card)
 
-func _on_Clock_morning():
-	raise_card()
+func raise_high_card(card_type):
+	main_timer.stop()
+	var card = CardsDatabaseDeck.get_good_event_card_from_type(card_type)
+	parent.add_child(card)
