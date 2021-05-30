@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/City/City4.png" type="Texture" id=1]
 [ext_resource path="res://src/Main.gd" type="Script" id=2]
 [ext_resource path="res://src/Bar/HealthBarGroup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Clock/Clock.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/DeckOfCards/DeckOfCards.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/City/Pedestrians/PedestrianSpawner.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
@@ -25,6 +26,7 @@ __meta__ = {
 autostart = true
 
 [node name="HealthBarGroup" parent="." instance=ExtResource( 3 )]
+z_index = 10
 
 [node name="Clock" parent="." instance=ExtResource( 4 )]
 seconds_per_day = 5.0
@@ -32,3 +34,6 @@ seconds_per_day = 5.0
 [node name="DeckOfCards" parent="." instance=ExtResource( 5 )]
 position = Vector2( 524, 260 )
 scale = Vector2( 1, 1 )
+
+[node name="PedestrianSpawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 3.05176e-05, -3.05176e-05 )
