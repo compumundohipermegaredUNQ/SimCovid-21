@@ -2,7 +2,7 @@ extends Node
 
 onready var card_scene = preload("res://src/Card/CardBase.tscn")
 
-#Multipliers order Social, Economico, Cultural, Salud 
+#Multipliers order Social, Economico, Cultural, Salud
 #[0.0, 0.0, 0.0, 0.0]
 
 var firstRound = true
@@ -11,7 +11,7 @@ var current_used_deck
 
 const INFO_DECK = {
 	'Introduccion': ["Sos el nuevo encargado de la ciudad, debes aceptar desiciones o rechazarlas, estas tendran un efecto inamovible por 15 dias, asi que elegi bien. Espero que hayas entendido por que quieras o no vamos a empezar", [0.0, 0.0, 0.0, 0.0]],
-	'RoundResume': ["Resumen"]
+	'RoundResume': ["Resumen", "estadisticas"]
 }
 
 const INITIAL_DECK = {
@@ -35,7 +35,7 @@ var RANDOM_DECK = {
 		["Libre Comercio: Aduana quien te conoce", [-0.03, -0.14, 0.04, 0.1]],
 #		["Dolar", "Aumentar cepo", 0.3],
 	],
-	
+
 	"Cultural": [
 		["Cerrar Escuelas: Los docentes a las aulas... virtuales", [-0.04, 0.0, -0.19, 0.07]],
 		["Prohibir Deportes: Excepto las canchitas de fulbo 5", [-0.06, 0.0, -0.15, 0.06]],
@@ -63,7 +63,7 @@ var GOOD_EVENT_DECK = {
 	"Social": [
 		["Limitar Comercios: A usar MercadoLibre y Rappi", [-0.2, -0.08, 0, 0.04]],
 		["Limitar Circulacion: No mas salidas, solo clandestinas", [-0.14, -0.05, -0.02, 0.06]],
-		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.18, 0, -0.04, 0.05]],	
+		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.18, 0, -0.04, 0.05]],
 	],
 	"Economico": [
 		["Planes Sociales: Al pais se lo saca laburando?", [0.6, -0.17, 0.0, 0.02]],
@@ -94,7 +94,7 @@ var BAD_EVENT_DECK = {
 	"Social": [
 		["Limitar Comercios: A usar MercadoLibre y Rappi", [-0.2, -0.08, 0, 0.04]],
 		["Limitar Circulacion: No mas salidas, solo clandestinas", [-0.14, -0.05, -0.02, 0.06]],
-		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.18, 0, -0.04, 0.05]],	
+		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.18, 0, -0.04, 0.05]],
 	],
 	"Economico": [
 		["Planes Sociales: Al pais se lo saca laburando?", [0.6, -0.17, 0.0, 0.02]],
@@ -138,13 +138,14 @@ func get_types():
 	return _get_deck().keys()
 
 #Deck inicial para quincena
-func set_initial_deck():
+func set_initial_deck(optionalContent):
 	current_deck = INITIAL_DECK.duplicate()
 	var card
 	if firstRound:
 		card = _get_card_instance_from_info('Introduccion', INFO_DECK['Introduccion'])
 		firstRound = false
 	else:
+		INFO_DECK['RoundResume'] = [optionalContent, [0.0, 0.0, 0.0, 0.0]]
 		card = _get_card_instance_from_info('RoundResume', INFO_DECK['RoundResume'])
 	return card
 

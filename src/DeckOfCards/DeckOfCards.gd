@@ -16,7 +16,7 @@ var multipliers = {
 func initialize(main, timer):
 	parent = main
 	main_timer = timer
-	parent.add_child(CardsDatabaseDeck.set_initial_deck())
+	parent.add_child(CardsDatabaseDeck.set_initial_deck(''))
 	
 func get_next_initial_card():
 	var card = CardsDatabaseDeck.get_next_initial_card()
@@ -50,3 +50,19 @@ func raise_high_card(card_type):
 	main_timer.stop()
 	var card = CardsDatabaseDeck.get_good_event_card_from_type(card_type)
 	parent.add_child(card)
+
+func status_bars():
+	var percentages = parent.get_percentages()
+	return "Resumen de la Quincena los porcentajes andan en:" + "\n" +  "Economia:" + str(percentages[0]) + "\n" +  "Salud:" + str(percentages[1]) + "\n" + "Cultural" + str(percentages[2])  + "\n" + "Social" + str(percentages[3])
+
+func _on_Clock_morning():
+	raise_card()
+
+func _on_Clock_quincena():
+	main_timer.stop()
+	restart_round()
+	parent.add_child(CardsDatabaseDeck.set_initial_deck(status_bars()))
+
+func restart_round():
+	game_started = false
+	parent.restart_round()
