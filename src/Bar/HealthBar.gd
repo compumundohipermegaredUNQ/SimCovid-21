@@ -55,9 +55,9 @@ func _update_healthbar():
 	if healthbar.value < healthbar.max_value * 0.35:
 		healthbar.texture_progress = bar_red
 
-func change_color():
+func change_textlabel():
 	healthbar_textlabel.clear()
-	healthbar_textlabel.append_bbcode("[color=red]"+label+"[/color]")
+	healthbar_textlabel.append_bbcode("[wave amp=25 freq=10][color=blue]"+label+"[/color][/wave]")
 
 func update_state():
 	healthbar_textlabel.set_text(label)
