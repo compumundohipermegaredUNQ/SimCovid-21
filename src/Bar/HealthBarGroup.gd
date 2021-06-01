@@ -18,3 +18,17 @@ func initialize(timer:Timer, clock:Node2D, multipliers):
 func _update_overall_value():
 	var overall_value = economia_bar.get_value() + salud_bar.get_value() + cultural_bar.get_value() + social_bar.get_value()
 	overall_bar.set_value(overall_value)
+
+func get_percentages():
+	var percentages = []
+	percentages.append(economia_bar.get_value())
+	percentages.append(salud_bar.get_value())
+	percentages.append(cultural_bar.get_value())
+	percentages.append(social_bar.get_value())
+	return percentages
+
+func set_multipliers(multipliers):
+	economia_bar.set_multiplier(multipliers['Economico'])
+	salud_bar.set_multiplier(multipliers['Salud'])
+	cultural_bar.set_multiplier(multipliers['Cultural'])
+	social_bar.set_multiplier(multipliers['Social'])
