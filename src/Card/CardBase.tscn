@@ -115,7 +115,6 @@ custom_colors/font_color_shadow = Color( 0.223529, 0.247059, 0.956863, 1 )
 text = "Limitar Comercios"
 align = 1
 valign = 1
-percent_visible = -0.0625
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -166,5 +165,8 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="mouse_entered" from="Card/CheckButton" to="." method="_on_CheckButton_mouse_entered"]
 [connection signal="pressed" from="Card/CheckButton" to="." method="_on_CheckButton_pressed"]
+[connection signal="mouse_entered" from="Card/XButton" to="." method="_on_XButton_mouse_entered"]
 [connection signal="pressed" from="Card/XButton" to="." method="_on_XButton_pressed"]

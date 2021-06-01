@@ -8,6 +8,7 @@ onready var card_scene = preload("res://src/Card/CardBase.tscn")
 var firstRound = true
 var current_deck
 var current_used_deck
+var main
 
 const INFO_DECK = {
 	'Introduccion': ["Sos el nuevo encargado de la ciudad, debes aceptar desiciones o rechazarlas, estas tendran un efecto inamovible por 15 dias, asi que elegi bien. Espero que hayas entendido por que quieras o no vamos a empezar", [0.0, 0.0, 0.0, 0.0]],
@@ -125,6 +126,9 @@ var USED_BAD_EVENT_DECK = {
 func _set_deck(deck):
 	current_deck = deck
 
+func set_main(parent):
+	main = parent
+
 func _get_deck():
 	return current_deck
 
@@ -151,7 +155,7 @@ func set_initial_deck(optionalContent):
 
 func _get_card_instance_from_info(card_type, card_info:Array):
 	var card = card_scene.instance()
-	card.initialize(card_type, card_info[0], card_info[1])
+	card.initialize(card_type, card_info[0], card_info[1], main)
 	return card
 
 func get_next_initial_card():

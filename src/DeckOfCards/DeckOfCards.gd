@@ -16,6 +16,7 @@ var multipliers = {
 func initialize(main, timer):
 	parent = main
 	main_timer = timer
+	CardsDatabaseDeck.set_main(parent)
 	parent.add_child(CardsDatabaseDeck.set_initial_deck(''))
 	
 func get_next_initial_card():

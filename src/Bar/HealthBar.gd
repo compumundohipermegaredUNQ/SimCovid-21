@@ -54,7 +54,6 @@ func _is_high():
 
 func _update_value():
 	healthbar.value = healthbar.value + speed_multiplier * multiplier
-	print(healthbar.value)
 	remaining_ticks_before_emit = clamp(remaining_ticks_before_emit-1, 0, 10)
 	if _can_emit():
 		if _is_low():
@@ -79,3 +78,10 @@ func _update_healthbar():
 		healthbar.texture_progress = bar_yellow
 	if healthbar.value < healthbar.max_value * 0.35:
 		healthbar.texture_progress = bar_red
+
+func change_textlabel():
+	healthbar_textlabel.clear()
+	healthbar_textlabel.append_bbcode("[wave amp=25 freq=10][color=blue]"+label+"[/color][/wave]")
+
+func update_state():
+	healthbar_textlabel.set_text(label)

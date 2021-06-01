@@ -14,7 +14,7 @@ signal morning
 signal quincena
 
 func morningCard():
-	if(hour_count == 12 ):
+	if(hour_count == 8 ):
 		emit_signal("morning")
 
 func initialize(timer:Timer):
@@ -35,10 +35,8 @@ func _update():
 		day_count += 1
 		if(day_count == 15):
 			emit_signal("quincena")
-			print("Se emitio la señal")
 		hour_count -= 24
 	morningCard()
-#	print(hour_count)
 	_do_update()
 
 func _do_update():
