@@ -22,7 +22,7 @@ func getNextCard():
 
 func castCard(card):
 	var card_instance = cardScene.instance()
-	card_instance.initialize(card[0], card[1], card[2], self)
+	card_instance.initialize(card[0], card[1], card[2], self, parent)
 	parent.add_child(card_instance)
 
 func checked(multiplier):

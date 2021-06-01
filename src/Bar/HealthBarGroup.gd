@@ -1,9 +1,9 @@
 extends Node2D
 
-onready var economia_bar = $EconomiaBar
-onready var salud_bar = $SaludBar
-onready var cultural_bar = $CulturalBar
-onready var social_bar = $SocialBar
+onready var economia_bar = $Economico
+onready var salud_bar = $Salud
+onready var cultural_bar = $Cultural
+onready var social_bar = $Social
 onready var overall_bar = $OverallBar
 var global_timer
 
