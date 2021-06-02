@@ -21,3 +21,10 @@ func _startGame(multipliers):
 
 func set_multipliers(multipliers):
 	healt_bar_group.set_multipliers(multipliers)
+
+func get_percentages():
+	return healt_bar_group.get_percentages()
+
+func restart_round():
+	#Agregar Restart de quincena
+	pass

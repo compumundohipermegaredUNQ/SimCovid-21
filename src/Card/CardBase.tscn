@@ -166,5 +166,8 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="mouse_entered" from="Card/CheckButton" to="." method="_on_CheckButton_mouse_entered"]
 [connection signal="pressed" from="Card/CheckButton" to="." method="_on_CheckButton_pressed"]
+[connection signal="mouse_entered" from="Card/XButton" to="." method="_on_XButton_mouse_entered"]
 [connection signal="pressed" from="Card/XButton" to="." method="_on_XButton_pressed"]

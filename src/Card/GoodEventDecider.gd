@@ -24,8 +24,6 @@ func can_emit():
 		rng.randomize()
 		var random = rng.randf()
 		var can_emit = random <= good_event_percentage_chances
-		print("Can emit good event?")
-		print(can_emit)
 		_restart_emit_count()
 		return can_emit
 	
