@@ -4,7 +4,7 @@ export (PackedScene) var cardScene
 
 var parent
 var main_timer
-var cardNumber = 0
+var local_deck = []
 var game_started = false
 var multipliers = {
 	'Cultural': 0.02,
@@ -24,7 +24,7 @@ func get_next_initial_card():
 	parent.add_child(card)
 
 func checked(multiplier):
-	print(multiplier)
+	local_deck.pop_front()
 	multipliers.Cultural += multiplier[0]
 	multipliers.Economia += multiplier[1]
 	multipliers.Salud += multiplier[2]
@@ -34,7 +34,9 @@ func checked(multiplier):
 	multipliers.Salud = clamp(multipliers.Salud, -0.3, 0.3)
 	multipliers.Social = clamp(multipliers.Social, -0.3, 0.3)
 	print(multipliers)
-	if game_started:
+	if ! local_deck.empty():
+		parent.add_child(local_deck.front())
+	elif game_started:
 		parent.set_multipliers(multipliers)
 		main_timer.start()
 	elif CardsDatabaseDeck.has_more_initial_cards():
@@ -43,20 +45,23 @@ func checked(multiplier):
 		game_started = true
 		parent._startGame(multipliers)
 
-func raise_card():
+func add_to_local_deck(card):
 	main_timer.stop()
+	if local_deck.empty():
+		parent.add_child(card)
+	local_deck.append(card)
+
+func raise_card():
 	var card = CardsDatabaseDeck.get_random_card_and_type()
-	parent.add_child(card)
+	add_to_local_deck(card)
 
 func raise_low_card(card_type):
-	main_timer.stop()
 	var card = CardsDatabaseDeck.get_low_event_card_from_type(card_type)
-	parent.add_child(card)
+	add_to_local_deck(card)
 
 func raise_high_card(card_type):
-	main_timer.stop()
 	var card = CardsDatabaseDeck.get_good_event_card_from_type(card_type)
-	parent.add_child(card)
+	add_to_local_deck(card)
 
 func status_bars():
 	var percentages = parent.get_percentages()
@@ -66,9 +71,9 @@ func _on_Clock_morning():
 	raise_card()
 
 func _on_Clock_quincena():
-	main_timer.stop()
 	restart_round()
-	parent.add_child(CardsDatabaseDeck.set_initial_deck(status_bars()))
+	var card = CardsDatabaseDeck.set_initial_deck(status_bars())
+	add_to_local_deck(card)
 
 func restart_round():
 	game_started = false

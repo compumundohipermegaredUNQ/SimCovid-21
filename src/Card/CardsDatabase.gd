@@ -2,7 +2,7 @@ extends Node
 
 onready var card_scene = preload("res://src/Card/CardBase.tscn")
 
-#Multipliers order Social, Economico, Cultural, Salud
+#Multipliers order Cultural, Economico, Salud, Social
 #[0.0, 0.0, 0.0, 0.0]
 
 var firstRound = true
@@ -47,9 +47,9 @@ var RANDOM_DECK = {
 	],
 	
 	"Social": [
-		["Limitar Comercios: A usar MercadoLibre y Rappi", [0, 0.04, -0.08, -0.02]],
+		["Limitar Comercios: A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
 		["Limitar Circulacion: No mas salidas, solo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.04, 0, 0.05, -0.018]],
+		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
 #		["Eventos", "Prohibir eventos masivos", 0.6],
 	]
 }
