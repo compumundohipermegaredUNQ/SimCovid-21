@@ -7,7 +7,7 @@ var bar_red = preload("res://assets/Bar/barHorizontal_red.png")
 var bar_green = preload("res://assets/Bar/barHorizontal_green.png")
 var bar_yellow = preload("res://assets/Bar/barHorizontal_yellow.png")
 
-export (float) var multiplier = 1
+export (float) var multiplier = 0
 export (String) var label = ""
 export (float) var percentage = 1
 
@@ -35,10 +35,13 @@ func set_value(value:float):
 	_update_healthbar()
 
 func get_value():
-	return healthbar.value * percentage
+	return healthbar.value
 
 func set_multiplier(deck_multiplier):
 	multiplier = deck_multiplier
+	
+func get_multiplier():
+	return multiplier
 
 func _ready():
 	healthbar_textlabel.set_text(label)

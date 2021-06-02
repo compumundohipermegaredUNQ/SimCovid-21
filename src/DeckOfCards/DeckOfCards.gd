@@ -7,10 +7,10 @@ var main_timer
 var cardNumber = 0
 var game_started = false
 var multipliers = {
-	'Social': 0.05,
 	'Cultural': 0.02,
-	'Economico': -0.06,
-	'Salud': -0.1
+	'Economia': -0.06,
+	'Salud': -0.1,
+	'Social': 0.05
 }
 
 func initialize(main, timer):
@@ -24,10 +24,16 @@ func get_next_initial_card():
 	parent.add_child(card)
 
 func checked(multiplier):
-	multipliers.Social += multiplier[0]
-	multipliers.Cultural += multiplier[1]
-	multipliers.Economico += multiplier[2]
-	multipliers.Salud += multiplier[3]
+	print(multiplier)
+	multipliers.Cultural += multiplier[0]
+	multipliers.Economia += multiplier[1]
+	multipliers.Salud += multiplier[2]
+	multipliers.Social += multiplier[3]
+	multipliers.Cultural = clamp(multipliers.Cultural, -0.3, 0.3)
+	multipliers.Economia = clamp(multipliers.Economia, -0.3, 0.3)
+	multipliers.Salud = clamp(multipliers.Salud, -0.3, 0.3)
+	multipliers.Social = clamp(multipliers.Social, -0.3, 0.3)
+	print(multipliers)
 	if game_started:
 		parent.set_multipliers(multipliers)
 		main_timer.start()
@@ -54,7 +60,7 @@ func raise_high_card(card_type):
 
 func status_bars():
 	var percentages = parent.get_percentages()
-	return "Resumen de la Quincena los porcentajes andan en:" + "\n" +  "Economia:" + str(percentages[0]) + "\n" +  "Salud:" + str(percentages[1]) + "\n" + "Cultural" + str(percentages[2])  + "\n" + "Social" + str(percentages[3])
+	return "Resumen de la Quincena los porcentajes andan en:" + "\n" + "Cultural" + str(percentages[0])  +  "\n" +  "Economia:" + str(percentages[1]) + "\n" +  "Salud:" + str(percentages[2]) + "\n" + "Social" + str(percentages[3])
 
 func _on_Clock_morning():
 	raise_card()
@@ -66,4 +72,4 @@ func _on_Clock_quincena():
 
 func restart_round():
 	game_started = false
-	parent.restart_round()
+	parent.restart_round(multipliers)

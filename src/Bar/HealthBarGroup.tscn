@@ -6,6 +6,12 @@
 [node name="HealthBarGroup" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="Cultural" parent="." instance=ExtResource( 1 )]
+position = Vector2( 757.4, 536.307 )
+multiplier = 0.5
+label = "Cultural"
+percentage = 0.1
+
 [node name="Economico" parent="." instance=ExtResource( 1 )]
 position = Vector2( 757.4, 480.414 )
 label = "Economico"
@@ -17,15 +23,9 @@ multiplier = -1.0
 label = "Salud"
 percentage = 0.4
 
-[node name="Cultural" parent="." instance=ExtResource( 1 )]
-position = Vector2( 757.4, 536.307 )
-multiplier = -2.0
-label = "Cultural"
-percentage = 0.1
-
 [node name="Social" parent="." instance=ExtResource( 1 )]
 position = Vector2( 757.4, 564.847 )
-multiplier = -4.0
+multiplier = -0.5
 label = "Social"
 percentage = 0.2
 

@@ -6,9 +6,9 @@ extends MarginContainer
 # No es la mejor práctica, pero no se me ocurrió otra manera de acceder a las
 # escenas hijas de las barras
 const scene_numbers_bars = {
-	"Economico": 0,
-	"Salud": 1,
-	"Cultural": 2,
+	"Cultural": 0,
+	"Economico": 1,
+	"Salud": 2,
 	"Social": 3
 }
 var card_type

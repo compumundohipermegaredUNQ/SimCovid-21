@@ -3,6 +3,7 @@ extends Node
 onready var timer = $Timer
 onready var healt_bar_group = $HealthBarGroup
 onready var clock = $Clock
+var round_number= 1
 
 func _ready():
 	DeckOfCards.initialize(self, timer)
@@ -21,6 +22,13 @@ func set_multipliers(multipliers):
 func get_percentages():
 	return healt_bar_group.get_percentages()
 
-func restart_round():
-	#Agregar Restart de quincena
-	pass
+func restart_round(multipliers):
+	round_number += 1
+	var consequence = 0.1 * round_number
+	var consequence_multipliers = {
+		'Cultural': multipliers.Cultural * consequence,
+		'Economia': multipliers.Economico * consequence,
+		'Salud': multipliers.Salud * consequence,
+		'Social': multipliers.Social * consequence
+	}
+	set_multipliers(consequence_multipliers)
