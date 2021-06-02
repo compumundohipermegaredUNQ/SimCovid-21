@@ -10,11 +10,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "female_walk",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "zombie_walk",
@@ -24,11 +19,17 @@ animations = [ {
 "loop": true,
 "name": "male_walk",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "female_walk",
+"speed": 3.0
 } ]
 
 [node name="Pedestrian" type="AnimatedSprite"]
 position = Vector2( -47.9458, 471.967 )
 frames = SubResource( 1 )
 animation = "male_walk"
+frame = 1
 playing = true
 script = ExtResource( 7 )

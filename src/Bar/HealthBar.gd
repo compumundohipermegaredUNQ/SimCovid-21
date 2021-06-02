@@ -37,6 +37,9 @@ func set_value(value:float):
 func get_value():
 	return healthbar.value * percentage
 
+func get_healthbar_value():
+	return healthbar.value
+
 func set_multiplier(deck_multiplier):
 	multiplier = deck_multiplier
 
@@ -54,7 +57,6 @@ func _is_high():
 
 func _update_value():
 	healthbar.value = healthbar.value + speed_multiplier * multiplier
-	print(healthbar.value)
 	remaining_ticks_before_emit = clamp(remaining_ticks_before_emit-1, 0, 10)
 	if _can_emit():
 		if _is_low():

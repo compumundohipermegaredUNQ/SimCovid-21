@@ -30,9 +30,12 @@ func set_female_animation():
 func set_zombie_animation():
 	self.play("zombie_walk")
 
-func set_random_animation():
-	randomize()
-	self.play(animations[randi() % animations.size()])
+func set_random_animation(is_sick):
+	if !is_sick:
+		randomize()
+		self.play(animations[randi() % animations.size()])
+	else:
+		set_zombie_animation()
 
 func set_position_and_movement_direction(pos:Vector2):
 	position = pos
