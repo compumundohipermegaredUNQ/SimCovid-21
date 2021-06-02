@@ -43,3 +43,11 @@ func set_position_and_movement_direction(pos:Vector2):
 		_move_to_left()
 	else:
 		_move_to_right()
+
+func remove_from_scene():
+	call_deferred("_remove")
+
+func _remove():
+	print("nos vemos")
+	get_parent().remove_child(self)
+	queue_free()

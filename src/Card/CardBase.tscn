@@ -33,7 +33,7 @@ __meta__ = {
 [node name="Card" type="Sprite" parent="."]
 position = Vector2( 653.301, 460.151 )
 scale = Vector2( 0.318138, 0.318138 )
-z_index = 20
+z_index = 500
 texture = ExtResource( 5 )
 
 [node name="CheckButton" type="TextureButton" parent="Card"]

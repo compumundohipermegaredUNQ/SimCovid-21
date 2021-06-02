@@ -8,6 +8,7 @@ size = 38
 font_data = ExtResource( 2 )
 
 [node name="Clock" type="Node2D"]
+z_index = 200
 script = ExtResource( 1 )
 seconds_per_day = 2.0
 

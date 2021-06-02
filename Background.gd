@@ -26,3 +26,7 @@ func begin_sunrise():
 func begin_nightfall():
 	progress = min_progress
 	will_sunrise = -1
+
+func _on_Area2D_area_exited(area):
+	if area.get_parent().has_method("remove_from_scene"):
+			area.get_parent().remove_from_scene()

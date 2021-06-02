@@ -6,6 +6,7 @@ onready var rng = RandomNumberGenerator.new()
 onready var screenSize = get_viewport().get_visible_rect().size
 onready var min_y_position = screenSize.y * 0.76
 onready var max_y_position = screenSize.y * 0.9
+onready var y_position_diff = max_y_position - min_y_position
 onready var x_positions = [screenSize.x + 40, -10.0]
 const nightfall_movement = 0.3
 const sunrise_movement = 1
@@ -23,10 +24,16 @@ func spawn_pedestrian():
 	randomize()
 	if randf() < movement_percentage:
 		var person = PedestrianScene.instance()
+		var person_position = get_random_position()
 		person.initialize()
 		person.set_random_animation(is_sick())
-		person.set_position_and_movement_direction(get_random_position())
+		person.set_position_and_movement_direction(person_position)
+		person.set_z_index(get_z_index_from_position(person_position.y))
 		main.add_child(person)
+
+func get_z_index_from_position(y_position):
+	var pos = y_position_diff - (max_y_position - y_position)
+	return int(pos * y_position_diff / 100)
 
 func get_random_position() -> Vector2:
 	randomize()

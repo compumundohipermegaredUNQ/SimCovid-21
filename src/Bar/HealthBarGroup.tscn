@@ -4,6 +4,7 @@
 [ext_resource path="res://src/Bar/HealthBarGroup.gd" type="Script" id=2]
 
 [node name="HealthBarGroup" type="Node2D"]
+z_index = 150
 script = ExtResource( 2 )
 
 [node name="EconomiaBar" parent="." instance=ExtResource( 1 )]
@@ -13,6 +14,7 @@ percentage = 0.3
 
 [node name="SaludBar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 757.4, 507.766 )
+z_index = 0
 multiplier = -1.0
 label = "Salud"
 percentage = 0.4
