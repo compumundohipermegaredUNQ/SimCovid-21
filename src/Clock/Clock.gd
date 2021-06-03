@@ -56,3 +56,6 @@ func _do_update():
 	var text = str("Dia ", day_count, ": ", hour_count, ":00hs")
 	clock_label.set_text(text)
 
+func restart_game():
+	day_count = 1
+	hour_count = 0

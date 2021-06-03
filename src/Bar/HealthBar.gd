@@ -1,7 +1,8 @@
 extends Node2D
 
-signal low_bar(bar_type)
+signal low_bar(bar_type, attempts)
 signal high_bar(bar_type)
+signal game_over(bar_type)
 
 var bar_red = preload("res://assets/Bar/barHorizontal_red.png")
 var bar_green = preload("res://assets/Bar/barHorizontal_green.png")
@@ -18,6 +19,7 @@ onready var good_event_decider = GoodEventDecider
 var global_clock
 var speed_multiplier
 var remaining_ticks_before_emit = 10
+var remaining_attempts = 3
 
 func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	good_event_decider.set_timer(timer)
@@ -29,6 +31,7 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	timer.connect("timeout", self, "_update_value")
 	self.connect("low_bar", DeckOfCards, "raise_low_card")
 	self.connect("high_bar", DeckOfCards, "raise_high_card")
+	self.connect("game_over", DeckOfCards, "game_over_card")
 
 func set_value(value:float):
 	healthbar.value = value
@@ -60,11 +63,14 @@ func _is_high():
 
 func _update_value():
 	healthbar.value = healthbar.value + speed_multiplier * multiplier
+	if healthbar.value == 0:
+		emit_signal("game_over", healthbar_textlabel.text)
 	remaining_ticks_before_emit = clamp(remaining_ticks_before_emit-1, 0, 10)
 	if _can_emit():
-		if _is_low():
+		if _is_low() && _can_emit_low_event() && _is_bar_decreasing():
 			_restart_emit_count()
-			emit_signal("low_bar", healthbar_textlabel.text)
+			emit_signal("low_bar", healthbar_textlabel.text, remaining_attempts)
+			remaining_attempts -= 1
 		if !_is_at_max_value() && _is_high() && GoodEventDecider.can_emit():
 			emit_signal("high_bar", healthbar_textlabel.text)
 	_update_healthbar()
@@ -74,6 +80,15 @@ func _is_at_max_value():
 
 func _can_emit():
 	return remaining_ticks_before_emit == 0
+
+func _can_emit_low_event() -> bool:
+	return remaining_attempts != 0
+
+func _is_bar_decreasing() -> bool:
+	return multiplier < 0
+
+func restart_attempts():
+	remaining_attempts = 3
 
 func _restart_emit_count():
 	remaining_ticks_before_emit = 10
@@ -91,3 +106,8 @@ func change_textlabel():
 
 func update_state():
 	healthbar_textlabel.set_text(label)
+
+func restart():
+	healthbar.value = 50
+	restart_attempts()
+	_restart_emit_count()

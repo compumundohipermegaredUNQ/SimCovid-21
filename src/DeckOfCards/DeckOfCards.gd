@@ -33,7 +33,6 @@ func checked(multiplier):
 	multipliers.Economia = clamp(multipliers.Economia, -0.3, 0.3)
 	multipliers.Salud = clamp(multipliers.Salud, -0.3, 0.3)
 	multipliers.Social = clamp(multipliers.Social, -0.3, 0.3)
-	print(multipliers)
 	if ! local_deck.empty():
 		parent.add_child(local_deck.front())
 	elif game_started:
@@ -55,12 +54,16 @@ func raise_card():
 	var card = CardsDatabaseDeck.get_random_card_and_type()
 	add_to_local_deck(card)
 
-func raise_low_card(card_type):
-	var card = CardsDatabaseDeck.get_low_event_card_from_type(card_type)
+func raise_low_card(card_type, attempts):
+	var card = CardsDatabaseDeck.get_low_event_card_from_type(card_type, attempts)
 	add_to_local_deck(card)
 
 func raise_high_card(card_type):
 	var card = CardsDatabaseDeck.get_good_event_card_from_type(card_type)
+	add_to_local_deck(card)
+
+func game_over_card(card_type):
+	var card = CardsDatabaseDeck.get_game_over_card(card_type)
 	add_to_local_deck(card)
 
 func status_bars():

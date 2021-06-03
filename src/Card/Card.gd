@@ -15,17 +15,24 @@ var card_type
 var card_multipliers
 var bar_group
 var actual_bar
+var game_over
+var main_node
 
-func initialize(type, description, multipliers, main) -> void:
+func initialize(type, description, multipliers, main, has_lost = false) -> void:
 	card_type = type
 	card_multipliers = multipliers
 	bar_group = main.get_child(2)
 	$TextLabel.text = description
+	game_over = has_lost
+	main_node = main
 
 func _on_CheckButton_pressed() -> void:
-	DeckOfCards.checked(card_multipliers)
-	_update_if_exists_actual_bar()
-	call_deferred("_remove")
+	if game_over:
+		main_node.restart_game()
+	else:
+		DeckOfCards.checked(card_multipliers)
+		_update_if_exists_actual_bar()
+		call_deferred("_remove")
 
 func _on_XButton_pressed() -> void:
 	card_multipliers=[-card_multipliers[0], -card_multipliers[1], -card_multipliers[2], -card_multipliers[3]]
@@ -52,3 +59,6 @@ func _on_CheckButton_mouse_entered() -> void:
 func _update_if_exists_actual_bar() -> void:
 	if actual_bar:
 		actual_bar.update_state()
+
+func prepend_to_description(description:String):
+	$TextLabel.text = $TextLabel.text.insert(0, description)
