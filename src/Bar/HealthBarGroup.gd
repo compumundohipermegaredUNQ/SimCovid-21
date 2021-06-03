@@ -15,7 +15,7 @@ var salud_weight = 0.4
 var social_weight = 0.2
 
 func initialize(timer:Timer, clock:Node2D, multipliers, spawner):
-    pedestrian_spawner = spawner
+	pedestrian_spawner = spawner
 	cultural_bar.initialize(timer, clock, multipliers['Cultural'])
 	economia_bar.initialize(timer, clock, multipliers['Economia'])
 	salud_bar.initialize(timer, clock, multipliers['Salud'])

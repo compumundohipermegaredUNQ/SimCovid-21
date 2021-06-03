@@ -17,14 +17,14 @@ const INFO_DECK = {
 
 const INITIAL_DECK = {
 	"Cultural": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si tus ciudadanos aprenderán algo u olvidarán todo lo aprendido', [0.05, 0.01, -0.05, 0.03]],
-    "Economico": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si lo que te importa es solo la plata', [0.02, 0.05, -0.2, 0.01]],
-    "Salud": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si es un salvese quien pueda en el fin del mundo ', [0.02, -0.06, 0.04, 0.03]],
-    "Social": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán que tan mal o bien queres tratar a tus ciudadanos', [0.03, 0.02, -0.05, 0.05]]
+	"Economico": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si lo que te importa es solo la plata', [0.02, 0.05, -0.2, 0.01]],
+	"Salud": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si es un salvese quien pueda en el fin del mundo ', [0.02, -0.06, 0.04, 0.03]],
+	"Social": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán que tan mal o bien queres tratar a tus ciudadanos', [0.03, 0.02, -0.05, 0.05]]
 }
 
 var RANDOM_DECK = {
 
-    "Cultural": [
+	"Cultural": [
 		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
 		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
 		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
@@ -63,7 +63,7 @@ var USED_RANDOM_DECK = {
 
 var GOOD_EVENT_DECK = {
 
-    "Cultural": [
+	"Cultural": [
 		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
 		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
 		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
@@ -102,7 +102,7 @@ var USED_GOOD_EVENT_DECK = {
 
 var BAD_EVENT_DECK = {
 
-    "Cultural": [
+	"Cultural": [
 		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
 		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
 		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
