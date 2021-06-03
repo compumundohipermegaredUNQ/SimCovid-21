@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/City/Pedestrians/PedestrianSpriteFrames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/City/Pedestrians/Pedestrian.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 41.7644, 60.5016 )
+
+[node name="Pedestrian" type="AnimatedSprite"]
+position = Vector2( -47.9458, 471.967 )
+frames = ExtResource( 1 )
+animation = "male_walk"
+playing = true
+script = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )

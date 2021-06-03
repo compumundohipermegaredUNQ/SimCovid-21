@@ -37,6 +37,9 @@ func set_value(value:float):
 func get_value():
 	return healthbar.value * percentage
 
+func get_healthbar_value():
+	return healthbar.value
+
 func set_multiplier(deck_multiplier):
 	multiplier = deck_multiplier
 

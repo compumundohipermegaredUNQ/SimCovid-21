@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/white_square_64x64.png-06ea3f53d57554e9fd2842443d913f9b.stex"
+path="res://.import/female_walk1.png-0586c672bde6cbd4be17923c7bb09a1d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bar/white_square_64x64.png"
-dest_files=[ "res://.import/white_square_64x64.png-06ea3f53d57554e9fd2842443d913f9b.stex" ]
+source_file="res://assets/Pedestrians/Female/female_walk1.png"
+dest_files=[ "res://.import/female_walk1.png-0586c672bde6cbd4be17923c7bb09a1d.stex" ]
 
 [params]
 
