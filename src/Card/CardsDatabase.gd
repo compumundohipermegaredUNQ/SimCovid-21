@@ -11,45 +11,45 @@ var current_used_deck
 var main
 
 const INFO_DECK = {
-	'Introduccion': ["Sos el nuevo encargado de la ciudad, debes aceptar desiciones o rechazarlas, estas tendran un efecto inamovible por 15 dias, asi que elegi bien. Espero que hayas entendido por que quieras o no vamos a empezar", [0.0, 0.0, 0.0, 0.0]],
-	'RoundResume': ["Resumen", "estadisticas"]
+	'Introduccion': ["Sos el nuevo encargado de la ciudad.\n Debes aceptar decisiones o rechazarlas, estas tendrán un efecto inamovible por 15 días, así que elegí bien.\n Espero que hayas entendido por que quieras o no vamos a empezar", [0.0, 0.0, 0.0, 0.0]],
+	'RoundResume': ["Resumen", "estadísticas"]
 }
 
 const INITIAL_DECK = {
-	"Cultural": ['Las cartas con esta categoria la afectaran principalmente, y decidiran si tus ciudadanos aprenderan algo o olvidaran todo lo aprendido', [0.05, 0.01, -0.05, 0.03]],
-	"Economico": ['Las cartas con esta categoria la afectaran principalmente, y decidiran si lo que te importa es solo la plata', [0.02, 0.05, -0.2, 0.01]],
-	"Salud": ['Las cartas con esta categoria la afectaran principalmente, y decidiran si es un salvese quien pueda en el fin del mundo ', [0.02, -0.06, 0.04, 0.03]],
-	"Social": ['Las cartas con esta categoria la afectaran principalmente, y decidiran que tan mal o bien queres tratar a tus ciudadanos', [0.03, 0.02, -0.05, 0.05]]
+	"Cultural": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si tus ciudadanos aprenderán algo u olvidarán todo lo aprendido', [0.05, 0.01, -0.05, 0.03]],
+    "Economico": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si lo que te importa es solo la plata', [0.02, 0.05, -0.2, 0.01]],
+    "Salud": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si es un salvese quien pueda en el fin del mundo ', [0.02, -0.06, 0.04, 0.03]],
+    "Social": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán que tan mal o bien queres tratar a tus ciudadanos', [0.03, 0.02, -0.05, 0.05]]
 }
 
 var RANDOM_DECK = {
-	
-	"Cultural": [
-		["Cerrar Escuelas: Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes: Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre: Adios runners", [-0.17, 0.0, 0.05, -0.08]],
+
+    "Cultural": [
+		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
+		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
+		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
 #		["Museos", "Cerrar museos", 0.4],
 	],
 
 	"Economico": [
-		["Planes Sociales: Al pais se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos: ", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio: Aduana quien te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
+		["Reducir Impuestos\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
+		["Libre Comercio\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
 #		["Dolar", "Aumentar cepo", 0.3],
 	],
-	
+
 	"Salud": [
-		["Ayuda a Esenciales: Y no, los politicos no entramos aca", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigacion: Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversion en Suplmentos: A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente esta triste. ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
+		["Aumento de Investigación\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
+		["Inversión en Suplmentos\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
+		["La gente está triste\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
 #		["Vacunas", "Conseguir vacunas", 0.4]
 	],
-	
+
 	"Social": [
-		["Limitar Comercios: A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulacion: No mas salidas, solo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Limitar Comercios\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
+		["Limitar Circulación\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
+		["Prohibir Eventos\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
 #		["Eventos", "Prohibir eventos masivos", 0.6],
 	]
 }
@@ -62,33 +62,33 @@ var USED_RANDOM_DECK = {
 }
 
 var GOOD_EVENT_DECK = {
-	
-	"Cultural": [
-		["Cerrar Escuelas: Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes: Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre: Adios runners", [-0.17, 0.0, 0.05, -0.08]],
+
+    "Cultural": [
+		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
+		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
+		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
 #		["Museos", "Cerrar museos", 0.4],
 	],
 
 	"Economico": [
-		["Planes Sociales: Al pais se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos: ", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio: Aduana quien te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
+		["Reducir Impuestos\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
+		["Libre Comercio\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
 #		["Dolar", "Aumentar cepo", 0.3],
 	],
-	
+
 	"Salud": [
-		["Ayuda a Esenciales: Y no, los politicos no entramos aca", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigacion: Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversion en Suplmentos: A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente esta triste. ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
+		["Aumento de Investigación\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
+		["Inversión en Suplmentos\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
+		["La gente está triste\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
 #		["Vacunas", "Conseguir vacunas", 0.4]
 	],
-	
+
 	"Social": [
-		["Limitar Comercios: A usar MercadoLibre y Rappi", [0, 0.04, -0.08, -0.02]],
-		["Limitar Circulacion: No mas salidas, solo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.04, 0, 0.05, -0.018]],
+		["Limitar Comercios\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
+		["Limitar Circulación\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
+		["Prohibir Eventos\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
 #		["Eventos", "Prohibir eventos masivos", 0.6],
 	]
 }
@@ -101,33 +101,33 @@ var USED_GOOD_EVENT_DECK = {
 }
 
 var BAD_EVENT_DECK = {
-	
-	"Cultural": [
-		["Cerrar Escuelas: Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes: Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre: Adios runners", [-0.17, 0.0, 0.05, -0.08]],
+
+    "Cultural": [
+		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
+		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
+		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
 #		["Museos", "Cerrar museos", 0.4],
 	],
 
 	"Economico": [
-		["Planes Sociales: Al pais se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos: ", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio: Aduana quien te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
+		["Reducir Impuestos\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
+		["Libre Comercio\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
 #		["Dolar", "Aumentar cepo", 0.3],
 	],
-	
+
 	"Salud": [
-		["Ayuda a Esenciales: Y no, los politicos no entramos aca", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigacion: Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversion en Suplmentos: A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente esta triste. ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
+		["Aumento de Investigación\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
+		["Inversión en Suplmentos\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
+		["La gente está triste\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
 #		["Vacunas", "Conseguir vacunas", 0.4]
 	],
-	
+
 	"Social": [
-		["Limitar Comercios: A usar MercadoLibre y Rappi", [0, 0.04, -0.08, -0.02]],
-		["Limitar Circulacion: No mas salidas, solo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos: Bienvenidos los Zoomples", [-0.04, 0, 0.05, -0.018]],
+		["Limitar Comercios\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
+		["Limitar Circulación\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
+		["Prohibir Eventos\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
 #		["Eventos", "Prohibir eventos masivos", 0.6],
 	]
 }

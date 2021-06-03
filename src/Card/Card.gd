@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Node2D
 
 # El valor representativo de la barra es la posición del hijo en la que se
 # encuentra en el panel de escenas de HealthBarGroup, por ejemplo "Social" es el
@@ -20,8 +20,7 @@ func initialize(type, description, multipliers, main) -> void:
 	card_type = type
 	card_multipliers = multipliers
 	bar_group = main.get_child(2)
-	$Card/Texts/Align/Title/CenterContainer/TitleLabel.text = type
-	$Card/Texts2/Text/CenterContainer/TextLabel.text = description
+	$TextLabel.text = description
 
 func _on_CheckButton_pressed() -> void:
 	DeckOfCards.checked(card_multipliers)

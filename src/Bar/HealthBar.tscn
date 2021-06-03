@@ -11,6 +11,7 @@ font_data = ExtResource( 2 )
 
 [node name="HealthDisplay" type="Node2D"]
 position = Vector2( 862.051, 480.414 )
+z_index = 150
 script = ExtResource( 1 )
 
 [node name="HealthBar" type="TextureProgress" parent="."]
