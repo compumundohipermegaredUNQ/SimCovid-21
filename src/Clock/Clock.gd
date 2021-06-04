@@ -36,9 +36,12 @@ func _update():
 	hour_count += hours_per_second
 	if (hour_count > 24):
 		emit_signal("day_change")
-		day_count += 1
-		if(day_count == 15):
+		if(day_count == 14):
 			emit_signal("quincena")
+			day_count = 1
+			hour_count = 0
+		else:
+			day_count += 1
 		hour_count -= 24
 	morningCard()
 	emit_sunrise_or_nightfall()

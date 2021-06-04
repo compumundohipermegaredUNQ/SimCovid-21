@@ -6,6 +6,7 @@ onready var card_scene = preload("res://src/Card/CardBase.tscn")
 #[0.0, 0.0, 0.0, 0.0]
 
 var firstRound = true
+var initial_deck_empty
 var current_deck
 var current_used_deck
 var main
@@ -163,6 +164,7 @@ func get_types():
 #Deck inicial para quincena
 func set_initial_deck(optionalContent):
 	current_deck = INITIAL_DECK.duplicate()
+	initial_deck_empty = false
 	var card
 	if firstRound:
 		card = _get_card_instance_from_info('Introduccion', INFO_DECK['Introduccion'])
@@ -181,10 +183,12 @@ func get_next_initial_card():
 	var card_type = _get_deck().keys().front()
 	var card = _get_card_instance_from_info(card_type, _get_deck()[card_type])
 	_get_deck().erase(card_type)
+	if _get_deck().keys().empty():
+		initial_deck_empty = true
 	return card
 
 func has_more_initial_cards():
-	return !_get_deck().keys().empty()
+	return ! initial_deck_empty
 
 # Retorna una carta random de un tipo de carta random.
 func get_random_card_and_type():
