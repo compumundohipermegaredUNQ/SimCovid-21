@@ -16,17 +16,17 @@ const INFO_DECK = {
 }
 
 const INITIAL_DECK = {
-	"Cultural": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si tus ciudadanos aprenderán algo u olvidarán todo lo aprendido', [0.05, 0.01, -0.05, 0.03]],
-	"Economico": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si lo que te importa es solo la plata', [0.02, 0.05, -0.2, 0.01]],
-	"Salud": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán si es un salvese quien pueda en el fin del mundo ', [0.02, -0.06, 0.04, 0.03]],
-	"Social": ['Las cartas con esta categoría la afectarán principalmente,\n y decidirán que tan mal o bien queres tratar a tus ciudadanos', [0.03, 0.02, -0.05, 0.05]]
+	"Cultural": ['Las cartas con la categoría "Cultural"\n determinarán si tus ciudadanos aprenderán algo u olvidarán todo lo aprendido', [0.05, 0.01, -0.05, 0.03]],
+	"Economico": ['Las cartas con la categoría "Economico"\n determinarán si lo que te importa es solo la plata', [0.02, 0.05, -0.2, 0.01]],
+	"Salud": ['Las cartas con la categoría "Salud"\n determinarán si es un salvese quien pueda en el fin del mundo ', [0.02, -0.06, 0.04, 0.03]],
+	"Social": ['Las cartas con esta categoría "Social"\n determinarán que tan mal o bien queres tratar a tus ciudadanos', [0.03, 0.02, -0.05, 0.05]]
 }
 
 # Remaining attempts -> Frase
 const BAD_EVENTS_FRASES = {
-	1: "Último intento\nMás no te puedo ayudar.\n\n",
-	2: "Segundo intento\nLa gente te va a bancar solo una vez más eh.\n\n",
-	3: "Primer intento\nHay que levantar esa barra.\nUn error lo tiene cualquiera, no?\n\n"
+	1: "Último intento\nMás no te puedo ayudar.",
+	2: "Segundo intento\nLa gente te va a bancar solo una vez más eh.",
+	3: "Primer intento\nHay que levantar esa barra.\nUn error lo tiene cualquiera, no?"
 }
 
 const GAME_OVER_CARDS = {
@@ -39,28 +39,28 @@ const GAME_OVER_CARDS = {
 var RANDOM_DECK = {
 
 	"Cultural": [
-		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["Cerrar Escuelas\n--------------------\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
+		["Prohibir Deportes\n--------------------\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
+		["Prohibir Actividades al Aire Libre\n--------------------\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
 	],
 
 	"Economico": [
-		["Planes Sociales\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales\n--------------------\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
+		["Reducir Impuestos\n--------------------\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
+		["Libre Comercio\n--------------------\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
 	],
 
 	"Salud": [
-		["Ayuda a Esenciales\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigación\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversión en Suplmentos\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales\n--------------------\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
+		["Aumento de Investigación\n--------------------\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
+		["Inversión en Suplementos\n--------------------\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
+		["La gente está triste\n--------------------\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
 	],
 
 	"Social": [
-		["Limitar Comercios\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulación\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Limitar Comercios\n--------------------\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
+		["Limitar Circulación\n--------------------\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
+		["Prohibir Eventos\n--------------------\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
 	]
 }
 
@@ -74,28 +74,28 @@ var USED_RANDOM_DECK = {
 var GOOD_EVENT_DECK = {
 
 	"Cultural": [
-		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["Cerrar Escuelas\n--------------------\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
+		["Prohibir Deportes\n--------------------\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
+		["Prohibir Actividades al Aire Libre\n--------------------\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
 	],
 
 	"Economico": [
-		["Planes Sociales\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales\n--------------------\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
+		["Reducir Impuestos\n--------------------\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
+		["Libre Comercio\n--------------------\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
 	],
 
 	"Salud": [
-		["Ayuda a Esenciales\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigación\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversión en Suplmentos\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales\n--------------------\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
+		["Aumento de Investigación\n--------------------\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
+		["Inversión en Suplementos\n--------------------\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
+		["La gente está triste\n--------------------\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
 	],
 
 	"Social": [
-		["Limitar Comercios\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulación\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Limitar Comercios\n--------------------\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
+		["Limitar Circulación\n--------------------\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
+		["Prohibir Eventos\n--------------------\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
 	]
 }
 
@@ -109,28 +109,28 @@ var USED_GOOD_EVENT_DECK = {
 var BAD_EVENT_DECK = {
 
 	"Cultural": [
-		["Cerrar Escuelas\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["Cerrar Escuelas\n--------------------\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
+		["Prohibir Deportes\n--------------------\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
+		["Prohibir Actividades al Aire Libre\n--------------------\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
 	],
 
 	"Economico": [
-		["Planes Sociales\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales\n--------------------\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
+		["Reducir Impuestos\n--------------------\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
+		["Libre Comercio\n--------------------\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
 	],
 
 	"Salud": [
-		["Ayuda a Esenciales\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigación\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversión en Suplmentos\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales\n--------------------\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
+		["Aumento de Investigación\n--------------------\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
+		["Inversión en Suplementos\n--------------------\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
+		["La gente está triste\n--------------------\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
 	],
 
 	"Social": [
-		["Limitar Comercios\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulación\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Limitar Comercios\n--------------------\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
+		["Limitar Circulación\n--------------------\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
+		["Prohibir Eventos\n--------------------\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
 	]
 }
 

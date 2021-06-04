@@ -50,15 +50,15 @@ func feedback() -> void:
 	if actual_bar:
 		actual_bar.change_textlabel()
 
-func _on_XButton_mouse_entered() -> void:
-	self.feedback()
-
-func _on_CheckButton_mouse_entered() -> void:
-	self.feedback()
-
 func _update_if_exists_actual_bar() -> void:
 	if actual_bar:
 		actual_bar.update_state()
 
 func prepend_to_description(description:String):
 	$TextLabel.text = $TextLabel.text.insert(0, description)
+
+func _on_CheckButton_ready() -> void:
+	self.feedback()
+
+func _on_XButton_ready() -> void:
+	self.feedback()
