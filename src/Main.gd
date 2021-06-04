@@ -29,6 +29,7 @@ func get_percentages():
 
 func restart_round(multipliers):
 	round_number += 1
+	healt_bar_group.reset_remaining_attempts()
 	clock.set_round(round_number)
 	var consequence = 0.1 * round_number
 	var consequence_multipliers = {

@@ -69,6 +69,12 @@ func set_multipliers(multipliers):
 	salud_bar.set_multiplier(multipliers['Salud'])
 	social_bar.set_multiplier(multipliers['Social'])
 
+func reset_remaining_attempts():
+	cultural_bar.reset_remaining_attempts()
+	economia_bar.reset_remaining_attempts()
+	salud_bar.reset_remaining_attempts()
+	social_bar.reset_remaining_attempts()
+
 func restart_game():
 	cultural_bar.restart()
 	economia_bar.restart()

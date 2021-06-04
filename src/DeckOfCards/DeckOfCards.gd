@@ -51,7 +51,7 @@ func add_to_local_deck(card):
 	local_deck.append(card)
 
 func raise_card():
-	var card = CardsDatabaseDeck.get_random_card_and_type()
+	var card = CardsDatabaseDeck.get_random_card_and_type(CardsDatabaseDeck.RANDOM_DECK, CardsDatabaseDeck.USED_RANDOM_DECK)
 	add_to_local_deck(card)
 
 func raise_low_card(card_type, attempts):
