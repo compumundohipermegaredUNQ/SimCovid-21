@@ -13,10 +13,24 @@ script = ExtResource( 1 )
 seconds_per_day = 2.0
 
 [node name="ClockLabel" type="RichTextLabel" parent="."]
+show_behind_parent = true
 margin_left = 9.0
 margin_top = 7.0
 margin_right = 229.0
 margin_bottom = 47.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.0627451, 0.0117647, 0.0117647, 1 )
+custom_colors/font_color_shadow = Color( 0.541176, 0.537255, 0.537255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FaseLabel" type="RichTextLabel" parent="."]
+show_behind_parent = true
+margin_left = 7.0
+margin_top = 543.0
+margin_right = 482.0
+margin_bottom = 583.0
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0.0627451, 0.0117647, 0.0117647, 1 )
 custom_colors/font_color_shadow = Color( 0.541176, 0.537255, 0.537255, 1 )

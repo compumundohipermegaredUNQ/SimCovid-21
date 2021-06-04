@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var clock_label = $ClockLabel
+onready var fase_label = $FaseLabel
 
 export (float) var seconds_per_day = 5
 
@@ -8,6 +9,7 @@ var day_count = 1
 var hour_count = 0
 var hours_per_second
 var pedestrian_spawner
+var round_num = 1
 
 signal day_change
 signal speed_updated
@@ -42,7 +44,7 @@ func _update():
 			hour_count = 0
 		else:
 			day_count += 1
-		hour_count -= 24
+			hour_count -= 24
 	morningCard()
 	emit_sunrise_or_nightfall()
 	_do_update()
@@ -56,8 +58,19 @@ func emit_sunrise_or_nightfall():
 		emit_signal("begin_nightfall")
 
 func _do_update():
-	var text = str("Dia ", day_count, ": ", hour_count, ":00hs")
-	clock_label.set_text(text)
+	var clockText = str("Dia ", day_count, ": ", hour_count, ":00hs")
+	var faseText = str("Fase ", round_num, ". Total de dias pasados: ", get_total_day_count())
+	fase_label.set_text(faseText)
+	clock_label.set_text(clockText)
+
+func get_total_day_count():
+	if (round_num == 1):
+		return day_count
+	else:
+		return 15 * (round_num -1) + day_count
+
+func set_round(roundNum:int):
+	round_num = roundNum
 
 func restart_game():
 	day_count = 1

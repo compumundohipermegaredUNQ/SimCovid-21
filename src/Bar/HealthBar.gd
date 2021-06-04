@@ -107,6 +107,9 @@ func change_textlabel():
 func update_state():
 	healthbar_textlabel.set_text(label)
 
+func reset_remaining_attempts():
+	remaining_attempts = 3
+
 func restart():
 	healthbar.value = 50
 	restart_attempts()
