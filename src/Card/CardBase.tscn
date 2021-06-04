@@ -71,7 +71,8 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="mouse_entered" from="CheckButton" to="." method="_on_CheckButton_mouse_entered"]
+
 [connection signal="pressed" from="CheckButton" to="." method="_on_CheckButton_pressed"]
-[connection signal="mouse_entered" from="XButton" to="." method="_on_XButton_mouse_entered"]
+[connection signal="ready" from="CheckButton" to="." method="_on_CheckButton_ready"]
 [connection signal="pressed" from="XButton" to="." method="_on_XButton_pressed"]
+[connection signal="ready" from="XButton" to="." method="_on_XButton_ready"]
