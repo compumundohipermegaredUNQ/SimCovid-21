@@ -31,8 +31,16 @@ func restart_round(multipliers):
 	var consequence = 0.1 * round_number
 	var consequence_multipliers = {
 		'Cultural': multipliers.Cultural * consequence,
-		'Economia': multipliers.Economico * consequence,
+		'Economia': multipliers.Economia * consequence,
 		'Salud': multipliers.Salud * consequence,
 		'Social': multipliers.Social * consequence
 	}
 	set_multipliers(consequence_multipliers)
+
+func restart_game():
+	pass
+#	CardsDatabaseDeck.firstRound = true
+#	CardsDatabaseDeck.restart_game()
+#	healt_bar_group.restart_game()
+#	clock.restart_game()
+#	_ready()
