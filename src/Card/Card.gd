@@ -45,7 +45,7 @@ func _remove() -> void:
 	queue_free()
 
 func feedback() -> void:
-	if card_type != "Introduccion":
+	if card_type != "Introduccion" && card_type != "RoundResume" :
 		actual_bar = bar_group.get_child(scene_numbers_bars[card_type])
 	if actual_bar:
 		actual_bar.change_textlabel()

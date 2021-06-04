@@ -35,11 +35,11 @@ func checked(multiplier):
 	multipliers.Social = clamp(multipliers.Social, -0.3, 0.3)
 	if ! local_deck.empty():
 		parent.add_child(local_deck.front())
+	elif CardsDatabaseDeck.has_more_initial_cards():
+		get_next_initial_card()
 	elif game_started:
 		parent.set_multipliers(multipliers)
 		main_timer.start()
-	elif CardsDatabaseDeck.has_more_initial_cards():
-		get_next_initial_card()
 	else:
 		game_started = true
 		parent._startGame(multipliers)
@@ -79,5 +79,4 @@ func _on_Clock_quincena():
 	add_to_local_deck(card)
 
 func restart_round():
-	game_started = false
 	parent.restart_round(multipliers)

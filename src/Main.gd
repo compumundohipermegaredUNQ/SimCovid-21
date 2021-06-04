@@ -5,6 +5,7 @@ onready var healt_bar_group = $HealthBarGroup
 onready var clock = $Clock
 onready var pedestrian_spawner = $PedestrianSpawner
 onready var background = $Background
+export (float) var seconds_per_day = 15
 var round_number= 1
 
 func _ready():
@@ -18,7 +19,7 @@ func _startGame(multipliers):
 	# Esto eventualmente se elegirá desde el menú antes de arrancar
 	pedestrian_spawner.initialize(timer, self)
 	healt_bar_group.initialize(timer, clock, multipliers, pedestrian_spawner)
-	clock.set_seconds_per_day(15)
+	clock.set_seconds_per_day(seconds_per_day)
 
 func set_multipliers(multipliers):
 	healt_bar_group.set_multipliers(multipliers)
@@ -28,6 +29,7 @@ func get_percentages():
 
 func restart_round(multipliers):
 	round_number += 1
+	clock.set_round(round_number)
 	var consequence = 0.1 * round_number
 	var consequence_multipliers = {
 		'Cultural': multipliers.Cultural * consequence,
