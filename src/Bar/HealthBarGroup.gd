@@ -1,10 +1,10 @@
-extends Node2D
+extends Control
 
-onready var cultural_bar = $Cultural
-onready var economia_bar = $Economico
-onready var salud_bar = $Salud
-onready var social_bar = $Social
-onready var overall_bar = $OverallBar
+onready var cultural_bar = $BottomPanel/HBoxContainer/Cultural
+onready var economia_bar = $BottomPanel/HBoxContainer/Economico
+onready var salud_bar = $BottomPanel/HBoxContainer/Salud
+onready var social_bar = $BottomPanel/HBoxContainer/Social
+onready var overall_bar = $TopPanel/HBoxContainer/OverallBar
 var global_timer
 var pedestrian_spawner
 

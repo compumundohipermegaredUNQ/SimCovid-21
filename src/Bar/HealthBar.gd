@@ -1,4 +1,4 @@
-extends Node2D
+extends TextureProgress
 
 signal low_bar(bar_type, attempts)
 signal high_bar(bar_type)
@@ -34,14 +34,14 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	self.connect("game_over", DeckOfCards, "game_over_card")
 
 func set_value(value:float):
-	healthbar.value = value
+	self.value = value
 	_update_healthbar()
 
 func get_value():
-	return healthbar.value
+	return self.value
 
 func get_healthbar_value():
-	return healthbar.value
+	return self.value
 
 func set_multiplier(deck_multiplier):
 	multiplier = deck_multiplier
@@ -56,14 +56,14 @@ func _set_speed_multiplier(hours_per_second):
 	speed_multiplier = hours_per_second
 
 func _is_low():
-	return healthbar.value < healthbar.max_value * 0.30
+	return self.value < self.max_value * 0.30
 
 func _is_high():
-	return healthbar.value > healthbar.max_value * 0.70
+	return self.value > self.max_value * 0.70
 
 func _update_value():
-	healthbar.value = healthbar.value + speed_multiplier * multiplier
-	if healthbar.value == 0:
+	self.value = self.value + speed_multiplier * multiplier
+	if self.value == 0:
 		emit_signal("game_over", healthbar_textlabel.text)
 	remaining_ticks_before_emit = clamp(remaining_ticks_before_emit-1, 0, 10)
 	if _can_emit():
@@ -76,7 +76,7 @@ func _update_value():
 	_update_healthbar()
 
 func _is_at_max_value():
-	return healthbar.value == healthbar.max_value
+	return self.value == self.max_value
 
 func _can_emit():
 	return remaining_ticks_before_emit == 0
@@ -94,11 +94,11 @@ func _restart_emit_count():
 	remaining_ticks_before_emit = 10
 
 func _update_healthbar():
-	healthbar.texture_progress = bar_green
-	if healthbar.value < healthbar.max_value * 0.7:
-		healthbar.texture_progress = bar_yellow
-	if healthbar.value < healthbar.max_value * 0.35:
-		healthbar.texture_progress = bar_red
+	self.texture_progress = bar_green
+	if self.value < self.max_value * 0.7:
+		self.texture_progress = bar_yellow
+	if self.value < self.max_value * 0.35:
+		self.texture_progress = bar_red
 
 func change_textlabel():
 	healthbar_textlabel.clear()
@@ -111,6 +111,6 @@ func reset_remaining_attempts():
 	remaining_attempts = 3
 
 func restart():
-	healthbar.value = 50
+	self.value = 50
 	restart_attempts()
 	_restart_emit_count()

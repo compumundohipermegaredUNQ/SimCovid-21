@@ -3,13 +3,12 @@ extends Node2D
 export (PackedScene) var PedestrianScene
 
 onready var rng = RandomNumberGenerator.new()
-onready var screenSize = get_viewport().get_visible_rect().size
-onready var min_y_position = screenSize.y * 0.76
-onready var max_y_position = screenSize.y * 0.9
-onready var y_position_diff = max_y_position - min_y_position
-onready var x_positions = [screenSize.x + 40, -10.0]
 const nightfall_movement = 0.3
 const sunrise_movement = 1
+var min_y_position
+var max_y_position
+var y_position_diff
+var x_positions
 var movement_percentage = 0.3
 var salud_bar_value = 0.5
 var timer
@@ -21,6 +20,7 @@ func initialize(main_timer:Timer, main_node:Node):
 	timer.connect("timeout", self, "spawn_pedestrian")
 
 func spawn_pedestrian():
+	_set_position()
 	randomize()
 	if randf() < movement_percentage:
 		var person = PedestrianScene.instance()
@@ -53,3 +53,10 @@ func set_salud_current_value(salud_value):
 func is_sick():
 	randomize()
 	return randf() > salud_bar_value
+
+func _set_position():
+	var screenSize = get_viewport().get_visible_rect().size
+	min_y_position = screenSize.y * 0.8
+	max_y_position = screenSize.y - 110
+	y_position_diff = max_y_position - min_y_position
+	x_positions = [screenSize.x + 40, -10.0]

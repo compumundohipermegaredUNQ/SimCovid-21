@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 # El valor representativo de la barra es la posición del hijo en la que se
 # encuentra en el panel de escenas de HealthBarGroup, por ejemplo "Social" es el
@@ -6,10 +6,10 @@ extends Node2D
 # No es la mejor práctica, pero no se me ocurrió otra manera de acceder a las
 # escenas hijas de las barras
 const scene_numbers_bars = {
-	"Cultural": 0,
-	"Economico": 1,
-	"Salud": 2,
-	"Social": 3
+	"Economico": 0,
+	"Salud": 1,
+	"Social": 2,
+	"Cultural": 3,
 }
 var card_type
 var card_multipliers
@@ -46,7 +46,7 @@ func _remove() -> void:
 
 func feedback() -> void:
 	if card_type != "Introduccion" && card_type != "RoundResume" :
-		actual_bar = bar_group.get_child(scene_numbers_bars[card_type])
+		actual_bar = bar_group.get_child(1).get_child(0).get_child(scene_numbers_bars[card_type])
 	if actual_bar:
 		actual_bar.change_textlabel()
 
