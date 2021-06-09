@@ -6,10 +6,10 @@ extends Control
 # No es la mejor práctica, pero no se me ocurrió otra manera de acceder a las
 # escenas hijas de las barras
 const scene_numbers_bars = {
-	"Cultural": 0,
-	"Economico": 1,
-	"Salud": 2,
-	"Social": 3
+	"Economico": 0,
+	"Salud": 1,
+	"Social": 2,
+	"Cultural": 3,
 }
 var card_type
 var card_multipliers
@@ -21,7 +21,7 @@ var main_node
 func initialize(type, description, multipliers, main, has_lost = false) -> void:
 	card_type = type
 	card_multipliers = multipliers
-	bar_group = main.get_child(4)
+	bar_group = main.get_child(2)
 	$TextLabel.text = description
 	game_over = has_lost
 	main_node = main
@@ -46,7 +46,7 @@ func _remove() -> void:
 
 func feedback() -> void:
 	if card_type != "Introduccion" && card_type != "RoundResume" :
-		actual_bar = bar_group.get_child(scene_numbers_bars[card_type])
+		actual_bar = bar_group.get_child(1).get_child(0).get_child(scene_numbers_bars[card_type])
 	if actual_bar:
 		actual_bar.change_textlabel()
 

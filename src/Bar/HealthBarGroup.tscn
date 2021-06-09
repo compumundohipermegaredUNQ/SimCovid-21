@@ -103,20 +103,20 @@ __meta__ = {
 [node name="Economico" parent="BottomPanel/HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 122.0
-margin_right = 123.0
+margin_left = 0.0
+margin_right = 246.0
 margin_bottom = 34.0
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 label = "Economico"
 percentage = 0.3
 
 [node name="Salud" parent="BottomPanel/HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 372.0
-margin_right = 373.0
+margin_left = 249.0
+margin_right = 496.0
 margin_bottom = 34.0
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 multiplier = -1.0
 label = "Salud"
 percentage = 0.4
@@ -124,10 +124,10 @@ percentage = 0.4
 [node name="Social" parent="BottomPanel/HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 622.0
-margin_right = 623.0
+margin_left = 499.0
+margin_right = 746.0
 margin_bottom = 34.0
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 multiplier = -0.5
 label = "Social"
 percentage = 0.2
@@ -135,10 +135,10 @@ percentage = 0.2
 [node name="Cultural" parent="BottomPanel/HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 872.0
-margin_right = 873.0
+margin_left = 749.0
+margin_right = 996.0
 margin_bottom = 34.0
-size_flags_horizontal = 6
+size_flags_horizontal = 7
 multiplier = 0.5
 label = "Cultural"
 percentage = 0.1

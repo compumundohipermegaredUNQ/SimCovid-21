@@ -57,6 +57,6 @@ func is_sick():
 func _set_position():
 	var screenSize = get_viewport().get_visible_rect().size
 	min_y_position = screenSize.y * 0.8
-	max_y_position = screenSize.y - 100
+	max_y_position = screenSize.y - 110
 	y_position_diff = max_y_position - min_y_position
 	x_positions = [screenSize.x + 40, -10.0]
