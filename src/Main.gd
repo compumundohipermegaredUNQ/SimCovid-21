@@ -2,6 +2,8 @@ extends Node
 
 onready var timer = $Timer
 onready var healt_bar_group = $HealthBarGroup
+onready var clock_label = $HealthBarGroup/TopPanel/HBoxContainer/Clock
+onready var fase_label = $HealthBarGroup/TopPanel/HBoxContainer/Fase
 onready var clock = $Clock
 onready var pedestrian_spawner = $PedestrianSpawner
 onready var background = $Background
@@ -14,7 +16,7 @@ func _ready():
 	$DeckOfCards.scale.y = 2
 	
 func _startGame(multipliers):
-	clock.initialize(timer, pedestrian_spawner)
+	clock.initialize(timer, pedestrian_spawner, clock_label, fase_label)
 	background.initialize(clock)
 	# Esto eventualmente se elegirá desde el menú antes de arrancar
 	pedestrian_spawner.initialize(timer, self)

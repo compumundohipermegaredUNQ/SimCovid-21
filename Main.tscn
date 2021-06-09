@@ -54,8 +54,10 @@ __meta__ = {
 
 [node name="Sky" type="TextureRect" parent="Background"]
 material = SubResource( 2 )
-margin_right = 1036.0
-margin_bottom = 607.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1.0
+margin_bottom = 0.00012207
 texture = ExtResource( 7 )
 expand = true
 __meta__ = {
@@ -63,9 +65,11 @@ __meta__ = {
 }
 
 [node name="Street" type="TextureRect" parent="Background"]
+anchor_right = 1.001
+anchor_bottom = 1.0
 margin_left = -8.0
-margin_right = 1036.0
-margin_bottom = 605.0
+margin_right = -0.0350342
+margin_bottom = -1.99988
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {

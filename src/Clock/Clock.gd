@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var clock_label = $ClockLabel
-onready var fase_label = $FaseLabel
+#onready var clock_label = $ClockLabel
+#onready var fase_label = $FaseLabel
 
 export (float) var seconds_per_day = 5
 
@@ -10,6 +10,8 @@ var hour_count = 0
 var hours_per_second
 var pedestrian_spawner
 var round_num = 1
+var clock_label
+var fase_label
 
 signal day_change
 signal speed_updated
@@ -22,7 +24,9 @@ func morningCard():
 	if(hour_count == 8 ):
 		emit_signal("morning")
 
-func initialize(timer:Timer, spawner):
+func initialize(timer:Timer, spawner, clock, fase):
+	clock_label = clock
+	fase_label = fase
 	pedestrian_spawner = spawner
 	set_seconds_per_day(seconds_per_day)
 	_do_update()

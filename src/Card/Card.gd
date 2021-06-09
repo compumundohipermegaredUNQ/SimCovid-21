@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 # El valor representativo de la barra es la posición del hijo en la que se
 # encuentra en el panel de escenas de HealthBarGroup, por ejemplo "Social" es el
@@ -21,7 +21,7 @@ var main_node
 func initialize(type, description, multipliers, main, has_lost = false) -> void:
 	card_type = type
 	card_multipliers = multipliers
-	bar_group = main.get_child(2)
+	bar_group = main.get_child(4)
 	$TextLabel.text = description
 	game_over = has_lost
 	main_node = main
