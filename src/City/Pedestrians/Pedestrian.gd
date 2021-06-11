@@ -45,7 +45,6 @@ func set_position_and_movement_direction(pos:Vector2):
 	else:
 		_move_to_right()
 func _on_VisibilityNotifier2D_screen_exited():
-	print("nos vimooo")
 	call_deferred("_remove")
 
 func _remove():
