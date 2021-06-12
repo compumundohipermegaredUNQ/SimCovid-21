@@ -1,6 +1,5 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/fonts/The Snowday.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/Card/Card.gd" type="Script" id=2]
 [ext_resource path="res://assets/Card/check_grey.png" type="Texture" id=4]
 [ext_resource path="res://assets/Card/background_text.png" type="Texture" id=5]
@@ -8,9 +7,12 @@
 [ext_resource path="res://assets/Card/check_green.png" type="Texture" id=7]
 [ext_resource path="res://assets/Card/x_red.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/Fonts/The Snowday.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = SubResource( 1 )
 
 [node name="CardBase" type="Control"]
 anchor_right = 1.0
@@ -88,7 +90,7 @@ margin_top = -97.9234
 margin_right = 116.263
 margin_bottom = -77.9234
 grow_vertical = 2
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.317647, 0.254902, 0.254902, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Limitar Comercios"
