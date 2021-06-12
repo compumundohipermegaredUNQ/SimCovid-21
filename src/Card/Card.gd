@@ -18,10 +18,11 @@ var actual_bar
 var game_over
 var main_node
 
-func initialize(type, description, multipliers, main, has_lost = false) -> void:
+func initialize(type, title, description, multipliers, main, has_lost = false) -> void:
 	card_type = type
 	card_multipliers = multipliers
 	bar_group = main.get_child(2)
+	$TitleLabel.text = title
 	$TextLabel.text = description
 	game_over = has_lost
 	main_node = main
