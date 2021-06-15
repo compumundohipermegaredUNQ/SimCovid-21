@@ -64,6 +64,7 @@ func raise_card():
 func raise_low_card(card_type, attempts):
 	var card = CardsDatabaseDeck.get_low_event_card_from_type(card_type, attempts)
 	add_to_local_deck(card)
+	
 
 func raise_high_card(card_type):
 	var card = CardsDatabaseDeck.get_good_event_card_from_type(card_type)

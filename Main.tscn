@@ -16,6 +16,12 @@
 [ext_resource path="res://assets/Menu/HoverPressedButton.tres" type="StyleBox" id=14]
 [ext_resource path="res://assets/Fonts/The Snowday.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://assets/Fonts/monogram.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://assets/Sounds/BackGround.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/Sounds/switch23.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/Sounds/confirmation_001.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/Sounds/close_004.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/Sounds/Fail.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/Sounds/Morning.ogg" type="AudioStream" id=16]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -130,6 +136,11 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource( 11 )
+volume_db = -14.283
+autoplay = true
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -292,3 +303,27 @@ text = "Continuar"
 [connection signal="text_changed" from="MenuBackground/InputContainer/Input" to="MenuBackground" method="_on_Input_text_changed"]
 [connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="MenuBackground" method="_on_ContinueButton_pressed"]
+
+[node name="SFX" type="Node" parent="." groups=[
+"sfx",
+]]
+
+[node name="No" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 12 )
+volume_db = -10.0
+
+[node name="Si" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 13 )
+volume_db = -10.0
+
+[node name="Intento" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 14 )
+volume_db = -6.0
+
+[node name="Fail" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 15 )
+volume_db = -10.0
+
+[node name="Morning" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 16 )
+volume_db = -10.0

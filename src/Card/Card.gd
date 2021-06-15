@@ -11,6 +11,8 @@ const scene_numbers_bars = {
 	"Social": 2,
 	"Cultural": 3,
 }
+onready var ok_sfx = get_node("Ok")
+onready var no_sfx = get_node("No")
 var card_type
 var card_efects
 var bar_group
@@ -34,11 +36,13 @@ func _on_CheckButton_pressed() -> void:
 		DeckOfCards.checked(card_type, card_efects, true)
 		_update_if_exists_actual_bar()
 		call_deferred("_remove")
+		get_tree().get_nodes_in_group("sfx")[0].get_node("Si").play()
 
 func _on_XButton_pressed() -> void:
 	DeckOfCards.checked(card_type, card_efects, false)
 	_update_if_exists_actual_bar()
 	call_deferred("_remove")
+	get_tree().get_nodes_in_group("sfx")[0].get_node("No").play()
 
 func _remove() -> void:
 	get_parent().remove_child(self)

@@ -200,6 +200,7 @@ func has_more_initial_cards():
 
 # Retorna una carta random de un tipo de carta random.
 func get_random_card_and_type(deck, usedDeck):
+	get_tree().get_nodes_in_group("sfx")[0].get_node("Morning").play()
 	return _get_random_card(deck, usedDeck, _get_random_type(deck, usedDeck))
 
 # Retorna un tipo de carta random
@@ -239,6 +240,7 @@ func get_random_card_from_type(deck, usedDeck, card_type:String, move_to_used = 
 func get_low_event_card_from_type(card_type:String, attempts:int):
 	var card = get_random_card_from_type(BAD_EVENT_DECK, USED_BAD_EVENT_DECK, card_type)
 	card.prepend_to_description(get_title_from_attempts(attempts), get_text_from_attempts(attempts))
+	get_tree().get_nodes_in_group("sfx")[0].get_node("Intento").play()
 	return card
 
 func get_good_event_card_from_type(card_type:String):
@@ -249,6 +251,7 @@ func get_game_over_card(card_type):
 	var card_info = GAME_OVER_CARDS[card_type]
 	var card = card_scene.instance()
 	card.initialize(card_type, card_info[0], card_info[1], card_info[2], main, true)
+	get_tree().get_nodes_in_group("sfx")[0].get_node("Fail").play()
 	return card
 
 func _restart_deck(deck, usedDeck):
