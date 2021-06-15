@@ -33,12 +33,9 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	self.connect("high_bar", DeckOfCards, "raise_high_card")
 	self.connect("game_over", DeckOfCards, "game_over_card")
 
-func set_value(value:float):
+func set_healthbar_value(value:float):
 	self.value = value
 	_update_healthbar()
-
-func get_value():
-	return self.value
 
 func get_healthbar_value():
 	return self.value

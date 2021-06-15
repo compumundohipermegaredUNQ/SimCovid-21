@@ -23,16 +23,9 @@ func get_next_initial_card():
 	var card = CardsDatabaseDeck.get_next_initial_card()
 	parent.add_child(card)
 
-func checked(multiplier):
+func checked(card_type, effects, positive):
 	local_deck.pop_front()
-	multipliers.Cultural += multiplier[0]
-	multipliers.Economia += multiplier[1]
-	multipliers.Salud += multiplier[2]
-	multipliers.Social += multiplier[3]
-	multipliers.Cultural = clamp(multipliers.Cultural, -0.3, 0.3)
-	multipliers.Economia = clamp(multipliers.Economia, -0.3, 0.3)
-	multipliers.Salud = clamp(multipliers.Salud, -0.3, 0.3)
-	multipliers.Social = clamp(multipliers.Social, -0.3, 0.3)
+	apply_effects(card_type, effects, positive)
 	if ! local_deck.empty():
 		parent.add_child(local_deck.front())
 	elif CardsDatabaseDeck.has_more_initial_cards():
@@ -44,6 +37,28 @@ func checked(multiplier):
 		game_started = true
 		parent._startGame(multipliers)
 
+func apply_effects(card_type, effects, positive):
+	if (effects.size() == 4):
+		if(!positive):
+			effects = [-effects[0], -effects[1], -effects[2], -effects[3]]
+		print(multipliers)
+		var index = 0
+		for m in multipliers:
+			multipliers[m] += effects[index]
+			multipliers[m] = clamp(multipliers[m], -0.3, 0.3)
+			index += 1
+		print(multipliers)
+#		multipliers.Cultural += effects[0]
+#		multipliers.Economia += effects[1]
+#		multipliers.Salud += effects[2]
+#		multipliers.Social += effects[3]
+#		multipliers.Cultural = clamp(multipliers.Cultural, -0.3, 0.3)
+#		multipliers.Economia = clamp(multipliers.Economia, -0.3, 0.3)
+#		multipliers.Salud = clamp(multipliers.Salud, -0.3, 0.3)
+#		multipliers.Social = clamp(multipliers.Social, -0.3, 0.3)
+	else:
+		parent.set_event_effect(card_type, effects)
+		
 func add_to_local_deck(card):
 	main_timer.stop()
 	if local_deck.empty():

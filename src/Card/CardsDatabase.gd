@@ -25,9 +25,9 @@ const INITIAL_DECK = {
 
 # Remaining attempts -> Frase
 const BAD_EVENTS_FRASES = {
-	1: ["Último intento: ", "Más no te puedo ayudar.\n"],
-	2: ["Segundo intento: ", "La gente te va a bancar solo una vez más eh.\n"],
-	3: ["Primer intento: ", "Hay que levantar esa barra.\nUn error lo tiene cualquiera, no?\n"]
+	1: ["Último intento: \n", "Más no te puedo ayudar. \n\n"],
+	2: ["Segundo intento: \n", "La gente te va a bancar solo una vez más eh. \n\n"],
+	3: ["Primer intento: \n", "Hay que levantar esa barra.\nUn error lo tiene cualquiera, no? \n\n"]
 }
 
 const GAME_OVER_CARDS = {
@@ -75,28 +75,28 @@ var USED_RANDOM_DECK = {
 var GOOD_EVENT_DECK = {
 
 	"Cultural": [
-		["Cerrar Escuelas", "Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes", "Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre", "Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["Cerrar Escuelas", "Los docentes a las aulas... virtuales", [-20]],
+		["Prohibir Deportes", "Excepto las canchitas de fulbo 5", [-25]],
+		["Prohibir Actividades al Aire Libre", "Adiós runners", [-35]],
 	],
 
 	"Economico": [
-		["Planes Sociales", "Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos", "Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio", "Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales", "Al país se lo saca laburando?", [-20]],
+		["Reducir Impuestos", "Vas a dar una mano al pueblo, estás seguro?", [-25]],
+		["Libre Comercio", "Aduana quién te conoce", [-35]],
 	],
 
 	"Salud": [
-		["Ayuda a Esenciales", "Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigación", "Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversión en Suplementos", "A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste", "¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales", "Y no, los políticos no entramos acá", [-20]],
+		["Aumento de Investigación", "Es esto o tener fe de no salir hablando ruso", [-25]],
+		["Inversión en Suplementos", "A traer mas barbijos, y enseñar como usarlos", [-35]],
+		["La gente está triste", "¿ Les dejamos ver a Tinelli ?", [-30]]
 	],
 
 	"Social": [
-		["Limitar Comercios", "A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulación", "No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos", "Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Limitar Comercios", "A usar MercadoLibre y Rappi", [20]],
+		["Limitar Circulación", "No mas salidas, sólo clandestinas", [25]],
+		["Prohibir Eventos", "Bienvenidos los Zoomples", [35]],
 	]
 }
 
@@ -110,28 +110,28 @@ var USED_GOOD_EVENT_DECK = {
 var BAD_EVENT_DECK = {
 
 	"Cultural": [
-		["Cerrar Escuelas", "Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes", "Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre", "Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["Cerrar Escuelas", "Los docentes a las aulas... virtuales", [20]],
+		["Prohibir Deportes", "Excepto las canchitas de fulbo 5", [25]],
+		["Prohibir Actividades al Aire Libre", "Adiós runners", [35]],
 	],
 
 	"Economico": [
-		["Planes Sociales", "Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos", "Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio", "Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales", "Al país se lo saca laburando?", [20]],
+		["Reducir Impuestos", "Vas a dar una mano al pueblo, estás seguro?", [25]],
+		["Libre Comercio", "Aduana quién te conoce", [35]],
 	],
 
 	"Salud": [
-		["Ayuda a Esenciales", "Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigación", "Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversión en Suplementos", "A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste", "¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales", "Y no, los políticos no entramos acá", [20]],
+		["Aumento de Investigación", "Es esto o tener fe de no salir hablando ruso", [25]],
+		["Inversión en Suplementos", "A traer mas barbijos, y enseñar como usarlos", [35]],
+		["La gente está triste", "¿ Les dejamos ver a Tinelli ?", [30]]
 	],
 
 	"Social": [
-		["Limitar Comercios", "A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulación", "No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos", "Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Limitar Comercios", "A usar MercadoLibre y Rappi", [20]],
+		["Limitar Circulación", "No mas salidas, sólo clandestinas", [25]],
+		["Prohibir Eventos", "Bienvenidos los Zoomples", [35]],
 	]
 }
 

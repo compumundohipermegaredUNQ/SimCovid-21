@@ -26,23 +26,23 @@ func initialize(timer:Timer, clock:Node2D, multipliers, spawner):
 func _update_overall_value():
 	pedestrian_spawner.set_salud_current_value(salud_bar.get_healthbar_value())
 
-	if (cultural_bar.get_value() < 20):
+	if (cultural_bar.get_healthbar_value() < 20):
 		salud_weight -= 0.01
 		economia_weight -= 0.01
 		cultural_weight += 0.02
 
-	if (economia_bar.get_value() < 40):
+	if (economia_bar.get_healthbar_value() < 40):
 		salud_weight -= 0.01
 		social_weight -= 0.01
 		economia_weight += 0.02
 
-	if (salud_bar.get_value() < 50):
+	if (salud_bar.get_healthbar_value() < 50):
 		salud_weight += 0.03
 		economia_weight -= 0.01
 		social_weight -= 0.01
 		cultural_weight -= 0.01
 
-	if (social_bar.get_value() < 30):
+	if (social_bar.get_healthbar_value() < 30):
 		salud_weight -= 0.01
 		social_weight += 0.02
 		cultural_weight -= 0.01
@@ -52,15 +52,15 @@ func _update_overall_value():
 	salud_weight = clamp(salud_weight, 0.1, 0.6)
 	social_weight = clamp(social_weight, 0.1, 0.4)
 
-	var overall_value = cultural_bar.get_value() * cultural_weight + economia_bar.get_value() * economia_weight + salud_bar.get_value() * salud_weight + social_bar.get_value() * social_weight
-	overall_bar.set_value(overall_value)
+	var overall_value = cultural_bar.get_healthbar_value() * cultural_weight + economia_bar.get_healthbar_value() * economia_weight + salud_bar.get_healthbar_value() * salud_weight + social_bar.get_healthbar_value() * social_weight
+	overall_bar.set_healthbar_value(overall_value)
 
 func get_percentages():
 	var percentages = []
-	percentages.append(cultural_bar.get_value())
-	percentages.append(economia_bar.get_value())
-	percentages.append(salud_bar.get_value())
-	percentages.append(social_bar.get_value())
+	percentages.append(cultural_bar.get_healthbar_value())
+	percentages.append(economia_bar.get_healthbar_value())
+	percentages.append(salud_bar.get_healthbar_value())
+	percentages.append(social_bar.get_healthbar_value())
 	return percentages
 
 func set_multipliers(multipliers):
@@ -68,6 +68,11 @@ func set_multipliers(multipliers):
 	economia_bar.set_multiplier(multipliers['Economia'])
 	salud_bar.set_multiplier(multipliers['Salud'])
 	social_bar.set_multiplier(multipliers['Social'])
+
+func set_event_effect(card_type, effects):
+	for bar in self.get_node("BottomPanel/HBoxContainer").get_children():
+		if bar.label == card_type:
+			bar.set_healthbar_value(bar.get_healthbar_value() + effects[0])
 
 func reset_remaining_attempts():
 	cultural_bar.reset_remaining_attempts()
