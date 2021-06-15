@@ -55,7 +55,8 @@ func _update_if_exists_actual_bar() -> void:
 	if actual_bar:
 		actual_bar.update_state()
 
-func prepend_to_description(description:String):
+func prepend_to_description(title:String, description:String):
+	$TitleLabel.text = $TitleLabel.text.insert(0, title)
 	$TextLabel.text = $TextLabel.text.insert(0, description)
 
 func _on_CheckButton_ready() -> void:

@@ -25,9 +25,9 @@ const INITIAL_DECK = {
 
 # Remaining attempts -> Frase
 const BAD_EVENTS_FRASES = {
-	1: ["Último intento", "Más no te puedo ayudar."],
-	2: ["Segundo intento", "La gente te va a bancar solo una vez más eh."],
-	3: ["Primer intento", "Hay que levantar esa barra.\nUn error lo tiene cualquiera, no?"]
+	1: ["Último intento: ", "Más no te puedo ayudar.\n"],
+	2: ["Segundo intento: ", "La gente te va a bancar solo una vez más eh.\n"],
+	3: ["Primer intento: ", "Hay que levantar esa barra.\nUn error lo tiene cualquiera, no?\n"]
 }
 
 const GAME_OVER_CARDS = {
@@ -230,7 +230,7 @@ func get_random_card_from_type(deck, usedDeck, card_type:String, move_to_used = 
 # Retorno carta random de evento negativo
 func get_low_event_card_from_type(card_type:String, attempts:int):
 	var card = get_random_card_from_type(BAD_EVENT_DECK, USED_BAD_EVENT_DECK, card_type)
-	card.prepend_to_description(get_text_from_attempts(attempts))
+	card.prepend_to_description(get_title_from_attempts(attempts), get_text_from_attempts(attempts))
 	return card
 
 func get_good_event_card_from_type(card_type:String):
@@ -249,4 +249,7 @@ func _restart_deck(deck, usedDeck):
 		usedDeck[key] = []
 
 func get_text_from_attempts(attemps:int):
-	return BAD_EVENTS_FRASES[attemps]
+	return BAD_EVENTS_FRASES[attemps][1]
+
+func get_title_from_attempts(attemps:int):
+	return BAD_EVENTS_FRASES[attemps][0]
