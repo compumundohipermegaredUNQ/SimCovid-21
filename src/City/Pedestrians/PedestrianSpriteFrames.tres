@@ -6,38 +6,43 @@
 [ext_resource path="res://assets/Pedestrians/Zombie/zombie_walk1.png" type="Texture" id=4]
 [ext_resource path="res://assets/Pedestrians/Female/female_walk1.png" type="Texture" id=5]
 [ext_resource path="res://assets/Pedestrians/Male/male_walk2.png" type="Texture" id=6]
-[ext_resource path="res://assets/Pedestrians/Fan/male_walk1.png" type="Texture" id=7]
-[ext_resource path="res://assets/Pedestrians/Mask/male_walk2.png" type="Texture" id=8]
+[ext_resource path="res://assets/Pedestrians/Male/fan_male_walk2.png" type="Texture" id=7]
+[ext_resource path="res://assets/Pedestrians/Male/mask_male_walk1.png" type="Texture" id=8]
 [ext_resource path="res://assets/Pedestrians/Female/neanderthal_female_walk2.png" type="Texture" id=9]
 [ext_resource path="res://assets/Pedestrians/Female/mask_female_walk2.png" type="Texture" id=10]
 [ext_resource path="res://assets/Pedestrians/Female/neanderthal_female_walk1.png" type="Texture" id=11]
-[ext_resource path="res://assets/Pedestrians/Fan/male_walk2.png" type="Texture" id=12]
-[ext_resource path="res://assets/Pedestrians/Mask/male_walk1.png" type="Texture" id=13]
-[ext_resource path="res://assets/Pedestrians/Smoking/male_walk2.png" type="Texture" id=14]
+[ext_resource path="res://assets/Pedestrians/Male/fan_male_walk1.png" type="Texture" id=12]
+[ext_resource path="res://assets/Pedestrians/Male/mask_male_walk2.png" type="Texture" id=13]
+[ext_resource path="res://assets/Pedestrians/Male/smoking_male_walk2.png" type="Texture" id=14]
 [ext_resource path="res://assets/Pedestrians/Female/mask_female_walk1.png" type="Texture" id=15]
 [ext_resource path="res://assets/Pedestrians/Female/smoking_female_walk1.png" type="Texture" id=16]
-[ext_resource path="res://assets/Pedestrians/Homeless/male_walk1.png" type="Texture" id=17]
+[ext_resource path="res://assets/Pedestrians/Male/homeless_male_walk2.png" type="Texture" id=17]
 [ext_resource path="res://assets/Pedestrians/Female/homeless_female_walk1.png" type="Texture" id=18]
-[ext_resource path="res://assets/Pedestrians/Scientific/male_walk2.png" type="Texture" id=19]
-[ext_resource path="res://assets/Pedestrians/Scientific/male_walk1.png" type="Texture" id=20]
-[ext_resource path="res://assets/Pedestrians/Neanderthal/male_walk1.png" type="Texture" id=21]
-[ext_resource path="res://assets/Pedestrians/Worker/male_walk1.png" type="Texture" id=22]
+[ext_resource path="res://assets/Pedestrians/Male/scientific_male_walk1.png" type="Texture" id=19]
+[ext_resource path="res://assets/Pedestrians/Male/scientific_male_walk2.png" type="Texture" id=20]
+[ext_resource path="res://assets/Pedestrians/Male/neanderthal_male_walk1.png" type="Texture" id=21]
+[ext_resource path="res://assets/Pedestrians/Male/worker_male_walk2.png" type="Texture" id=22]
 [ext_resource path="res://assets/Pedestrians/Female/worker_female_walk1.png" type="Texture" id=23]
 [ext_resource path="res://assets/Pedestrians/Female/scientific_female_walk1.png" type="Texture" id=24]
 [ext_resource path="res://assets/Pedestrians/Female/scientific_female_walk2.png" type="Texture" id=25]
-[ext_resource path="res://assets/Pedestrians/Neanderthal/male_walk2.png" type="Texture" id=26]
-[ext_resource path="res://assets/Pedestrians/Smoking/male_walk1.png" type="Texture" id=27]
-[ext_resource path="res://assets/Pedestrians/Worker/male_walk2.png" type="Texture" id=28]
+[ext_resource path="res://assets/Pedestrians/Male/neanderthal_male_walk2.png" type="Texture" id=26]
+[ext_resource path="res://assets/Pedestrians/Male/smoking_male_walk1.png" type="Texture" id=27]
+[ext_resource path="res://assets/Pedestrians/Male/worker_male_walk1.png" type="Texture" id=28]
 [ext_resource path="res://assets/Pedestrians/Female/worker_female_walk2.png" type="Texture" id=29]
 [ext_resource path="res://assets/Pedestrians/Female/fan_female_walk1.png" type="Texture" id=30]
 [ext_resource path="res://assets/Pedestrians/Female/fan_female_walk2.png" type="Texture" id=31]
 [ext_resource path="res://assets/Pedestrians/Female/homeless_female_walk2.png" type="Texture" id=32]
-[ext_resource path="res://assets/Pedestrians/Homeless/male_walk2.png" type="Texture" id=33]
+[ext_resource path="res://assets/Pedestrians/Male/homeless_male_walk1.png" type="Texture" id=33]
 [ext_resource path="res://assets/Pedestrians/Female/smoking_female_walk2.png" type="Texture" id=34]
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 22 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "zombie_female_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "worker_male_walk",
 "speed": 5.0
@@ -52,7 +57,7 @@ animations = [ {
 "name": "male_walk",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "mask_male_walk",
 "speed": 5.0
@@ -60,6 +65,11 @@ animations = [ {
 "frames": [ ExtResource( 27 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "smoking_male_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "zombie_male_walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 9 ) ],
@@ -77,7 +87,7 @@ animations = [ {
 "name": "fan_female_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 33 ) ],
+"frames": [ ExtResource( 33 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "homeless_male_walk",
 "speed": 5.0
@@ -87,7 +97,7 @@ animations = [ {
 "name": "smoking_female_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "fan_male_walk",
 "speed": 5.0
@@ -107,17 +117,12 @@ animations = [ {
 "name": "mask_female_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "zombie_walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 18 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "homeless_female_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "scientific_male_walk",
 "speed": 5.0

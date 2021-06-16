@@ -7,7 +7,12 @@ onready var social_bar = $BottomPanel/HBoxContainer/Social
 onready var overall_bar = $TopPanel/HBoxContainer/OverallBar
 var global_timer
 var pedestrian_spawner
-
+onready var bar_names = {
+	'cultural_bar': cultural_bar,
+	'economia_bar': economia_bar,
+	'salud_bar': salud_bar,
+	'social_bar': social_bar
+}
 
 var cultural_weight = 0.1
 var economia_weight = 0.3
@@ -85,3 +90,6 @@ func restart_game():
 	economia_bar.restart()
 	salud_bar.restart()
 	social_bar.restart()
+
+func get_percentage_by_name(bar_name):
+	return bar_names[bar_name].get_value()
