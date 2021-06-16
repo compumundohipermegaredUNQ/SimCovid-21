@@ -48,14 +48,6 @@ func apply_effects(card_type, effects, positive):
 			multipliers[m] = clamp(multipliers[m], -0.3, 0.3)
 			index += 1
 		print(multipliers)
-#		multipliers.Cultural += effects[0]
-#		multipliers.Economia += effects[1]
-#		multipliers.Salud += effects[2]
-#		multipliers.Social += effects[3]
-#		multipliers.Cultural = clamp(multipliers.Cultural, -0.3, 0.3)
-#		multipliers.Economia = clamp(multipliers.Economia, -0.3, 0.3)
-#		multipliers.Salud = clamp(multipliers.Salud, -0.3, 0.3)
-#		multipliers.Social = clamp(multipliers.Social, -0.3, 0.3)
 	else:
 		parent.set_event_effect(card_type, effects)
 		
