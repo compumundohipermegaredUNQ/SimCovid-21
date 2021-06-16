@@ -11,7 +11,6 @@ export (float) var seconds_per_day = 15
 var round_number= 1
 
 func _ready():
-	DeckOfCards.initialize(self, timer)
 	$DeckOfCards.scale.x = 2
 	$DeckOfCards.scale.y = 2
 	
@@ -52,3 +51,7 @@ func restart_game():
 #	healt_bar_group.restart_game()
 #	clock.restart_game()
 #	_ready()
+
+
+func _on_Start_pressed():
+	DeckOfCards.initialize(self, timer)
