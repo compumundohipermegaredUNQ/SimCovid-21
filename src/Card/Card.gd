@@ -12,15 +12,15 @@ const scene_numbers_bars = {
 	"Cultural": 3,
 }
 var card_type
-var card_multipliers
+var card_efects
 var bar_group
 var actual_bar
 var game_over
 var main_node
 
-func initialize(type, title, description, multipliers, main, has_lost = false) -> void:
+func initialize(type, title, description, efects, main, has_lost = false) -> void:
 	card_type = type
-	card_multipliers = multipliers
+	card_efects = efects
 	bar_group = main.get_child(2)
 	$TitleLabel.text = title
 	$TextLabel.text = description
@@ -31,13 +31,12 @@ func _on_CheckButton_pressed() -> void:
 	if game_over:
 		main_node.restart_game()
 	else:
-		DeckOfCards.checked(card_multipliers)
+		DeckOfCards.checked(card_type, card_efects, true)
 		_update_if_exists_actual_bar()
 		call_deferred("_remove")
 
 func _on_XButton_pressed() -> void:
-	card_multipliers=[-card_multipliers[0], -card_multipliers[1], -card_multipliers[2], -card_multipliers[3]]
-	DeckOfCards.checked(card_multipliers)
+	DeckOfCards.checked(card_type, card_efects, false)
 	_update_if_exists_actual_bar()
 	call_deferred("_remove")
 

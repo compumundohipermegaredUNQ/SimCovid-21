@@ -25,6 +25,9 @@ func _startGame(multipliers):
 
 func set_multipliers(multipliers):
 	healt_bar_group.set_multipliers(multipliers)
+	
+func set_event_effect(card_type, effects):
+	healt_bar_group.set_event_effect(card_type, effects)
 
 func get_percentages():
 	return healt_bar_group.get_percentages()
