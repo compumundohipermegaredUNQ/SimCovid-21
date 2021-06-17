@@ -170,7 +170,7 @@ func set_initial_deck(optionalContent):
 		card = _get_card_instance_from_info('Introduccion', INFO_DECK['Introduccion'])
 		firstRound = false
 	else:
-		INFO_DECK['RoundResume'] = [optionalContent, [0.0, 0.0, 0.0, 0.0]]
+		INFO_DECK['RoundResume'] = [optionalContent, "", [0.0, 0.0, 0.0, 0.0]]
 		card = _get_card_instance_from_info('RoundResume', INFO_DECK['RoundResume'])
 	return card
 
