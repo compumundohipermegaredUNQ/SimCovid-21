@@ -5,13 +5,14 @@ export (float) var speed = 100
 var rng
 var animations
 var direction = 1
-var health_bar_group
-var bar_names = ['cultural_bar', 'economia_bar', 'salud_bar', 'social_bar']
+var percentage
+var pedestrian_bar_name
 
-func initialize(health_bar_groups):
+func initialize(bar_percentage, bar_name):
 	rng = RandomNumberGenerator.new()
 	animations = ["male_walk", "female_walk"]
-	health_bar_group = health_bar_groups
+	percentage = bar_percentage
+	pedestrian_bar_name = bar_name
 
 func _move_to_right():
 	direction = 1
@@ -51,16 +52,12 @@ func set_random_animation():
 	rng.randomize()
 	var pedestrian = ''
 	var gender = animations[randi() % animations.size()]
-	for bar_name in bar_names:
-		print(bar_name, gender)
-		var percentage = health_bar_group.get_percentage_by_name(bar_name)
-		if percentage < 33:
-			pedestrian = PedestrianDatabase.PEDESTRIANS.low[bar_name]
-			self.play(pedestrian+'_'+gender)
-		elif percentage > 66:
-			pedestrian = PedestrianDatabase.PEDESTRIANS.high[bar_name]
-			self.play(pedestrian+'_'+gender)
-		else:
-			self.play(gender)
-		print(pedestrian+'_'+gender)
-		pedestrian = ''
+	if percentage < 33:
+		pedestrian = PedestrianDatabase.PEDESTRIANS.low[pedestrian_bar_name]
+		self.play(pedestrian+'_'+gender)
+	elif percentage > 66:
+		pedestrian = PedestrianDatabase.PEDESTRIANS.high[pedestrian_bar_name]
+		self.play(pedestrian+'_'+gender)
+	else:
+		self.play(gender)
+	print(pedestrian+'_'+gender)

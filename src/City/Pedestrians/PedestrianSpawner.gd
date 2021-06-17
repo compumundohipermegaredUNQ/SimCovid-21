@@ -14,6 +14,8 @@ var movement_percentage = 0.3
 var salud_bar_value = 0.5
 var timer
 var main
+var bar_names = ['cultural_bar', 'economia_bar', 'salud_bar', 'social_bar']
+var iterator = 0
 
 func initialize(main_timer:Timer, main_node:Node, health_bar_group2):
 	timer = main_timer
@@ -27,11 +29,13 @@ func spawn_pedestrian():
 	if randf() < movement_percentage:
 		var person = PedestrianScene.instance()
 		var person_position = get_random_position()
-		person.initialize(health_bar_group)
+		var percentage = health_bar_group.get_percentage_by_name(bar_names[iterator])
+		person.initialize(percentage, bar_names[iterator])
 		person.set_random_animation()
 		person.set_position_and_movement_direction(person_position)
 		person.set_z_index(get_z_index_from_position(person_position.y))
 		main.add_child(person)
+		iterator = 0 if iterator == 3 else iterator + 1
 
 func get_z_index_from_position(y_position):
 	var pos = y_position_diff - (max_y_position - y_position)
