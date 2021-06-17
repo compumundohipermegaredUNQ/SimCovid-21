@@ -22,6 +22,8 @@
 [ext_resource path="res://assets/Sounds/close_004.ogg" type="AudioStream" id=14]
 [ext_resource path="res://assets/Sounds/Fail.ogg" type="AudioStream" id=15]
 [ext_resource path="res://assets/Sounds/Morning.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/Sounds/Morning2.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/Sounds/Morning3.ogg" type="AudioStream" id=18]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -308,6 +310,22 @@ text = "Continuar"
 "sfx",
 ]]
 
+[node name="Mg" type="Node" parent="SFX" groups=[
+"Morning",
+]]
+
+[node name="0" type="AudioStreamPlayer" parent="SFX/Mg"]
+stream = ExtResource( 16 )
+volume_db = -10.0
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Mg"]
+stream = ExtResource( 17 )
+volume_db = -10.0
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Mg"]
+stream = ExtResource( 18 )
+volume_db = -20.0
+
 [node name="No" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 12 )
 volume_db = -10.0
@@ -322,8 +340,4 @@ volume_db = -6.0
 
 [node name="Fail" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 15 )
-volume_db = -10.0
-
-[node name="Morning" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 16 )
 volume_db = -10.0

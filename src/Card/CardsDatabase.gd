@@ -200,7 +200,9 @@ func has_more_initial_cards():
 
 # Retorna una carta random de un tipo de carta random.
 func get_random_card_and_type(deck, usedDeck):
-	get_tree().get_nodes_in_group("sfx")[0].get_node("Morning").play()
+	var array = ["0","1","2"]
+	var valor = array[randi() % array.size()]
+	get_tree().get_nodes_in_group("sfx")[0].get_node("Mg").get_node(valor).play()
 	return _get_random_card(deck, usedDeck, _get_random_type(deck, usedDeck))
 
 # Retorna un tipo de carta random
