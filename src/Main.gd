@@ -52,6 +52,5 @@ func restart_game():
 #	clock.restart_game()
 #	_ready()
 
-
-func _on_Start_pressed():
+func _on_ContinueButton_pressed():
 	DeckOfCards.initialize(self, timer)
