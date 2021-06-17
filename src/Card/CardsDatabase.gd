@@ -10,6 +10,7 @@ var initial_deck_empty
 var current_deck
 var current_used_deck
 var main
+var user_name
 
 const INFO_DECK = {
 	"Introduccion": ["Sos el nuevo encargado de la ciudad", "\n\nDebes aceptar decisiones o rechazarlas, estas tendrán un efecto inamovible por 15 días, así que elegí bien.\n Espero que hayas entendido por que quieras o no vamos a empezar", [0.0, 0.0, 0.0, 0.0]],
@@ -143,6 +144,12 @@ var USED_BAD_EVENT_DECK = {
 }
 
 #Getters & Setters
+func set_user_name(name):
+	user_name = name
+
+func get_user_name(name):
+	return name
+
 func _set_deck(deck):
 	current_deck = deck
 
@@ -175,6 +182,7 @@ func set_initial_deck(optionalContent):
 	return card
 
 func _get_card_instance_from_info(card_type, card_info:Array):
+	print(user_name)
 	var card = card_scene.instance()
 	card.initialize(card_type, card_info[0], card_info[1], card_info[2], main)
 	return card
