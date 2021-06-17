@@ -11,6 +11,7 @@ position = Vector2( -47.9458, 471.967 )
 z_as_relative = false
 frames = ExtResource( 1 )
 animation = "male_walk"
+frame = 1
 playing = true
 script = ExtResource( 7 )
 
