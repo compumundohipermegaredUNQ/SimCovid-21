@@ -32,6 +32,7 @@ func spawn_pedestrian():
 		var percentage = health_bar_group.get_percentage_by_name(bar_names[iterator])
 		person.initialize(percentage, bar_names[iterator])
 		person.set_random_animation()
+		person.set_random_phrase()
 		person.set_position_and_movement_direction(person_position)
 		person.set_z_index(get_z_index_from_position(person_position.y))
 		main.add_child(person)
