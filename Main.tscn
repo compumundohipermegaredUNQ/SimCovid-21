@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/City/City-no-sky.png" type="Texture" id=1]
 [ext_resource path="res://src/Main.gd" type="Script" id=2]
@@ -16,6 +16,13 @@
 [ext_resource path="res://assets/Menu/HoverPressedButton.tres" type="StyleBox" id=14]
 [ext_resource path="res://assets/Fonts/The Snowday.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://assets/Fonts/monogram.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://assets/Sounds/Morning.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/Sounds/Morning2.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/Sounds/switch23.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/Sounds/close_004.ogg" type="AudioStream" id=20]
+[ext_resource path="res://assets/Sounds/Morning3.ogg" type="AudioStream" id=21]
+[ext_resource path="res://assets/Sounds/Fail.ogg" type="AudioStream" id=22]
+[ext_resource path="res://assets/Sounds/confirmation_001.ogg" type="AudioStream" id=23]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -286,6 +293,31 @@ custom_styles/normal = ExtResource( 13 )
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Continuar"
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="Mg" type="Node" parent="sfx"]
+
+[node name="0" type="AudioStreamPlayer" parent="sfx/Mg"]
+stream = ExtResource( 17 )
+
+[node name="1" type="AudioStreamPlayer" parent="sfx/Mg"]
+stream = ExtResource( 18 )
+
+[node name="2" type="AudioStreamPlayer" parent="sfx/Mg"]
+stream = ExtResource( 21 )
+
+[node name="No" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 19 )
+
+[node name="Si" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 23 )
+
+[node name="Intento" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 20 )
+
+[node name="Fail" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource( 22 )
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Start" to="MenuBackground" method="_on_Start_pressed"]
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Help" to="MenuBackground" method="_on_Help_pressed"]
 [connection signal="pressed" from="MenuBackground/HelpContainer/Back" to="MenuBackground" method="_on_Back_pressed"]
