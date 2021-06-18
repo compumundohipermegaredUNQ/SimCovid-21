@@ -9,8 +9,8 @@
 extents = Vector2( 41.7644, 60.5016 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 100
-outline_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
+size = 90
+outline_color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
 font_data = ExtResource( 2 )
 
 [node name="Pedestrian" type="AnimatedSprite"]
@@ -31,19 +31,21 @@ position = Vector2( -1.90735e-06, 0.749126 )
 scale = Vector2( 4.14644, 6.16916 )
 
 [node name="BubbleSpeech" type="Sprite" parent="."]
-position = Vector2( 47.813, -78.8125 )
-scale = Vector2( 0.208825, 0.29109 )
+position = Vector2( 89.138, -70.4882 )
+scale = Vector2( 0.208825, 0.283266 )
 texture = ExtResource( 3 )
+offset = Vector2( -400, 0 )
 
-[node name="Label" type="RichTextLabel" parent="BubbleSpeech"]
+[node name="Label" type="Label" parent="BubbleSpeech"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -339.0
-margin_top = -165.0
-margin_right = -443.0
-margin_bottom = -332.0
-custom_fonts/normal_font = SubResource( 2 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+margin_left = -748.0
+margin_top = -149.0
+margin_right = -832.0
+margin_bottom = -272.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -23,14 +23,11 @@ func _move_to_right():
 	direction = 1
 	self.flip_h = 0
 	bubble_speech.flip_h = 0
-	bubble_speech.offset = Vector2(0,0)
 
 func _move_to_left():
 	direction = -1
 	self.flip_h = 1
 	bubble_speech.flip_h = 1
-	bubble_speech.offset = Vector2(-400, 0)
-	bubble_speech_label.set_position(Vector2(-739, -170))
 
 func _process(delta):
 	position.x += direction * speed * delta
@@ -50,6 +47,7 @@ func set_position_and_movement_direction(pos:Vector2):
 		_move_to_left()
 	else:
 		_move_to_right()
+
 func _on_VisibilityNotifier2D_screen_exited():
 	call_deferred("_remove")
 

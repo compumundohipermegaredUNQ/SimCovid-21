@@ -36,7 +36,7 @@ const PHRASES = [
 ]
 
 func set_user_name(name):
-	user_name = "El gato" if name == '' || name == null else name
+	user_name = "Albertacri" if name == '' || name == null else name
 
 func get_user_name():
 	return user_name
