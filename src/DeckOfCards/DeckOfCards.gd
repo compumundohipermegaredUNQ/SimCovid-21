@@ -16,11 +16,11 @@ var multipliers = {
 func initialize(main, timer):
 	parent = main
 	main_timer = timer
-	CardsDatabaseDeck.set_main(parent)
-	parent.add_child(CardsDatabaseDeck.set_initial_deck(''))
+	CardsHandler.set_main(parent)
+	parent.add_child(CardsHandler.set_initial_deck(''))
 	
 func get_next_initial_card():
-	var card = CardsDatabaseDeck.get_next_initial_card()
+	var card = CardsHandler.get_next_initial_card()
 	parent.add_child(card)
 
 func checked(card_type, effects, positive):
@@ -28,7 +28,7 @@ func checked(card_type, effects, positive):
 	apply_effects(card_type, effects, positive)
 	if ! local_deck.empty():
 		parent.add_child(local_deck.front())
-	elif CardsDatabaseDeck.has_more_initial_cards():
+	elif CardsHandler.has_more_initial_cards():
 		get_next_initial_card()
 	elif game_started:
 		parent.set_multipliers(multipliers)
@@ -58,19 +58,19 @@ func add_to_local_deck(card):
 	local_deck.append(card)
 
 func raise_card():
-	var card = CardsDatabaseDeck.get_random_card_and_type(CardsDatabaseDeck.RANDOM_DECK, CardsDatabaseDeck.USED_RANDOM_DECK)
+	var card = CardsHandler.get_random_card_and_type(CardsDatabase.RANDOM_DECK, CardsDatabase.USED_RANDOM_DECK)
 	add_to_local_deck(card)
 
 func raise_low_card(card_type, attempts):
-	var card = CardsDatabaseDeck.get_low_event_card_from_type(card_type, attempts)
+	var card = CardsHandler.get_low_event_card_from_type(card_type, attempts)
 	add_to_local_deck(card)
 
 func raise_high_card(card_type):
-	var card = CardsDatabaseDeck.get_good_event_card_from_type(card_type)
+	var card = CardsHandler.get_good_event_card_from_type(card_type)
 	add_to_local_deck(card)
 
 func game_over_card(card_type):
-	var card = CardsDatabaseDeck.get_game_over_card(card_type)
+	var card = CardsHandler.get_game_over_card(card_type)
 	add_to_local_deck(card)
 
 func status_bars():
@@ -82,7 +82,7 @@ func _on_Clock_morning():
 
 func _on_Clock_quincena():
 	restart_round()
-	var card = CardsDatabaseDeck.set_initial_deck(status_bars())
+	var card = CardsHandler.set_initial_deck(status_bars())
 	add_to_local_deck(card)
 
 func restart_round():

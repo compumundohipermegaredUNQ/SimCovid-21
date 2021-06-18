@@ -327,5 +327,5 @@ stream = ExtResource( 22 )
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Help" to="MenuBackground" method="_on_Help_pressed"]
 [connection signal="pressed" from="MenuBackground/HelpContainer/Back" to="MenuBackground" method="_on_Back_pressed"]
 [connection signal="text_changed" from="MenuBackground/InputContainer/Input" to="MenuBackground" method="_on_Input_text_changed"]
-[connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="MenuBackground" method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

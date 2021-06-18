@@ -19,20 +19,29 @@ const PEDESTRIANS = {
 }
 
 const PHRASES = [
+	
+#Cultural
+	"{user_name}, abrime las escuelas!",
+	"Quiero ver rápidos y furiosos 9 en el cine!",
+	"{user_name} dijo que los de Brasil salieron de la selva",
+
+#Economico
 	"{user_name} me aumentó el monotributo, RETROACTIVO",
 	"Menos mal que tenemos menos pobres que Alemania",
 	"Que lujo es nuestra economía. Dijo nunca nadie",
-	"{user_name} dijo que si deposité dolares, voy a recibir dolares",
-	"{user_name} me quiere encerrar de nuevo",
-	"Hay demasiada gente en la calle. Vuelvan a sus casas!",
-	"{user_name} dijo que los de Brasil salieron de la selva",
-	"No aguanto más a mis hijos en casa",
-	"{user_name}, abrime las escuelas!",
-	"Quiero ver rápidos y furiosos 9 en el cine!",
-	"{user_name}, habilitame los bares!",
-	"Si me doy la rusa seguro termino hecho un robot",
+	"{user_name} dijo que, si deposité dólares, voy a recibir dólares",
+	
+#Salud
+	"Hay demasiada gente en la calle. ¡Vuelvan a sus casas!",
+	"Esperemos que no se relaje el sistema sanitario",
 	"Ese señor no tiene barbijo!",
-	"Esperemos que no se relaje el sistema sanitario"
+	"Si me doy la rusa seguro termino hecho un robot",
+	"No me la contacto estrecho",
+
+#Social
+	"{user_name} me quiere encerrar de nuevo",
+	"{user_name}, habilitame los bares!",
+	"No aguanto más a mis hijos en casa",
 ]
 
 func set_user_name(name):
