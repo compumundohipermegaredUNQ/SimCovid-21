@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/City/City-no-sky.png" type="Texture" id=1]
 [ext_resource path="res://src/Main.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/Sounds/Morning3.ogg" type="AudioStream" id=21]
 [ext_resource path="res://assets/Sounds/Fail.ogg" type="AudioStream" id=22]
 [ext_resource path="res://assets/Sounds/confirmation_001.ogg" type="AudioStream" id=23]
+[ext_resource path="res://assets/Sounds/BackGround.ogg" type="AudioStream" id=24]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -137,6 +138,10 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource( 24 )
+autoplay = true
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
