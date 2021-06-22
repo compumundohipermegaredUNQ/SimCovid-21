@@ -48,7 +48,7 @@ func apply_effects(card_type, effects, positive):
 			multipliers[m] = clamp(multipliers[m], -0.3, 0.3)
 			index += 1
 		print(multipliers)
-	else:
+	elif positive:
 		parent.set_event_effect(card_type, effects)
 		
 func add_to_local_deck(card):
