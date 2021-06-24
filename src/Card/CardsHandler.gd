@@ -34,10 +34,10 @@ func set_initial_deck(optionalContent):
 	initial_deck_empty = false
 	var card
 	if firstRound:
-		card = _get_card_instance_from_info('Introduccion', CardsDatabase.INTRO_DECK['Introduccion'])
+		card = _get_card_instance_from_info('Introducción', CardsDatabase.INTRO_DECK['Introducción'])
 		firstRound = false
 	else:
-		CardsDatabase.INFO_DECK['RoundResume'] = [optionalContent, "", [0.0, 0.0, 0.0, 0.0]]
+		CardsDatabase.INTRO_DECK['RoundResume'] = optionalContent
 		card = _get_card_instance_from_info('RoundResume', CardsDatabase.INTRO_DECK['RoundResume'])
 	return card
 

@@ -42,24 +42,44 @@ animations = [ {
 "name": "zombie_female_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 28 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "worker_male_walk",
+"name": "fan_male_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 32 ) ],
 "loop": true,
-"name": "female_walk",
-"speed": 3.0
+"name": "homeless_female_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "fan_female_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "mask_male_walk",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "male_walk",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 33 ), ExtResource( 17 ) ],
 "loop": true,
-"name": "mask_male_walk",
+"name": "homeless_male_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "scientific_male_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "worker_male_walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 27 ), ExtResource( 14 ) ],
@@ -72,24 +92,9 @@ animations = [ {
 "name": "zombie_male_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
 "loop": true,
-"name": "neanderthal_female_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "neanderthal_male_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "fan_female_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 33 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "homeless_male_walk",
+"name": "scientific_female_walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 34 ) ],
@@ -97,15 +102,15 @@ animations = [ {
 "name": "smoking_female_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 26 ) ],
 "loop": true,
-"name": "fan_male_walk",
+"name": "neanderthal_male_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "scientific_female_walk",
-"speed": 5.0
+"name": "female_walk",
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 29 ) ],
 "loop": true,
@@ -117,13 +122,8 @@ animations = [ {
 "name": "mask_female_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 32 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "homeless_female_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "scientific_male_walk",
+"name": "neanderthal_female_walk",
 "speed": 5.0
 } ]
