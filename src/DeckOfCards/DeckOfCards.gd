@@ -75,7 +75,7 @@ func game_over_card(card_type):
 
 func status_bars():
 	var percentages = parent.get_percentages()
-	return "Resumen de la Quincena los porcentajes andan en:" + "\n" + "Cultural" + str(percentages[0])  +  "\n" +  "Economia:" + str(percentages[1]) + "\n" +  "Salud:" + str(percentages[2]) + "\n" + "Social" + str(percentages[3])
+	return ["Resumen de la Quincena", "Los porcentajes andan en:" + "\n" + "Cultural" + str(percentages[0])  +  "\n" +  "Economia:" + str(percentages[1]) + "\n" +  "Salud:" + str(percentages[2]) + "\n" + "Social" + str(percentages[3]), [0.0, 0.0, 0.0, 0.0]]
 
 func _on_Clock_morning():
 	raise_card()
