@@ -323,6 +323,7 @@ stream = ExtResource( 20 )
 
 [node name="Fail" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource( 22 )
+
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Start" to="MenuBackground" method="_on_Start_pressed"]
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Help" to="MenuBackground" method="_on_Help_pressed"]
 [connection signal="pressed" from="MenuBackground/HelpContainer/Back" to="MenuBackground" method="_on_Back_pressed"]

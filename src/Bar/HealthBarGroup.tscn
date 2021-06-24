@@ -34,10 +34,10 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopPanel"]
 anchor_right = 1.0
-margin_left = 8.0
-margin_top = 10.0
-margin_right = -8.0
-margin_bottom = 40.0
+margin_left = 8.84088
+margin_top = 8.31821
+margin_right = -7.15912
+margin_bottom = 38.3182
 size_flags_vertical = 4
 custom_constants/separation = 2
 __meta__ = {
@@ -46,7 +46,7 @@ __meta__ = {
 
 [node name="Clock" type="RichTextLabel" parent="TopPanel/HBoxContainer"]
 margin_right = 248.0
-margin_bottom = 30.0
+margin_bottom = 29.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 size_flags_stretch_ratio = 0.5
@@ -55,7 +55,7 @@ custom_fonts/normal_font = SubResource( 1 )
 [node name="Fase" type="RichTextLabel" parent="TopPanel/HBoxContainer"]
 margin_left = 250.0
 margin_right = 748.0
-margin_bottom = 30.0
+margin_bottom = 29.0
 size_flags_horizontal = 7
 size_flags_vertical = 5
 custom_fonts/normal_font = SubResource( 2 )
@@ -64,9 +64,9 @@ custom_fonts/normal_font = SubResource( 2 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 774.0
-margin_top = 2.0
+margin_top = 1.0
 margin_right = 974.0
-margin_bottom = 28.0
+margin_bottom = 27.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.5
