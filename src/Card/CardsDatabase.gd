@@ -106,7 +106,7 @@ var BAD_EVENT_DECK = {
 
 	"Cultural": [
 		["De vuelta juntos", "Junta a cast de serie para hacer una reunión, hablar boludeces y distraer a la gente", [20]],
-		["Tortas a donde mires”, “Nuevo trend de memes para hacer que todos duden de su realidad, ¿acaso yo soy una torta?", [25]],
+		["Tortas a donde mires", "Nuevo trend de memes para hacer que todos duden de su realidad, ¿acaso yo soy una torta?", [25]],
 		["La pelota no se contagia", "Das rienda suelta a la liga profesional de futbol, por lo menos se distraen un poco", [35]],
 	],
 
