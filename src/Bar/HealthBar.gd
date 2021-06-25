@@ -12,7 +12,7 @@ export (float) var multiplier = 0
 export (String) var label = ""
 export (float) var percentage = 1
 
-onready var healthbar = $HealthBar
+#onready var healthbar = $HealthBar 
 onready var healthbar_textlabel = $HealthBarLabel
 onready var good_event_decider = GoodEventDecider
 

@@ -4,10 +4,35 @@ onready var card_scene = preload("res://src/Card/CardBase.tscn")
 onready var user_name = PedestrianDatabase.get_user_name()
 #Multipliers order Cultural, Economico, Salud, Social
 #[0.0, 0.0, 0.0, 0.0]
+#: [".", "\n\n .", [0.005, 0.005, 0.005, 0.005]],
 
 var INTRO_DECK = {
-	"Introducción": [ "Ahora VOS estas a cargo" , "\n\n\n Como ya sabes, estas decisiones que tomes tendrán un efecto por 15 días, así que elegí bien. Estas son en las UNICAS que aceptar es positivo y rechazar es negativo. \n\n Espero que hayas entendido por que quieras o no vamos a empezar", [0.0, 0.0, 0.0, 0.0]],
-	"RoundResume": ["Resumen", "", [0.0, 0.0, 0.0, 0.0]]
+	"Introducción": [ "Bienvenidx a tu peor pesadilla." , "\n\n No solo estas viviendo en un pandemia mundial sino que ahora vas a jugar que estas en otra, si leiste la ayuda o esta info ya la conoces podes saltearla con la X, sino presta atencion por que no la voy a volver a repetir", [0.00, 0.00, 0.00, 0.00]],
+	"RoundResume": ["Resumen", "", [0.005, 0.005, 0.005, 0.005]]
+}
+
+const TUTORIAL_DECK = {
+	"Introducción": {
+		"I0": ["Vivimos en una sociedad.", "\n\n Tus ciudadanos son basicos, asi que categorizan todo en 4 aspectos: Cultural, Economico, Salud y Social. Dependiendo de estos tu sociedad se vera afectada asi que tenes que encontrar el balance para ver que los hace felices.", [0.005, 0.005, 0.005, 0.005]],
+		"I1": ["Ahora VOS estas a cargo.", "\n\n La cosa es facil, vas a empezar con 1 carta, por cada una de las 4 categorias, para definir que priorizas. Tene en cuenta que, como en la vida real, las decisiones no son lineales asi que todo afecta a todo solo que en distinta medida.", [0.005, 0.005, 0.005, 0.005]],
+		"I2": ["Pensa bien que elegis.", "\n\n Cada decision que tomes va a tener efecto durante la duracion de una FASE (15 dias), donde ahi recien vas a poder cambiar. Las primeras 4 son en las UNICAS que aceptar es algo positivo y rechazar algo negativo.", [0.005, 0.005, 0.005, 0.005]],
+		"I3": ["Vas a tener que madrugar.", "\n\n Una vez hechas tus elecciones iniciales la cosa se pone movida, todos los dias a las 8AM tendras que tomar alguna decision. Pero... la cosa no va a ser tan clara, por que solo vas a saber en donde es su efecto principal.", [0.005, 0.005, 0.005, 0.005]],
+		"I4": ["Que paso ahora, LPM.", "\n\n Sin desesperar todavia. La idea es que a pesar de todo esto logres sobrevivir 5 FASES. Si pudiste aguantar a tus ciudadanos todo ese tiempo, ya te aseguras estar preparado para el futuro. Este sea vacunas, inmunidad natural o la extincion de la raza humana.", [0.005, 0.005, 0.005, 0.005]],
+		"I5": ["Bueno, vamo a juga.", "\n\n No pierdas la paciencia ya te dejamos empezar a hacer cagadas. Pero te repito por ultima vez, lee bien y analiza cada decision, usa tu experiencia por que las cosas no son tan faciles y directas como parecen. Buena suerte, la vas a necesitar.", [0.005, 0.005, 0.005, 0.005]]
+	},
+	"BadEvent": {
+		"BE1": ["Felicitaciones, sos un desastre.", "\n\n Que no panda el cunico, se sabia que esto podia pasar. Despues de todo esto es un intento de apocalipsis pero mas aburrido que en las peliculas. Ahora te muestro como revertir esto pero sabé que no va a ser gratis.", [0.005, 0.005, 0.005, 0.005]],
+		"BE2": ["En caso de emergencia, romper...", "\n\n Tenes la chance de camuflar el desastre, aceptar estas cartas va a aumentar el valor de la categoria pero no como se siente la gente. Asi que te estamos dando tiempo pero tenes que mejorar las decisiones para que las cosas dejen de empeorar", [0.005, 0.005, 0.005, 0.005]],
+		"BE3": ["Bases y condiciones.", "\n\n Si no las lees te jodes porque la sociedad se la va a bancar pero todo tiene un limite. En estos casos, por fase solo vas a poder salvar a cada barra una vez por fase. Y en el total de las fases solo 3 veces cada una, despues de eso a rezar", [0.005, 0.005, 0.005, 0.005]]
+	},
+	"GoodEvent":{
+		"GE1": ["Todo esta bien, demasiado bien.", "\n\n Nada bueno dura mucho tiempo, estan tan felices que la cosa se empieza a descontrolar. Lo peor de todo, es que no podes hacer nada al respecto, la gente esta manija y solos se van a calmar", [0.005, 0.005, 0.005, 0.005]],
+		"GE2": ["Keep calm and drink mate.", "\n\n Como te dije esto va a pasar y no hay nada que puedas hacer al respecto. Igual estate tranquilo, solo va a afectar el valor de esta categoria pero no como se siente la gente. Y si, te damos las opciones solo de placebo", [0.005, 0.005, 0.005, 0.005]]
+	},
+	"RoundResume":{
+		"RR1": ["Duraste mas de lo pensado.", "\n\n La verdad que no te teniamos fe, pero ahora tu sociedad esta mas cerca de poder ver otra temporada de 'Almorzando con Mirtha'. Ahora te mostramos como te fue en esta fase, pero primero unos ultimos detalles", [0.005, 0.005, 0.005, 0.005]],
+		"RR2": ["Ah shit, here we go again.", "\n\n Vas a empezar una nueva fase, pero como podras ver las barras se van a mantener en su posicion y vas a traer tambien una pequeña secuela. Tene en cuenta que mientras mas avances pero va a ser esta, la paciencia se acaba...", [0.005, 0.005, 0.005, 0.005]]
+	}
 }
 
 const INITIAL_DECK = {
@@ -106,7 +131,7 @@ var BAD_EVENT_DECK = {
 
 	"Cultural": [
 		["De vuelta juntos", "Junta a cast de serie para hacer una reunión, hablar boludeces y distraer a la gente", [20]],
-		["Tortas a donde mires”, “Nuevo trend de memes para hacer que todos duden de su realidad, ¿acaso yo soy una torta?", [25]],
+		["Tortas a donde mires", "Nuevo trend de memes para hacer que todos duden de su realidad, ¿acaso yo soy una torta?", [25]],
 		["La pelota no se contagia", "Das rienda suelta a la liga profesional de futbol, por lo menos se distraen un poco", [35]],
 	],
 

@@ -26,16 +26,19 @@ func get_next_initial_card():
 func checked(card_type, effects, positive):
 	local_deck.pop_front()
 	apply_effects(card_type, effects, positive)
-	if ! local_deck.empty():
+	if card_type == 'Introducción':
+		CardsHandler._set_tutorial(positive)
+	elif ! local_deck.empty():
 		parent.add_child(local_deck.front())
 	elif CardsHandler.has_more_initial_cards():
 		get_next_initial_card()
 	elif game_started:
 		parent.set_multipliers(multipliers)
-		main_timer.start()
+#		main_timer.start()
 	else:
 		game_started = true
 		parent._startGame(multipliers)
+	main_timer.start()
 
 func apply_effects(card_type, effects, positive):
 	if (effects.size() == 4):
@@ -75,7 +78,7 @@ func game_over_card(card_type):
 
 func status_bars():
 	var percentages = parent.get_percentages()
-	return "Resumen de la Quincena los porcentajes andan en:" + "\n" + "Cultural" + str(percentages[0])  +  "\n" +  "Economia:" + str(percentages[1]) + "\n" +  "Salud:" + str(percentages[2]) + "\n" + "Social" + str(percentages[3])
+	return ["Resumen de la Quincena", "Los porcentajes andan en:" + "\n" + "Cultural" + str(percentages[0])  +  "\n" +  "Economia:" + str(percentages[1]) + "\n" +  "Salud:" + str(percentages[2]) + "\n" + "Social" + str(percentages[3]), [0.0, 0.0, 0.0, 0.0]]
 
 func _on_Clock_morning():
 	raise_card()
