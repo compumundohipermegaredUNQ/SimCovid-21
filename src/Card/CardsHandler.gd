@@ -57,7 +57,7 @@ func set_initial_deck(optionalContent):
 			deck_on_deck(CardsDatabase.TUTORIAL_DECK["RoundResume"])
 			INFO_BOOL["RoundResume"] = false
 		CardsDatabase.INTRO_DECK['RoundResume'] = optionalContent
-		card = _get_card_instance_from_info('RoundResume', CardsDatabase.INTRO_DECK['RoundResume'])
+		DeckOfCards.add_to_local_deck(_get_card_instance_from_info('RoundResume', CardsDatabase.INTRO_DECK['RoundResume']))
 		deck_on_deck(CardsDatabase.INITIAL_DECK)
 	return card
 

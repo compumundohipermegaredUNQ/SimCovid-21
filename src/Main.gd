@@ -22,6 +22,21 @@ func _startGame(multipliers):
 	healt_bar_group.initialize(timer, clock, multipliers, pedestrian_spawner)
 	clock.set_seconds_per_day(seconds_per_day)
 
+func set_multipliers(multipliers):
+	healt_bar_group.set_multipliers(multipliers)
+
+func set_goodevent_effect(card_type, effects):
+	healt_bar_group.set_goodevent_effect(card_type, effects)
+	
+func set_badevent_effect(card_type, effects, used):
+	if(used):
+		healt_bar_group.set_badevent_effect(card_type, effects)
+	else:
+		healt_bar_group.set_badevent_nouse(card_type)
+
+func get_percentages():
+	return healt_bar_group.get_percentages()
+
 func restart_round(multipliers):
 	round_number += 1
 	healt_bar_group.reset_remaining_attempts()
@@ -33,7 +48,7 @@ func restart_round(multipliers):
 		'Salud': multipliers.Salud * consequence,
 		'Social': multipliers.Social * consequence
 	}
-	HealthBarGroup.set_multipliers(consequence_multipliers)
+	set_multipliers(consequence_multipliers)
 
 func restart_game():
 	pass

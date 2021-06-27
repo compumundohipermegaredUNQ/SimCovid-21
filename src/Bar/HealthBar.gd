@@ -20,6 +20,7 @@ var global_clock
 var speed_multiplier
 var remaining_ticks_before_emit = 10
 var remaining_attempts = 3
+var fase_attempt = true
 
 func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	good_event_decider.set_timer(timer)
@@ -67,10 +68,16 @@ func _update_value():
 		if _is_low() && _can_emit_low_event() && _is_bar_decreasing():
 			_restart_emit_count()
 			emit_signal("low_bar", healthbar_textlabel.text, remaining_attempts)
-			remaining_attempts -= 1
 		if !_is_at_max_value() && _is_high() && GoodEventDecider.can_emit():
 			emit_signal("high_bar", healthbar_textlabel.text)
 	_update_healthbar()
+
+func actualize_attempts():
+	remaining_attempts -= 1
+	actualize_fase_attempt()
+
+func actualize_fase_attempt():
+	fase_attempt = false
 
 func _is_at_max_value():
 	return self.value == self.max_value
@@ -79,7 +86,7 @@ func _can_emit():
 	return remaining_ticks_before_emit == 0
 
 func _can_emit_low_event() -> bool:
-	return remaining_attempts != 0
+	return remaining_attempts != 0 && fase_attempt
 
 func _is_bar_decreasing() -> bool:
 	return multiplier < 0
@@ -105,7 +112,7 @@ func update_state():
 	healthbar_textlabel.set_text(label)
 
 func reset_remaining_attempts():
-	remaining_attempts = 3
+	fase_attempt = true
 
 func restart():
 	self.value = 50

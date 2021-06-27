@@ -30,15 +30,15 @@ func checked(card_type, effects, positive):
 		CardsHandler._set_tutorial(positive)
 	elif ! local_deck.empty():
 		parent.add_child(local_deck.front())
-	elif CardsHandler.has_more_initial_cards():
-		get_next_initial_card()
+#	elif CardsHandler.has_more_initial_cards():
+#		get_next_initial_card()
 	elif game_started:
-		HealthBarGroup.set_multipliers(multipliers)
-#		main_timer.start()
+		parent.set_multipliers(multipliers)
+		main_timer.start()
 	else:
 		game_started = true
 		parent._startGame(multipliers)
-	main_timer.start()
+		main_timer.start()
 
 func apply_effects(card_type, effects, positive):
 	if (effects.size() == 4):
@@ -51,10 +51,10 @@ func apply_effects(card_type, effects, positive):
 			multipliers[m] = clamp(multipliers[m], -0.3, 0.3)
 			index += 1
 		print(multipliers)
-	elif(effects.size() == 2 && positive):
-		HealthBarGroup.set_badevent_effect(card_type, effects)
+	elif(effects.size() == 2):
+		parent.set_badevent_effect(card_type, effects, positive)
 	elif (effects.size() == 1):
-		HealthBarGroup.set_goodevent_effect(card_type, effects)
+		parent.set_goodevent_effect(card_type, effects)
 		
 func add_to_local_deck(card):
 	main_timer.stop()
@@ -79,7 +79,7 @@ func game_over_card(card_type):
 	add_to_local_deck(card)
 
 func status_bars():
-	var percentages = HealthBarGroup.get_percentages()
+	var percentages = parent.get_percentages()
 	return ["Resumen de la Quincena", "Los porcentajes andan en:" + "\n" + "Cultural" + str(percentages[0])  +  "\n" +  "Economia:" + str(percentages[1]) + "\n" +  "Salud:" + str(percentages[2]) + "\n" + "Social" + str(percentages[3]), [0.0, 0.0, 0.0, 0.0]]
 
 func _on_Clock_morning():
@@ -87,8 +87,7 @@ func _on_Clock_morning():
 
 func _on_Clock_quincena():
 	restart_round()
-	var card = CardsHandler.set_initial_deck(status_bars())
-	add_to_local_deck(card)
+	CardsHandler.set_initial_deck(status_bars())
 
 func restart_round():
 	parent.restart_round(multipliers)
