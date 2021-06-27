@@ -34,7 +34,7 @@ func get_types(deck):
 func _set_tutorial(boolean):
 	if boolean:
 		INFO_BOOL["FirstRound"] = false
-		deck_on_deck(CardsDatabase.TUTORIAL_DECK["Introducción"])
+		deck_on_deck(CardsDatabase.TUTORIAL_DECK["Introduccion"])
 		current_deck = CardsDatabase.INITIAL_DECK.duplicate()
 	else:
 		for key in INFO_BOOL.keys():
@@ -51,7 +51,7 @@ func set_initial_deck(optionalContent):
 	initial_deck_empty = false
 	var card
 	if INFO_BOOL["FirstRound"]:
-		card = _get_card_instance_from_info('Introducción', CardsDatabase.INTRO_DECK['Introducción'])
+		card = _get_card_instance_from_info('Introduccion', CardsDatabase.INTRO_DECK['Introduccion'])
 	else:
 		if INFO_BOOL["RoundResume"]:
 			deck_on_deck(CardsDatabase.TUTORIAL_DECK["RoundResume"])

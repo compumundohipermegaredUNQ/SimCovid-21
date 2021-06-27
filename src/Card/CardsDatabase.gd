@@ -7,12 +7,12 @@ onready var user_name = PedestrianDatabase.get_user_name()
 #: [".", "\n\n .", [0.005, 0.005, 0.005, 0.005]],
 
 var INTRO_DECK = {
-	"Introducción": [ "Bienvenidx a tu peor pesadilla." , "\n\n No solo estas viviendo en un pandemia mundial sino que ahora vas a jugar que estas en otra, si leiste la ayuda o esta info ya la conoces podes saltearla con la X, sino presta atencion por que no la voy a volver a repetir", [0.00, 0.00, 0.00, 0.00]],
+	"Introduccion": [ "Bienvenidx a tu peor pesadilla." , "\n\n No solo estas viviendo en un pandemia mundial sino que ahora vas a jugar que estas en otra, si leiste la ayuda o esta info ya la conoces podes saltearla con la X, sino presta atencion por que no la voy a volver a repetir", [0.00, 0.00, 0.00, 0.00]],
 	"RoundResume": ["Resumen", "", [0.005, 0.005, 0.005, 0.005]]
 }
 
 const TUTORIAL_DECK = {
-	"Introducción": {
+	"Introduccion": {
 		"I0": ["Vivimos en una sociedad.", "\n\n Tus ciudadanos son basicos, asi que categorizan todo en 4 aspectos: Cultural, Economico, Salud y Social. Dependiendo de estos tu sociedad se vera afectada asi que tenes que encontrar el balance para ver que los hace felices.", [0.005, 0.005, 0.005, 0.005]],
 		"I1": ["Ahora VOS estas a cargo.", "\n\n La cosa es facil, vas a empezar con 1 carta, por cada una de las 4 categorias, para definir que priorizas. Tene en cuenta que, como en la vida real, las decisiones no son lineales asi que todo afecta a todo solo que en distinta medida.", [0.005, 0.005, 0.005, 0.005]],
 		"I2": ["Pensa bien que elegis.", "\n\n Cada decision que tomes va a tener efecto durante la duracion de una FASE (15 dias), donde ahi recien vas a poder cambiar. Las primeras 4 son en las UNICAS que aceptar es algo positivo y rechazar algo negativo.", [0.005, 0.005, 0.005, 0.005]],
@@ -62,6 +62,7 @@ var RANDOM_DECK = {
 		["Cerrar Escuelas", "\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
 		["Prohibir Deportes", "\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
 		["Prohibir Actividades al Aire Libre", "\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["La gente está triste", "¿Les dejamos ver a Tinelli?", [-0.03, 0.02, 0.4, -0.01]]
 	],
 
 	"Economico": [
@@ -74,7 +75,6 @@ var RANDOM_DECK = {
 		["Ayuda a Esenciales", "Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
 		["Aumento de Investigación", "Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
 		["Inversión en Suplementos", "A traer más barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste", "¿Les dejamos ver a Tinelli?", [-0.03, 0.02, 0.4, -0.01]]
 	],
 
 	"Social": [
@@ -113,10 +113,10 @@ var GOOD_EVENT_DECK = {
 	],
 
 	"Social": [
-		["Que buena onda la NASA", "\n \n Cuantos apocalipsis juntos podés soportar? \n Porque dicen que se puede venir un asteroide", [20]],
-		["Hablemos sin saber", "\n \n Un supuesto periodista bardeo a un streamer famoso y ahora hicieron huelga. Miles de pibes embolados no saben qué hacer", [25]],
-		["A los memes", "\n \n Salen a la luz algunas declaraciones, los memes las viralizan y se va al carajo la reputación", [35]],
-		["Que en paz…", "\n \n Muere deportista ídolo mundial, y su despedida parece haber curado la pandemia, o no…", [30]],
+		["Que buena onda la NASA", "\n \n Cuantos apocalipsis juntos podés soportar? \n Porque dicen que se puede venir un asteroide", [-20]],
+		["Hablemos sin saber", "\n \n Un supuesto periodista bardeo a un streamer famoso y ahora hicieron huelga. Miles de pibes embolados no saben qué hacer", [-25]],
+		["A los memes", "\n \n Salen a la luz algunas declaraciones, los memes las viralizan y se va al carajo la reputación", [-35]],
+		["Que en paz…", "\n \n Muere deportista ídolo mundial, y su despedida parece haber curado la pandemia, o no…", [-30]],
 	]
 }
 
@@ -130,28 +130,28 @@ var USED_GOOD_EVENT_DECK = {
 var BAD_EVENT_DECK = {
 
 	"Cultural": [
-		["De vuelta juntos", "Junta a cast de serie para hacer una reunión, hablar boludeces y distraer a la gente", [20]],
-		["Tortas a donde mires", "Nuevo trend de memes para hacer que todos duden de su realidad, ¿acaso yo soy una torta?", [25]],
+		["De vuelta juntos", "Junta a cast de serie para hacer una reunión, hablar boludeces y distraer a la gente", [20, 0.01]],
+		["Tortas a donde mires", "Nuevo trend de memes para hacer que todos duden de su realidad, ¿acaso yo soy una torta?", [25, 0.02]],
 		["La pelota no se contagia", "Das rienda suelta a la liga profesional de futbol, por lo menos se distraen un poco", [35]],
 	],
 
 	"Economico": [
-		["Nos vamos a la Internet", "Impulsas la moneda virtual a pesar de que nadie tiene idea como funciona", [20]],
-		["No te dejes influenciar", "Impuestos a los creadores de contenido, porque ante la duda que paguen", [25]],
-		["Si hay que llorar, llora", "Vamos a tener que pedirle más tiempo al FMI porque si no hay que vender alguna provincia", [35]],
+		["Nos vamos a la Internet", "Impulsas la moneda virtual a pesar de que nadie tiene idea como funciona", [20, 0.01]],
+		["No te dejes influenciar", "Impuestos a los creadores de contenido, porque ante la duda que paguen", [25, 0.02]],
+		["Si hay que llorar, llora", "Vamos a tener que pedirle más tiempo al FMI porque si no hay que vender alguna provincia", [35, 0.03]],
 	],
 
 	"Salud": [
-		["Vamos el verde", "No estamos hablando de “María”. Por fin sacas adelante la ley del aborto", [20]],
-		["Ahora si es ESE verde", "Por pedido del pueblo te resignas y habilitas el consumo.\n Por lo menos la gente está más feliz", [25]],
-		["Se vienen las vacunas?", "En realidad no sabes, pero casi seguro que están más cerca así que digamos eso", [35]],
-		["Aceptamos caridad", "Llegan donaciones de dudosa precedencia, pero como estamos en las últimas, las aceptamos y después vemos que onda", [30]]
+		["Vamos el verde", "No estamos hablando de “María”. Por fin sacas adelante la ley del aborto", [20, 0.01]],
+		["Ahora si es ESE verde", "Por pedido del pueblo te resignas y habilitas el consumo.\n Por lo menos la gente está más feliz", [25, 0.02]],
+		["Se vienen las vacunas?", "En realidad no sabes, pero casi seguro que están más cerca así que digamos eso", [35, 0.03]],
+		["Aceptamos caridad", "Llegan donaciones de dudosa precedencia, pero como estamos en las últimas, las aceptamos y después vemos que onda", [30, 0.03]]
 	],
 
 	"Social": [
-		["Un aDIOS", "La pandemia no importa si hablamos de un símbolo, así que juntemos millones de personas para despedir a un ídolo", [20]],
-		["No era el hotel", "Reservas a propósito una florería para tu próximo discurso.\n Que se concentren en los memes", [25]],
-		["De acá a Japón", "Sacas a la venta boletos para un futuro viaje a la estratosfera", [35]],
+		["Un aDIOS", "La pandemia no importa si hablamos de un símbolo, así que juntemos millones de personas para despedir a un ídolo", [20, 0.01]],
+		["No era el hotel", "Reservas a propósito una florería para tu próximo discurso.\n Que se concentren en los memes", [25, 0.02]],
+		["De acá a Japón", "Sacas a la venta boletos para un futuro viaje a la estratosfera", [35, 0.03]],
 	]
 }
 
