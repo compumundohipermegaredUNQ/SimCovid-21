@@ -7,39 +7,39 @@ onready var user_name = PedestrianDatabase.get_user_name()
 #: [".", "\n\n .", [0.005, 0.005, 0.005, 0.005]],
 
 var INTRO_DECK = {
-	"Introduccion": [ "Bienvenidx a tu peor pesadilla." , "\n\n No solo estas viviendo en un pandemia mundial sino que ahora vas a jugar que estas en otra, si leiste la ayuda o esta info ya la conoces podes saltearla con la X, sino presta atencion por que no la voy a volver a repetir", [0.00, 0.00, 0.00, 0.00]],
+	"Introduccion": [ "Bienvenidx a tu peor pesadilla.", "\n\n No solo estas viviendo en una pandemia mundial, sino que ahora vas a jugar que estas en otra, si leíste la ayuda o esta info ya la conoces podés saltearla con la X, sino presta atención porque no la voy a volver a repetir", [0.00, 0.00, 0.00, 0.00]],
 	"RoundResume": ["Resumen", "", [0.005, 0.005, 0.005, 0.005]]
 }
 
 const TUTORIAL_DECK = {
 	"Introduccion": {
-		"I0": ["Vivimos en una sociedad.", "\n\n Tus ciudadanos son basicos, asi que categorizan todo en 4 aspectos: Cultural, Economico, Salud y Social. Dependiendo de estos tu sociedad se vera afectada asi que tenes que encontrar el balance para ver que los hace felices.", [0.005, 0.005, 0.005, 0.005]],
-		"I1": ["Ahora VOS estas a cargo.", "\n\n La cosa es facil, vas a empezar con 1 carta, por cada una de las 4 categorias, para definir que priorizas. Tene en cuenta que, como en la vida real, las decisiones no son lineales asi que todo afecta a todo solo que en distinta medida.", [0.005, 0.005, 0.005, 0.005]],
-		"I2": ["Pensa bien que elegis.", "\n\n Cada decision que tomes va a tener efecto durante la duracion de una FASE (15 dias), donde ahi recien vas a poder cambiar. Las primeras 4 son en las UNICAS que aceptar es algo positivo y rechazar algo negativo.", [0.005, 0.005, 0.005, 0.005]],
-		"I3": ["Vas a tener que madrugar.", "\n\n Una vez hechas tus elecciones iniciales la cosa se pone movida, todos los dias a las 8AM tendras que tomar alguna decision. Pero... la cosa no va a ser tan clara, por que solo vas a saber en donde es su efecto principal.", [0.005, 0.005, 0.005, 0.005]],
-		"I4": ["Que paso ahora, LPM.", "\n\n Sin desesperar todavia. La idea es que a pesar de todo esto logres sobrevivir 5 FASES. Si pudiste aguantar a tus ciudadanos todo ese tiempo, ya te aseguras estar preparado para el futuro. Este sea vacunas, inmunidad natural o la extincion de la raza humana.", [0.005, 0.005, 0.005, 0.005]],
-		"I5": ["Bueno, vamo a juga.", "\n\n No pierdas la paciencia ya te dejamos empezar a hacer cagadas. Pero te repito por ultima vez, lee bien y analiza cada decision, usa tu experiencia por que las cosas no son tan faciles y directas como parecen. Buena suerte, la vas a necesitar.", [0.005, 0.005, 0.005, 0.005]]
+		"I0": ["Vivimos en una sociedad.", "\n\n Tus ciudadanos son básicos, así que se categorizan a la sociedad en: Cultural, Económico, Salud y Social. Encontra el balance para ver que los hace felices.", [0.005, 0.005, 0.005, 0.005]],
+		"I1": ["Ahora VOS estas a cargo.", "\n\n Empezas con 1 carta por cada categoría. Las decisiones no son lineales así que todo afecta a todo solo que en distinta medida.", [0.005, 0.005, 0.005, 0.005]],
+		"I2": ["Pensá bien que elegís.", "\n\n Cada decisión va a tener efecto durante una FASE (15 días). Las primeras 4 son en las UNICAS que aceptar es positivo y rechazar negativo.", [0.005, 0.005, 0.005, 0.005]],
+		"I3": ["Vas a tener que madrugar.", "\n\n Todos los días a las 8AM tendrás que tomar alguna decisión. Pero... la cosa no va a ser tan clara, solo vas a saber en dónde es su efecto principal.", [0.005, 0.005, 0.005, 0.005]],
+		"I4": ["Que paso ahora, LPM.", "\n\n La idea es que sobrevivas 5 FASES. Si aguantaste, ya te aseguras estar preparado, para las vacunas, inmunidad natural o la extinción de la raza humana.", [0.005, 0.005, 0.005, 0.005]],
+		"I5": ["Bueno, vamo a juga.", "\n\n No pierdas la paciencia ya te dejamos empezar a hacer cagadas. Pero te repito por última vez, lee bien y analiza cada decisión, usa tu experiencia por que las cosas no son tan fáciles y directas como parecen. Buena suerte, la vas a necesitar.", [0.005, 0.005, 0.005, 0.005]]
 	},
 	"BadEvent": {
-		"BE1": ["Felicitaciones, sos un desastre.", "\n\n Que no panda el cunico, se sabia que esto podia pasar. Despues de todo esto es un intento de apocalipsis pero mas aburrido que en las peliculas. Ahora te muestro como revertir esto pero sabé que no va a ser gratis.", [0.005, 0.005, 0.005, 0.005]],
-		"BE2": ["En caso de emergencia, romper...", "\n\n Tenes la chance de camuflar el desastre, aceptar estas cartas va a aumentar el valor de la categoria pero no como se siente la gente. Asi que te estamos dando tiempo pero tenes que mejorar las decisiones para que las cosas dejen de empeorar", [0.005, 0.005, 0.005, 0.005]],
-		"BE3": ["Bases y condiciones.", "\n\n Si no las lees te jodes porque la sociedad se la va a bancar pero todo tiene un limite. En estos casos, por fase solo vas a poder salvar a cada barra una vez por fase. Y en el total de las fases solo 3 veces cada una, despues de eso a rezar", [0.005, 0.005, 0.005, 0.005]]
+		"BE1": ["Felicitaciones, sos un desastre.", "\n\n Que no panda el cunico. Después de todo esto es un intento de apocalipsis, pero más aburrido que en las películas.", [0.005, 0.005, 0.005, 0.005]],
+		"BE2": ["En caso de emergencia, romper...", "\n\n Tenes la chance de camuflar el desastre, aceptar estas cartas va a aumentar el valor de la categoría, pero no como se siente la gente. Tenés que mejorar las decisiones para que las cosas dejen de empeorar", [0.005, 0.005, 0.005, 0.005]],
+		"BE3": ["Bases y condiciones.", "\n\n Si no las lees te jodes porque la sociedad se la va a bancar, pero todo tiene un límite. En estos casos, por fase solo vas a poder salvar a cada barra una vez. Y en el total de las fases solo 3 veces cada una, después de eso a rezar", [0.005, 0.005, 0.005, 0.005]]
 	},
-	"GoodEvent":{
-		"GE1": ["Todo esta bien, demasiado bien.", "\n\n Nada bueno dura mucho tiempo, estan tan felices que la cosa se empieza a descontrolar. Lo peor de todo, es que no podes hacer nada al respecto, la gente esta manija y solos se van a calmar", [0.005, 0.005, 0.005, 0.005]],
-		"GE2": ["Keep calm and drink mate.", "\n\n Como te dije esto va a pasar y no hay nada que puedas hacer al respecto. Igual estate tranquilo, solo va a afectar el valor de esta categoria pero no como se siente la gente. Y si, te damos las opciones solo de placebo", [0.005, 0.005, 0.005, 0.005]]
+	"GoodEvent": {
+		"GE1": ["Todo está bien, demasiado bien.", "\n\n Nada bueno dura mucho tiempo, están tan felices que la cosa se empieza a descontrolar. Lo peor de todo, es que no podés hacer nada al respecto ", [0.005, 0.005, 0.005, 0.005]],
+		"GE2": ["Keep calm and drink mate.", "\n\n Estate tranquilo, solo va a afectar el valor de esta categoría, pero no como se siente la gente. Y si, te damos las opciones solo de placebo", [0.005, 0.005, 0.005, 0.005]]
 	},
-	"RoundResume":{
-		"RR1": ["Duraste mas de lo pensado.", "\n\n La verdad que no te teniamos fe, pero ahora tu sociedad esta mas cerca de poder ver otra temporada de 'Almorzando con Mirtha'. Ahora te mostramos como te fue en esta fase, pero primero unos ultimos detalles", [0.005, 0.005, 0.005, 0.005]],
-		"RR2": ["Ah shit, here we go again.", "\n\n Vas a empezar una nueva fase, pero como podras ver las barras se van a mantener en su posicion y vas a traer tambien una pequeña secuela. Tene en cuenta que mientras mas avances pero va a ser esta, la paciencia se acaba...", [0.005, 0.005, 0.005, 0.005]]
+	"RoundResume": {
+		"RR1": ["Duraste más de lo pensado.", "\n\n La verdad que no te teníamos fe, pero ahora tu sociedad está más cerca de poder ver otra temporada de 'Almorzando con Mirtha'.", [0.005, 0.005, 0.005, 0.005]],
+		"RR2": ["Ah shit, here we go again.", "\n\n Vas a empezar una nueva fase, pero como podrás ver las barras se van a mantener en su posición y vas a traer también una pequeña secuela. Tené en cuenta que mientras más avances, peor va a ser esta, la paciencia se acaba...", [0.005, 0.005, 0.005, 0.005]]
 	}
 }
 
 const INITIAL_DECK = {
 	"Cultural": ["Cultura", "Wikipedia dice que cultura tiene 164 significados, pero para nosotros va a ser solo 1: Que tanto querés que sepa tu sociedad?", [0.05, 0.01, -0.05, 0.03]],
-	"Economico": ["Economico", "Acá vas a decidir que tanto querés que le cueste a tu sociedad llegar a fin de mes", [0.02, 0.05, -0.2, 0.01]],
+	"Economico": ["Económico", "Acá vas a decidir que tanto querés que le cueste a tu sociedad llegar a fin de mes", [0.02, 0.05, -0.2, 0.01]],
 	"Salud": ["Salud", "Bueno, estamos en una pandemia, si tu prioridad no es la salud una de dos: querés perder o estas tan bien que te podés dar el lujo de que deje de ser un ministerio", [0.02, -0.06, 0.04, 0.03]],
-	"Social": ["Social", "Para que te guíes, si hay que pensar en los extremos de esto solo pensa que un extremo es dictadura y otro comunismo. Dejo a tu criterio cual es el peor y cual el mejor", [0.03, 0.02, -0.05, 0.05]]
+	"Social": ["Social", "Para que te guíes, si hay que pensar en los extremos de esto solo pensá que un extremo es dictadura y otro comunismo. Dejo a tu criterio cual es el peor y cual el mejor", [0.03, 0.02, -0.05, 0.05]]
 }
 
 # Remaining attempts -> Frase
