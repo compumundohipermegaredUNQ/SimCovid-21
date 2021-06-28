@@ -8,13 +8,13 @@ onready var clock = $Clock
 onready var pedestrian_spawner = $PedestrianSpawner
 onready var background = $Background
 onready var game_over_screen = $GameOverScreen
-onready var economic_video = $GameOverScreen/Economic
-onready var cultural_video = $GameOverScreen/Cultural
-onready var health_video = $GameOverScreen/Health
-onready var social_video = $GameOverScreen/Social
+onready var economic_video = $GameOverScreen/VBoxContainer/TV/Economic
+onready var cultural_video = $GameOverScreen/VBoxContainer/TV/Cultural
+onready var health_video = $GameOverScreen/VBoxContainer/TV/Health
+onready var social_video = $GameOverScreen/VBoxContainer/TV/Social
 onready var fade_animation = $Fade/FadeAnimation
-onready var text_animation = $GameOverScreen/TextAnimation
-onready var game_over_text = $GameOverScreen/GameOverText
+onready var text_animation = $GameOverScreen/VBoxContainer/Text/TextAnimation
+onready var game_over_text = $GameOverScreen/VBoxContainer/Text/GameOverText
 onready var background_music = $Background/BackgroundMusic
 
 export (float) var seconds_per_day = 15
@@ -67,6 +67,10 @@ func _on_ContinueButton_pressed():
 	DeckOfCards.initialize(self, timer)
 
 func game_over(card_type):
+	# workaround horrible al no poder eliminar a las personas del arbol de nodos
+	for c in get_children():
+		if c.has_method("hide_pedestrian"):
+			c.hide_pedestrian()
 	background_music.stop()
 	timer.stop()
 	$Fade.show()
