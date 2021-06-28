@@ -79,6 +79,5 @@ func set_random_phrase():
 		bubble_speech_label.text = phrase
 		PedestrianDatabase.restart_ticks()
 
-
-
-
+func hide_pedestrian():
+	self.visible = false
