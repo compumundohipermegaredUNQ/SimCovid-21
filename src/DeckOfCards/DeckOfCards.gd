@@ -69,10 +69,6 @@ func raise_high_card(card_type):
 	var card = CardsHandler.get_good_event_card_from_type(card_type)
 	add_to_local_deck(card)
 
-func game_over_card(card_type):
-	var card = CardsHandler.get_game_over_card(card_type)
-	add_to_local_deck(card)
-
 func status_bars():
 	var percentages = parent.get_percentages()
 	return ["Resumen de la Quincena", "Los porcentajes andan en:" + "\n" + "Cultural" + str(percentages[0])  +  "\n" +  "Economia:" + str(percentages[1]) + "\n" +  "Salud:" + str(percentages[2]) + "\n" + "Social" + str(percentages[3]), [0.0, 0.0, 0.0, 0.0]]

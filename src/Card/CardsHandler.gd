@@ -108,13 +108,6 @@ func get_good_event_card_from_type(card_type:String):
 	var card = get_random_card_from_type(CardsDatabase.GOOD_EVENT_DECK, CardsDatabase.USED_GOOD_EVENT_DECK, card_type)
 	return card
 
-func get_game_over_card(card_type):
-	var card_info = CardsDatabase.GAME_OVER_CARDS[card_type]
-	var card = card_scene.instance()
-	card.initialize(card_type, card_info[0], card_info[1], card_info[2], main, true)
-	main.get_node('sfx').get_node("Fail").play()
-	return card
-
 func _restart_deck(deck, usedDeck):
 	for key in usedDeck.keys():
 		deck[key] = usedDeck[key]

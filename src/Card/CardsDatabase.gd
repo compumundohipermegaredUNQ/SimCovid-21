@@ -24,12 +24,14 @@ const BAD_EVENTS_FRASES = {
 	3: ["Primer intento: \n", "\n \n Hay que levantar esa barra.\n Un error lo tiene cualquiera, no? \n\n"]
 }
 
-const GAME_OVER_CARDS = {
-	"Cultural": ["Cultural", "\n\n Lograste tu cometido. Según las últimas encuestas\n a la gente, 2+2 = 5", [0.0, 0.0, 0.0, 0.0]],
-	"Economico": ["Economico", "\n\n Y sí, perdiste. Destruiste la economía (chocolate por la noticia) \n En un momento así, solo se puede reír.", [0.0, 0.0, 0.0, 0.0]],
-	"Salud": ["Salud", "\n \n Decidiste vacunar a tu perro así que se te desbordaron los hospitales", [0.0, 0.0, 0.0, 0.0]],
-	"Social": ["Social", "\n \n Te censuraron tu Twitter, Instagram, Facebook, MySpace y Fotolog", [0.0, 0.0, 0.0, 0.0]]
+const GAME_OVER_PHRASES = {
+	"Cultural": "Lograste tu cometido. Según las últimas encuestas a la gente, 2+2 = 5 y la capital de Argentina es Avellaneda.",
+	"Economico": "Y sí, perdiste. Destruiste la economía (igual ya estamos acostumbrados). En un momento así, solo se puede reír.",
+	"Salud": "Creiste que con un té caliente se solucionaba todo y decidiste vacunar a tu perro. Se te desbordaron los hospitales.",
+	"Social": "La gente no te banca más. Te censuraron tu Twitter, Instagram, Facebook, MySpace y Fotolog. Solo te quedan las cadenas nacionales."
 }
+
+const GAME_OVER_RESTART_PHRASE = "\n\nQueres seguir jugando? Vas a tener que recargar, porque todavía no tenemos botón de restart."
 
 var RANDOM_DECK = {
 
