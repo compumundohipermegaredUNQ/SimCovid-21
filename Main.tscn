@@ -176,17 +176,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Street" type="TextureRect" parent="Background"]
-anchor_right = 1.001
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_right = -0.0350342
-margin_bottom = -1.99988
-texture = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Street" parent="Background" instance=ExtResource( 1 )]
+anchor_right = 1.007
+anchor_bottom = 1.013
+margin_left = -14.3453
+margin_top = -7.1272
+margin_right = -5.59045
+margin_bottom = -7.01807
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="Background"]
 stream = ExtResource( 24 )
@@ -483,6 +479,8 @@ anims/fade_out = SubResource( 14 )
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Help" to="MenuBackground" method="_on_Help_pressed"]
 [connection signal="pressed" from="MenuBackground/HelpContainer/Back" to="MenuBackground" method="_on_Back_pressed"]
 [connection signal="text_changed" from="MenuBackground/InputContainer/Input" to="MenuBackground" method="_on_Input_text_changed"]
+[connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="MenuBackground" method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="MenuBackground" method="_on_ContinueButton_pressed"]
 [connection signal="animation_finished" from="Fade/FadeAnimation" to="." method="_on_FadeAnimation_animation_finished"]
