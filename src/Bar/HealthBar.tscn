@@ -10,11 +10,11 @@ size = 20
 font_data = ExtResource( 2 )
 
 [node name="HealthBar" type="TextureProgress"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.233
+anchor_bottom = 0.055
 margin_left = 1.0
-margin_right = -2.0
-margin_bottom = -3.0
+margin_right = 0.40799
+margin_bottom = -3.8147e-06
 rect_clip_content = true
 step = 0.001
 value = 50.0
@@ -26,12 +26,13 @@ __meta__ = {
 }
 
 [node name="HealthBarLabel" type="RichTextLabel" parent="."]
-anchor_right = 0.96
-anchor_bottom = 0.938
+anchor_top = 0.152
+anchor_right = 0.815
+anchor_bottom = 0.697
 margin_left = 5.0
-margin_top = 5.0
-margin_right = -0.440063
-margin_bottom = -0.319946
+margin_top = -0.0160003
+margin_right = 0.0299835
+margin_bottom = -0.00100136
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.635294, 0.627451, 0.627451, 1 )
@@ -41,10 +42,13 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 187.906
-margin_top = -18.5114
-margin_right = 251.906
-margin_bottom = 45.4886
+anchor_left = 0.861
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.2881
+margin_top = -19.0
+margin_right = 14.6299
+margin_bottom = 12.0
 texture = ExtResource( 4 )
 stretch_mode = 3
 __meta__ = {
