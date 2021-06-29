@@ -26,16 +26,19 @@ func get_next_initial_card():
 func checked(card_type, effects, positive):
 	local_deck.pop_front()
 	apply_effects(card_type, effects, positive)
-	if ! local_deck.empty():
+	if card_type == 'Introduccion':
+		CardsHandler._set_tutorial(positive)
+	elif ! local_deck.empty():
 		parent.add_child(local_deck.front())
-	elif CardsHandler.has_more_initial_cards():
-		get_next_initial_card()
+#	elif CardsHandler.has_more_initial_cards():
+#		get_next_initial_card()
 	elif game_started:
 		parent.set_multipliers(multipliers)
 		main_timer.start()
 	else:
 		game_started = true
 		parent._startGame(multipliers)
+		main_timer.start()
 
 func apply_effects(card_type, effects, positive):
 	if (effects.size() == 4):
@@ -48,8 +51,10 @@ func apply_effects(card_type, effects, positive):
 			multipliers[m] = clamp(multipliers[m], -0.3, 0.3)
 			index += 1
 		print(multipliers)
-	elif positive:
-		parent.set_event_effect(card_type, effects)
+	elif(effects.size() == 2):
+		parent.set_badevent_effect(card_type, effects, positive)
+	elif (effects.size() == 1):
+		parent.set_goodevent_effect(card_type, effects)
 		
 func add_to_local_deck(card):
 	main_timer.stop()
@@ -82,8 +87,7 @@ func _on_Clock_morning():
 
 func _on_Clock_quincena():
 	restart_round()
-	var card = CardsHandler.set_initial_deck(status_bars())
-	add_to_local_deck(card)
+	CardsHandler.set_initial_deck(status_bars())
 
 func restart_round():
 	parent.restart_round(multipliers)

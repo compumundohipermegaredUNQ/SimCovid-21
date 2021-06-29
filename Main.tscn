@@ -149,7 +149,7 @@ autostart = true
 [node name="HealthBarGroup" parent="." instance=ExtResource( 3 )]
 
 [node name="Clock" parent="." instance=ExtResource( 4 )]
-seconds_per_day = 1.0
+seconds_per_day = 15.0
 
 [node name="DeckOfCards" parent="." instance=ExtResource( 5 )]
 position = Vector2( 524, 260 )

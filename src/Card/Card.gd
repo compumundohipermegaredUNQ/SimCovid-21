@@ -11,8 +11,8 @@ const scene_numbers_bars = {
 	"Social": 2,
 	"Cultural": 3,
 }
-onready var ok_sfx = get_node("Ok")
-onready var no_sfx = get_node("No")
+#onready var ok_sfx = get_node("Ok")
+#onready var no_sfx = get_node("No")
 var card_type
 var card_efects
 var bar_group

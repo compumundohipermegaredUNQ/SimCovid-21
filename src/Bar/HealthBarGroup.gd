@@ -74,8 +74,22 @@ func set_multipliers(multipliers):
 	salud_bar.set_multiplier(multipliers['Salud'])
 	social_bar.set_multiplier(multipliers['Social'])
 
-func set_event_effect(card_type, effects):
-	for bar in self.get_node("BottomPanel/HBoxContainer").get_children():
+func set_badevent_effect (card_type, effects):
+	for bar in bar_names.values():
+		if bar.label == card_type:
+			bar.set_healthbar_value(bar.get_healthbar_value() + effects[0])
+			bar.actualize_attempts()
+		else:
+			var newMulti = bar.get_multiplier() + effects[1]
+			bar.set_multiplier(newMulti)
+
+func set_badevent_nouse(card_type):
+	for bar in bar_names.values():
+		if bar.label == card_type:
+			bar.actualize_fase_attempt()
+
+func set_goodevent_effect(card_type, effects):
+	for bar in bar_names.values():
 		if bar.label == card_type:
 			bar.set_healthbar_value(bar.get_healthbar_value() + effects[0])
 

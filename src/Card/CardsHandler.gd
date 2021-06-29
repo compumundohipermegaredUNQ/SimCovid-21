@@ -2,13 +2,16 @@ extends Node
 
 onready var card_scene = preload("res://src/Card/CardBase.tscn")
 
-var firstRound = true
 var initial_deck_empty
 var current_deck
 var current_used_deck
 var main
-
-
+var INFO_BOOL = {
+		"FirstRound": true,
+		"BadEvent": true,
+		"GoodEvent": true,
+		"RoundResume": true
+	}
 #Getters & Setters
 func _set_deck(deck):
 	current_deck = deck
@@ -28,17 +31,34 @@ func _set_current_used_deck(deck):
 func get_types(deck):
 	return deck.keys()
 
+func _set_tutorial(boolean):
+	if boolean:
+		INFO_BOOL["FirstRound"] = false
+		deck_on_deck(CardsDatabase.TUTORIAL_DECK["Introduccion"])
+		current_deck = CardsDatabase.INITIAL_DECK.duplicate()
+	else:
+		for key in INFO_BOOL.keys():
+			INFO_BOOL[key] = false
+		deck_on_deck(CardsDatabase.INITIAL_DECK)
+		initial_deck_empty = true
+
+func deck_on_deck(cardsDeck):
+	for key in cardsDeck.keys():
+		DeckOfCards.add_to_local_deck(_get_card_instance_from_info(key, cardsDeck[key]))
+
 #Deck inicial para quincena
 func set_initial_deck(optionalContent):
-	current_deck = CardsDatabase.INITIAL_DECK.duplicate()
 	initial_deck_empty = false
 	var card
-	if firstRound:
-		card = _get_card_instance_from_info('Introducción', CardsDatabase.INTRO_DECK['Introducción'])
-		firstRound = false
+	if INFO_BOOL["FirstRound"]:
+		card = _get_card_instance_from_info('Introduccion', CardsDatabase.INTRO_DECK['Introduccion'])
 	else:
+		if INFO_BOOL["RoundResume"]:
+			deck_on_deck(CardsDatabase.TUTORIAL_DECK["RoundResume"])
+			INFO_BOOL["RoundResume"] = false
 		CardsDatabase.INTRO_DECK['RoundResume'] = optionalContent
-		card = _get_card_instance_from_info('RoundResume', CardsDatabase.INTRO_DECK['RoundResume'])
+		DeckOfCards.add_to_local_deck(_get_card_instance_from_info('RoundResume', CardsDatabase.INTRO_DECK['RoundResume']))
+		deck_on_deck(CardsDatabase.INITIAL_DECK)
 	return card
 
 func _get_card_instance_from_info(card_type, card_info:Array):
@@ -99,12 +119,18 @@ func get_random_card_from_type(deck, usedDeck, card_type:String, move_to_used = 
 
 # Retorno carta random de evento negativo
 func get_low_event_card_from_type(card_type:String, attempts:int):
+	if INFO_BOOL["BadEvent"]:
+		deck_on_deck(CardsDatabase.TUTORIAL_DECK["BadEvent"])
+		INFO_BOOL["BadEvent"] = false
 	var card = get_random_card_from_type(CardsDatabase.BAD_EVENT_DECK, CardsDatabase.USED_BAD_EVENT_DECK, card_type)
 	card.prepend_to_description(get_title_from_attempts(attempts), get_text_from_attempts(attempts))
 	main.get_node('sfx').get_node("Intento").play()
 	return card
 
 func get_good_event_card_from_type(card_type:String):
+	if INFO_BOOL["GoodEvent"]:
+		deck_on_deck(CardsDatabase.TUTORIAL_DECK["GoodEvent"])
+		INFO_BOOL["GoodEvent"] = false
 	var card = get_random_card_from_type(CardsDatabase.GOOD_EVENT_DECK, CardsDatabase.USED_GOOD_EVENT_DECK, card_type)
 	return card
 
