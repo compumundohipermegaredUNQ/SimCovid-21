@@ -7,8 +7,19 @@ onready var fase_label = $HealthBarGroup/TopPanel/HBoxContainer/Fase
 onready var clock = $Clock
 onready var pedestrian_spawner = $PedestrianSpawner
 onready var background = $Background
+onready var game_over_screen = $GameOverScreen
+onready var economic_video = $GameOverScreen/Economic
+onready var cultural_video = $GameOverScreen/Cultural
+onready var health_video = $GameOverScreen/Health
+onready var social_video = $GameOverScreen/Social
+onready var fade_animation = $Fade/FadeAnimation
+onready var text_animation = $GameOverScreen/TextAnimation
+onready var game_over_text = $GameOverScreen/GameOverText
+onready var background_music = $Background/BackgroundMusic
+
 export (float) var seconds_per_day = 15
 var round_number= 1
+var game_over_card_type
 
 func _ready():
 	$DeckOfCards.scale.x = 2
@@ -19,7 +30,7 @@ func _startGame(multipliers):
 	background.initialize(clock)
 	# Esto eventualmente se elegirá desde el menú antes de arrancar
 	pedestrian_spawner.initialize(timer, self, healt_bar_group)
-	healt_bar_group.initialize(timer, clock, multipliers, pedestrian_spawner)
+	healt_bar_group.initialize(timer, clock, multipliers, pedestrian_spawner, self)
 	clock.set_seconds_per_day(seconds_per_day)
 
 func set_multipliers(multipliers):
@@ -60,3 +71,36 @@ func restart_game():
 
 func _on_ContinueButton_pressed():
 	DeckOfCards.initialize(self, timer)
+
+func game_over(card_type):
+	background_music.stop()
+	timer.stop()
+	$Fade.show()
+	game_over_card_type = card_type
+	fade_animation.play("fade_in")
+
+func start_video():
+	var game_over_phrase = CardsDatabase.GAME_OVER_PHRASES[game_over_card_type] + CardsDatabase.GAME_OVER_RESTART_PHRASE
+	game_over_text.text = game_over_phrase
+	match game_over_card_type:
+		"Salud":
+			health_video.show()
+			health_video.play()
+		"Economico":
+			economic_video.show()
+			economic_video.play()
+		"Cultural":
+			cultural_video.show()
+			cultural_video.play()
+		"Social":
+			social_video.show()
+			social_video.play()
+	text_animation.play("typewriter")
+	game_over_text.show()
+
+func _on_FadeAnimation_animation_finished(anim_name):
+	if anim_name == "fade_in":
+		game_over_screen.show()
+		fade_animation.play("fade_out")
+	else:
+		start_video()

@@ -5,8 +5,10 @@ onready var economia_bar = $BottomPanel/HBoxContainer/Economico
 onready var salud_bar = $BottomPanel/HBoxContainer/Salud
 onready var social_bar = $BottomPanel/HBoxContainer/Social
 onready var overall_bar = $TopPanel/HBoxContainer/OverallBar
+
 var global_timer
 var pedestrian_spawner
+
 onready var bar_names = {
 	'cultural_bar': cultural_bar,
 	'economia_bar': economia_bar,
@@ -19,12 +21,12 @@ var economia_weight = 0.3
 var salud_weight = 0.4
 var social_weight = 0.2
 
-func initialize(timer:Timer, clock:Node2D, multipliers, spawner):
+func initialize(timer:Timer, clock:Node2D, multipliers, spawner, main_node):
 	pedestrian_spawner = spawner
-	cultural_bar.initialize(timer, clock, multipliers['Cultural'])
-	economia_bar.initialize(timer, clock, multipliers['Economia'])
-	salud_bar.initialize(timer, clock, multipliers['Salud'])
-	social_bar.initialize(timer, clock, multipliers['Social'])
+	cultural_bar.initialize(timer, clock, multipliers['Cultural'], main_node)
+	economia_bar.initialize(timer, clock, multipliers['Economia'], main_node)
+	salud_bar.initialize(timer, clock, multipliers['Salud'], main_node)
+	social_bar.initialize(timer, clock, multipliers['Social'], main_node)
 	_update_overall_value()
 	timer.connect("timeout", self, "_update_overall_value")
 
