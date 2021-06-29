@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Bar/HealthBar.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/monogram.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Bar/bar_border.png" type="Texture" id=3]
+[ext_resource path="res://assets/Bar/checkbox_example.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -35,6 +36,17 @@ custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.635294, 0.627451, 0.627451, 1 )
 fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 187.906
+margin_top = -18.5114
+margin_right = 251.906
+margin_bottom = 45.4886
+texture = ExtResource( 4 )
+stretch_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
