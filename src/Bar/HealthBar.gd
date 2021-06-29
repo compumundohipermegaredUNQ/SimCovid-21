@@ -7,6 +7,9 @@ signal game_over(bar_type)
 var bar_red = preload("res://assets/Bar/barHorizontal_red.png")
 var bar_green = preload("res://assets/Bar/barHorizontal_green.png")
 var bar_yellow = preload("res://assets/Bar/barHorizontal_yellow.png")
+var neutro = preload("res://assets/Bar/checkbox_example.png")
+var positive = preload("res://assets/Bar/checkbox2_example.png")
+var negative = preload("res://assets/Bar/checkbox3_example.png")
 
 export (float) var multiplier = 0
 export (String) var label = ""
@@ -15,6 +18,7 @@ export (float) var percentage = 1
 onready var healthbar = $HealthBar
 onready var healthbar_textlabel = $HealthBarLabel
 onready var good_event_decider = GoodEventDecider
+onready var box = $TextureRect
 
 var global_clock
 var speed_multiplier
@@ -96,6 +100,11 @@ func _update_healthbar():
 		self.texture_progress = bar_yellow
 	if self.value < self.max_value * 0.35:
 		self.texture_progress = bar_red
+	if _is_bar_decreasing():
+		box.texture = negative
+	else:
+		box.texture = positive
+		
 
 func change_textlabel():
 	healthbar_textlabel.clear()
