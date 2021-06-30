@@ -6,10 +6,10 @@ extends Control
 # No es la mejor práctica, pero no se me ocurrió otra manera de acceder a las
 # escenas hijas de las barras
 const scene_numbers_bars = {
-	"Economico": 0,
-	"Salud": 1,
-	"Social": 2,
-	"Cultural": 3,
+	"Cultural": 0,
+	"Economico": 1,
+	"Salud": 2,
+	"Social": 3,
 }
 #onready var ok_sfx = get_node("Ok")
 #onready var no_sfx = get_node("No")

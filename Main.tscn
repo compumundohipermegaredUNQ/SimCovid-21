@@ -127,7 +127,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Street" parent="Background" instance=ExtResource( 1 )]
+[node name="City" parent="Background" instance=ExtResource( 1 )]
 anchor_right = 1.007
 anchor_bottom = 1.013
 margin_left = -14.3453
@@ -145,7 +145,7 @@ autostart = true
 [node name="HealthBarGroup" parent="." instance=ExtResource( 3 )]
 
 [node name="Clock" parent="." instance=ExtResource( 4 )]
-seconds_per_day = 15.0
+seconds_per_day = 1.0
 
 [node name="DeckOfCards" parent="." instance=ExtResource( 5 )]
 position = Vector2( 524, 260 )
@@ -323,5 +323,5 @@ stream = ExtResource( 22 )
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Help" to="MenuBackground" method="_on_Help_pressed"]
 [connection signal="pressed" from="MenuBackground/HelpContainer/Back" to="MenuBackground" method="_on_Back_pressed"]
 [connection signal="text_changed" from="MenuBackground/InputContainer/Input" to="MenuBackground" method="_on_Input_text_changed"]
-[connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="MenuBackground" method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="MenuBackground/InputContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
