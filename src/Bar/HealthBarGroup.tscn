@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Bar/HealthBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Bar/HealthBarGroup.gd" type="Script" id=2]
 [ext_resource path="res://assets/Bar/BoxStyle.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/Fonts/monogram.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/pngfind.com-horn-png-1747603.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -45,32 +46,38 @@ __meta__ = {
 }
 
 [node name="Clock" type="RichTextLabel" parent="TopPanel/HBoxContainer"]
-margin_right = 248.0
-margin_bottom = 29.0
+margin_right = 296.0
+margin_bottom = 33.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 size_flags_stretch_ratio = 0.5
 custom_fonts/normal_font = SubResource( 1 )
 
 [node name="Fase" type="RichTextLabel" parent="TopPanel/HBoxContainer"]
-margin_left = 250.0
-margin_right = 748.0
-margin_bottom = 29.0
+margin_left = 298.0
+margin_right = 825.0
+margin_bottom = 33.0
 size_flags_horizontal = 7
 size_flags_vertical = 5
+size_flags_stretch_ratio = 0.89
 custom_fonts/normal_font = SubResource( 2 )
 
-[node name="OverallBar" parent="TopPanel/HBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 774.0
-margin_top = 1.0
-margin_right = 974.0
-margin_bottom = 27.0
-size_flags_horizontal = 6
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.5
-label = "Sociedad"
+[node name="TextureRect" type="TextureRect" parent="TopPanel/HBoxContainer"]
+margin_left = 827.0
+margin_right = 866.0
+margin_bottom = 33.0
+size_flags_stretch_ratio = 1.04
+texture = ExtResource( 5 )
+
+[node name="HSlider" type="HSlider" parent="TopPanel/HBoxContainer"]
+margin_left = 868.0
+margin_right = 999.0
+margin_bottom = 33.0
+size_flags_horizontal = 11
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.22
+max_value = 1.0
+step = 0.1
 
 [node name="BottomPanel" type="Panel" parent="."]
 anchor_top = 1.0
@@ -142,3 +149,5 @@ size_flags_horizontal = 7
 multiplier = 0.5
 label = "Cultural"
 percentage = 0.1
+
+[connection signal="value_changed" from="TopPanel/HBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]

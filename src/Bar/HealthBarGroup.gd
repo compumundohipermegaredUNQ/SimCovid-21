@@ -4,7 +4,7 @@ onready var cultural_bar = $BottomPanel/HBoxContainer/Cultural
 onready var economia_bar = $BottomPanel/HBoxContainer/Economico
 onready var salud_bar = $BottomPanel/HBoxContainer/Salud
 onready var social_bar = $BottomPanel/HBoxContainer/Social
-onready var overall_bar = $TopPanel/HBoxContainer/OverallBar
+#onready var overall_bar = $TopPanel/HBoxContainer/OverallBar
 var global_timer
 var pedestrian_spawner
 onready var bar_names = {
@@ -57,8 +57,8 @@ func _update_overall_value():
 	salud_weight = clamp(salud_weight, 0.1, 0.6)
 	social_weight = clamp(social_weight, 0.1, 0.4)
 
-	var overall_value = cultural_bar.get_healthbar_value() * cultural_weight + economia_bar.get_healthbar_value() * economia_weight + salud_bar.get_healthbar_value() * salud_weight + social_bar.get_healthbar_value() * social_weight
-	overall_bar.set_healthbar_value(overall_value)
+	#var overall_value = cultural_bar.get_healthbar_value() * cultural_weight + economia_bar.get_healthbar_value() * economia_weight + salud_bar.get_healthbar_value() * salud_weight + social_bar.get_healthbar_value() * social_weight
+	#overall_bar.set_healthbar_value(overall_value)
 
 func get_percentages():
 	var percentages = []
@@ -107,3 +107,10 @@ func restart_game():
 
 func get_percentage_by_name(bar_name):
 	return bar_names[bar_name].get_value()
+
+
+func _on_HSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Master"),
+		linear2db(value)
+	)
