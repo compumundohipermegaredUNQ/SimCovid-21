@@ -26,7 +26,7 @@ var remaining_ticks_before_emit = 10
 var remaining_attempts = 3
 var fase_attempt = true
 
-func initialize(timer:Timer, clock:Node2D, deck_multiplier):
+func initialize(timer:Timer, clock:Node2D, deck_multiplier, main_node):
 	good_event_decider.set_timer(timer)
 	speed_multiplier = 1
 	multiplier = deck_multiplier
@@ -36,7 +36,7 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	timer.connect("timeout", self, "_update_value")
 	self.connect("low_bar", DeckOfCards, "raise_low_card")
 	self.connect("high_bar", DeckOfCards, "raise_high_card")
-	self.connect("game_over", DeckOfCards, "game_over_card")
+	self.connect("game_over", main_node, "game_over")
 
 func set_healthbar_value(value:float):
 	self.value = value
@@ -65,7 +65,7 @@ func _is_high():
 
 func _update_value():
 	self.value = self.value + speed_multiplier * multiplier
-	if self.value == 0:
+	if self.value < 1:
 		emit_signal("game_over", healthbar_textlabel.text)
 	remaining_ticks_before_emit = clamp(remaining_ticks_before_emit-1, 0, 10)
 	if _can_emit():
@@ -127,3 +127,9 @@ func restart():
 	self.value = 50
 	restart_attempts()
 	_restart_emit_count()
+
+# Si la barra tiene un valor mayor a 50, me da ese valor.
+# Si es menor, le resto ese valor a 100. La idea es siempre tener valores
+# mayores a 50
+func get_max_value():
+	return self.value if self.value > 50 else 100 - self.value

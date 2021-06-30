@@ -29,14 +29,13 @@ func spawn_pedestrian():
 	if randf() < movement_percentage:
 		var person = PedestrianScene.instance()
 		var person_position = get_random_position()
-		var percentage = health_bar_group.get_percentage_by_name(bar_names[iterator])
-		person.initialize(percentage, bar_names[iterator])
+		var best_or_worst_bar_and_value = health_bar_group.get_best_or_worst_bar()
+		person.initialize(best_or_worst_bar_and_value[1], best_or_worst_bar_and_value[0])
 		person.set_random_animation()
 		person.set_random_phrase()
 		person.set_position_and_movement_direction(person_position)
 		person.set_z_index(get_z_index_from_position(person_position.y))
 		main.add_child(person)
-		iterator = 0 if iterator == 3 else iterator + 1
 
 func get_z_index_from_position(y_position):
 	var pos = y_position_diff - (max_y_position - y_position)
