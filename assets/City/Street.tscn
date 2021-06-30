@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/City/Fixed/Road.png" type="Texture" id=1]
 [ext_resource path="res://assets/City/Fixed/City3-Dia.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/City/Cultura/Teatro-Dia.png" type="Texture" id=12]
 [ext_resource path="res://assets/City/Fixed/Floor.png" type="Texture" id=13]
 [ext_resource path="res://assets/City/Fixed/crosswalk.png" type="Texture" id=14]
+[ext_resource path="res://src/City/City.gd" type="Script" id=15]
 
 [node name="City" type="Control"]
 anchor_right = 1.0
@@ -21,6 +22,7 @@ anchor_bottom = 1.007
 margin_left = -9.0
 margin_right = 1.0
 margin_bottom = -0.200073
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -190,6 +192,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Negocios"]
+
 [node name="Cine" type="TextureRect" parent="."]
 anchor_left = 0.405
 anchor_top = 0.363
@@ -204,6 +208,8 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Cine"]
 
 [node name="Hospital" type="TextureRect" parent="."]
 anchor_left = 0.826
@@ -220,6 +226,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="Hospital"]
+
 [node name="Bar" type="TextureRect" parent="."]
 anchor_left = 0.735
 anchor_top = 0.477
@@ -234,6 +242,8 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="Bar"]
 
 [node name="CasaDeGobierno" type="TextureRect" parent="."]
 anchor_left = 0.287
@@ -250,6 +260,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer5" type="AnimationPlayer" parent="CasaDeGobierno"]
+
 [node name="Cafe" type="TextureRect" parent="."]
 anchor_left = 0.504
 anchor_top = 0.53
@@ -264,6 +276,8 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer6" type="AnimationPlayer" parent="Cafe"]
 
 [node name="Chori" type="TextureRect" parent="."]
 light_mask = -2147483647
@@ -281,6 +295,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer7" type="AnimationPlayer" parent="Chori"]
+
 [node name="Ruedas" type="TextureRect" parent="."]
 anchor_left = 0.869
 anchor_top = 0.528
@@ -295,6 +311,8 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer8" type="AnimationPlayer" parent="Ruedas"]
 
 [node name="Basurero" type="TextureRect" parent="."]
 light_mask = 2
@@ -311,14 +329,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer9" type="AnimationPlayer" parent="Basurero"]
+
 [node name="Street" type="TextureRect" parent="."]
-anchor_left = 0.009
+anchor_left = 0.005
 anchor_top = 0.738
 anchor_right = 1.0
 anchor_bottom = 0.988
-margin_left = -0.306001
+margin_left = -0.170001
 margin_top = 0.247986
-margin_right = -3.0
+margin_right = -2.0
 margin_bottom = 0.247986
 texture = ExtResource( 1 )
 expand = true

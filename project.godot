@@ -26,7 +26,7 @@ DeckOfCards="*res://src/DeckOfCards/DeckOfCards.gd"
 GoodEventDecider="*res://src/Card/GoodEventDecider.gd"
 PedestrianDatabase="*res://src/City/Pedestrians/PedestrianDatabase.gd"
 CardsHandler="*res://src/Card/CardsHandler.gd"
-HealthBarGroup="*res://src/Bar/HealthBarGroup.gd"
+City="*res://src/City/City.gd"
 
 [display]
 

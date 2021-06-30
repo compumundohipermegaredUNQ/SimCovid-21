@@ -2,8 +2,8 @@ extends Node
 
 onready var timer = $Timer
 onready var healt_bar_group = $HealthBarGroup
-onready var clock_label = $HealthBarGroup/TopPanel/HBoxContainer/Clock
-onready var fase_label = $HealthBarGroup/TopPanel/HBoxContainer/Fase
+onready var clock_label = $HealthBarGroup/TopPanel/HBoxContainer/ClockContainer/Clock
+onready var fase_label = $HealthBarGroup/TopPanel/HBoxContainer/FaseContainer/Fase
 onready var clock = $Clock
 onready var pedestrian_spawner = $PedestrianSpawner
 onready var background = $Background

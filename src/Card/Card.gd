@@ -7,10 +7,10 @@ extends Control
 # escenas hijas de las barras
 
 const scene_numbers_bars = {
-	"Economico": 0,
-	"Salud": 1,
-	"Social": 2,
-	"Cultural": 3,
+	"Cultural": 0,
+	"Economico": 1,
+	"Salud": 2,
+	"Social": 3,
 }
 const colors = {
 	"Economico": Color(1, 0.090196, 0.090196, 0.75),
