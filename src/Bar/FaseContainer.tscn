@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Fonts/monogram.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="FaseContainer" type="Control"]
+anchor_top = -0.001
+anchor_right = 0.239
+anchor_bottom = 0.077
+margin_left = 1.0
+margin_top = 0.6
+margin_right = 0.263992
+margin_bottom = -0.200005
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Fase" type="RichTextLabel" parent="."]
+anchor_top = 0.278
+anchor_right = 0.968
+anchor_bottom = 0.812
+margin_left = 1.0
+margin_top = -3.344
+margin_right = 0.295959
+margin_bottom = -2.976
+size_flags_horizontal = 7
+size_flags_vertical = 5
+custom_fonts/normal_font = SubResource( 1 )
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
