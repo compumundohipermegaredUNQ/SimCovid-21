@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/check_grey.png-1c1f5ca3bf9772c6fab2e3097faeb480.stex"
+path="res://.import/panel_blue.png-0f9eb494a2ab9bf374c0196e63f5b815.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Card/check_grey.png"
-dest_files=[ "res://.import/check_grey.png-1c1f5ca3bf9772c6fab2e3097faeb480.stex" ]
+source_file="res://assets/Card/panel_blue.png"
+dest_files=[ "res://.import/panel_blue.png-0f9eb494a2ab9bf374c0196e63f5b815.stex" ]
 
 [params]
 

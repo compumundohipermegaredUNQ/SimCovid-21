@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background_text.png-d956b0edac3ff2e11c0f02b9253b34ca.stex"
+path="res://.import/iconCheck_beige.png-ba7416ca4d5663d4c89796507645eef6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Card/background_text.png"
-dest_files=[ "res://.import/background_text.png-d956b0edac3ff2e11c0f02b9253b34ca.stex" ]
+source_file="res://assets/Card/iconCheck_beige.png"
+dest_files=[ "res://.import/iconCheck_beige.png-ba7416ca4d5663d4c89796507645eef6.stex" ]
 
 [params]
 

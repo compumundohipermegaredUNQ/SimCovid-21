@@ -59,6 +59,8 @@ func set_initial_deck(optionalContent):
 		CardsDatabase.INTRO_DECK['RoundResume'] = optionalContent
 		DeckOfCards.add_to_local_deck(_get_card_instance_from_info('RoundResume', CardsDatabase.INTRO_DECK['RoundResume']))
 		deck_on_deck(CardsDatabase.INITIAL_DECK)
+	card._set_texture_beigeLight()
+	card._unset_visible_border()
 	return card
 
 func _get_card_instance_from_info(card_type, card_info:Array):
@@ -72,6 +74,8 @@ func get_next_initial_card():
 	_get_deck().erase(card_type)
 	if _get_deck().keys().empty():
 		initial_deck_empty = true
+	card._set_texture_beigeLight()
+	card._unset_visible_border()
 	return card
 
 func has_more_initial_cards():
@@ -124,6 +128,8 @@ func get_low_event_card_from_type(card_type:String, attempts:int):
 		INFO_BOOL["BadEvent"] = false
 	var card = get_random_card_from_type(CardsDatabase.BAD_EVENT_DECK, CardsDatabase.USED_BAD_EVENT_DECK, card_type)
 	card.prepend_to_description(get_title_from_attempts(attempts), get_text_from_attempts(attempts))
+	card._set_texture_brown()
+	card._set_visible_border()
 	main.get_node('sfx').get_node("Intento").play()
 	return card
 
@@ -132,6 +138,8 @@ func get_good_event_card_from_type(card_type:String):
 		deck_on_deck(CardsDatabase.TUTORIAL_DECK["GoodEvent"])
 		INFO_BOOL["GoodEvent"] = false
 	var card = get_random_card_from_type(CardsDatabase.GOOD_EVENT_DECK, CardsDatabase.USED_GOOD_EVENT_DECK, card_type)
+	card._set_texture_blue()	
+	card._set_visible_border()
 	return card
 
 func _restart_deck(deck, usedDeck):
