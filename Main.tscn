@@ -195,14 +195,14 @@ autoplay = true
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="HealthBarGroup" parent="." instance=ExtResource( 3 )]
-
 [node name="Clock" parent="." instance=ExtResource( 4 )]
 seconds_per_day = 15.0
 
 [node name="DeckOfCards" parent="." instance=ExtResource( 5 )]
 position = Vector2( 524, 260 )
 scale = Vector2( 1, 1 )
+
+[node name="HealthBarGroup" parent="." instance=ExtResource( 3 )]
 
 [node name="PedestrianSpawner" parent="." instance=ExtResource( 6 )]
 
@@ -478,6 +478,7 @@ __meta__ = {
 [node name="FadeAnimation" type="AnimationPlayer" parent="Fade"]
 anims/fade_in = SubResource( 13 )
 anims/fade_out = SubResource( 14 )
+
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Start" to="MenuBackground" method="_on_Start_pressed"]
 [connection signal="pressed" from="MenuBackground/ButtonsContainer/Help" to="MenuBackground" method="_on_Help_pressed"]
 [connection signal="pressed" from="MenuBackground/HelpContainer/Back" to="MenuBackground" method="_on_Back_pressed"]

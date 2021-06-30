@@ -11,11 +11,11 @@ const scene_numbers_bars = {
 	"Social": 2,
 	"Cultural": 3,
 }
-const positions = {
-	"Economico": Vector2(-700,-100),
-	"Salud": Vector2(-400,-100),
-	"Social": Vector2(-100,-100),
-	"Cultural": Vector2(250,-100)
+const colors = {
+	"Economico": Color(1, 0.090196, 0.090196),
+	"Salud": Color(0.30508, 0.886719, 0.040699),
+	"Social": Color(0.040699, 0.391004, 0.886719),
+	"Cultural": Color(0.860281, 0.886719, 0.040699)
 }
 var card_type
 var card_efects
@@ -28,11 +28,10 @@ func initialize(type, title, description, efects, main, has_lost = false) -> voi
 	card_type = type
 	print(card_type)
 	card_efects = efects
-	bar_group = main.get_child(2)
+	bar_group = main.get_child(4)
 	$TextureRect/TitleLabel.text = title
 	$TextureRect/TextLabel.text = description 
-	_set_texture(type)
-	#_set_position_by_type(type)
+	_set_color_by_type(type)
 	game_over = has_lost
 	main_node = main
 
@@ -87,20 +86,40 @@ func _on_CheckButton_ready() -> void:
 func _on_XButton_ready() -> void:
 	self.feedback()
 
-func _set_texture(type):
-	if type == 'Introducción' || type == 'RoundResume':
-		$TextureRect.texture = load('res://assets/Card/panel_blue.png')
-		$TextureRect/CheckButton.texture_normal = load('res://assets/Card/iconCheck_grey.png')
-		$TextureRect/CheckButton.texture_pressed = load('res://assets/Card/iconCheck_bronze.png')
-		$TextureRect/CheckButton.texture_hover = load('res://assets/Card/iconCheck_beige.png')
-		$TextureRect/CheckButton.texture_focused = load('res://assets/Card/iconCheck_bronze.png')
-		$TextureRect/XButton.texture_normal = load('res://assets/Card/iconCross_grey.png')
-		$TextureRect/XButton.texture_pressed = load('res://assets/Card/iconCross_bronze.png')
-		$TextureRect/XButton.texture_hover = load('res://assets/Card/iconCross_beige.png')
-		$TextureRect/XButton.texture_focused = load('res://assets/Card/iconCross_bronze.png')
+func _set_texture_blue():
+	$TextureRect.texture = load('res://assets/Card/panel_blue.png')
+	$TextureRect/CheckButton.texture_normal = load('res://assets/Card/iconCheck_grey.png')
+	$TextureRect/CheckButton.texture_pressed = load('res://assets/Card/iconCheck_bronze.png')
+	$TextureRect/CheckButton.texture_hover = load('res://assets/Card/iconCheck_beige.png')
+	$TextureRect/CheckButton.texture_focused = load('res://assets/Card/iconCheck_bronze.png')
+	$TextureRect/XButton.texture_normal = load('res://assets/Card/iconCross_grey.png')
+	$TextureRect/XButton.texture_pressed = load('res://assets/Card/iconCross_bronze.png')
+	$TextureRect/XButton.texture_hover = load('res://assets/Card/iconCross_beige.png')
+	$TextureRect/XButton.texture_focused = load('res://assets/Card/iconCross_bronze.png')
 
-""" func _set_position_by_type(type):
-	var card = $TextureRect
-	if type != 'Introducción' && type != 'RoundResume':
-		card.set_position(positions[type])
+func _set_texture_brown():
+	$TextureRect.texture = load('res://assets/Card/panel_brown.png')
+	$TextureRect/TitleLabel.set("custom_colors/font_color",Color(0.141176, 0.066667, 0.031373)) #Color(0.90,0.63,0.49,1.00)
+	$TextureRect/TextLabel.set("custom_colors/font_color",Color(0.254902, 0.180392, 0.145098)) #Color(0.65,0.59,0.56,1.00)
+
+func _set_texture_beigeLight():
+	$TextureRect.texture = load('res://assets/Card/panel_beigeLight.png')
+	""" $TextureRect/CheckButton.texture_normal = load('res://assets/Card/iconCheck_grey.png')
+	$TextureRect/CheckButton.texture_pressed = load('res://assets/Card/iconCheck_bronze.png')
+	$TextureRect/CheckButton.texture_hover = load('res://assets/Card/iconCheck_beige.png')
+	$TextureRect/CheckButton.texture_focused = load('res://assets/Card/iconCheck_bronze.png')
+	$TextureRect/XButton.texture_normal = load('res://assets/Card/iconCross_grey.png')
+	$TextureRect/XButton.texture_pressed = load('res://assets/Card/iconCross_bronze.png')
+	$TextureRect/XButton.texture_hover = load('res://assets/Card/iconCross_beige.png')
+	$TextureRect/XButton.texture_focused = load('res://assets/Card/iconCross_bronze.png')
  """
+func _set_color_by_type(type):
+	var color_rect = $ColorRect
+	if colors.has(type):
+		color_rect.modulate = colors[type]
+
+func _unset_visible_border():
+	$ColorRect.visible = false
+
+func _set_visible_border():
+	$ColorRect.visible = true

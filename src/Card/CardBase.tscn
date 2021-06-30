@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Fonts/The Snowday.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/Card/Card.gd" type="Script" id=2]
@@ -10,14 +10,60 @@
 [ext_resource path="res://assets/Card/iconCross_blue.png" type="Texture" id=8]
 [ext_resource path="res://assets/Card/iconCross_grey.png" type="Texture" id=9]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.188235, 0.160784, 0.160784, 0.580392 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+shadow_color = Color( 1, 1, 1, 0.6 )
+shadow_size = 24
+
+[sub_resource type="Animation" id=7]
+resource_name = "shiny"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shadow:custom_styles/panel")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/Fonts/The Snowday.ttf"
 
-[sub_resource type="DynamicFont" id=2]
-size = 35
-font_data = SubResource( 1 )
-
 [sub_resource type="DynamicFont" id=3]
+size = 35
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 25
 font_data = ExtResource( 1 )
 
@@ -29,15 +75,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shadow" type="Panel" parent="."]
+margin_left = 357.0
+margin_top = 109.0
+margin_right = 766.0
+margin_bottom = 420.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/shiny = SubResource( 7 )
+
+[node name="ColorRect" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -148.0
+margin_top = -182.0
+margin_right = 244.0
+margin_bottom = 112.0
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -151.786
-margin_top = -183.338
+margin_top = -185.338
 margin_right = 248.214
-margin_bottom = 116.662
+margin_bottom = 114.662
 texture = ExtResource( 5 )
 stretch_mode = 1
 __meta__ = {
@@ -96,7 +178,7 @@ margin_top = -122.662
 margin_right = 124.786
 margin_bottom = -90.662
 grow_vertical = 2
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.466667, 0.301961, 0.223529, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Limitar Comercios"
@@ -117,7 +199,7 @@ margin_top = -41.662
 margin_right = 124.786
 margin_bottom = -17.662
 grow_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.443137, 0.305882, 0.305882, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Limitar Comercios"
