@@ -5,6 +5,7 @@ extends Control
 # hijo que están en la posición 3. 
 # No es la mejor práctica, pero no se me ocurrió otra manera de acceder a las
 # escenas hijas de las barras
+
 const scene_numbers_bars = {
 	"Economico": 0,
 	"Salud": 1,
@@ -23,8 +24,10 @@ var bar_group
 var actual_bar
 var game_over
 var main_node
+var animation
 
 func initialize(type, title, description, efects, main, has_lost = false) -> void:
+	animation = $AnimationPlayer
 	card_type = type
 	print(card_type)
 	card_efects = efects
@@ -116,6 +119,7 @@ func _set_texture_beigeLight():
 func _set_color_by_type(type):
 	var color_rect = $ColorRect
 	if colors.has(type):
+		animation.play("shiny")
 		color_rect.modulate = colors[type]
 
 func _unset_visible_border():

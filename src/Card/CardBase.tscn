@@ -13,35 +13,33 @@
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.188235, 0.160784, 0.160784, 0.580392 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
+draw_center = false
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-shadow_color = Color( 1, 1, 1, 0.6 )
+shadow_color = Color( 1, 1, 1, 0.313726 )
 shadow_size = 24
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "shiny"
+loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Shadow:custom_styles/panel")
+tracks/0/path = NodePath("Shadow:custom_styles/panel:shadow_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.313726 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 15
 border_width_top = 15
@@ -56,14 +54,14 @@ expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=5]
 font_path = "res://assets/Fonts/The Snowday.ttf"
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
 size = 35
-font_data = SubResource( 2 )
+font_data = SubResource( 5 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=7]
 size = 25
 font_data = ExtResource( 1 )
 
@@ -89,13 +87,13 @@ margin_left = 357.0
 margin_top = 109.0
 margin_right = 766.0
 margin_bottom = 420.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/shiny = SubResource( 7 )
+anims/shiny = SubResource( 3 )
 
 [node name="ColorRect" type="Panel" parent="."]
 anchor_left = 0.5
@@ -106,7 +104,7 @@ margin_left = -148.0
 margin_top = -182.0
 margin_right = 244.0
 margin_bottom = 112.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,7 +176,7 @@ margin_top = -122.662
 margin_right = 124.786
 margin_bottom = -90.662
 grow_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.466667, 0.301961, 0.223529, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Limitar Comercios"
@@ -199,7 +197,7 @@ margin_top = -41.662
 margin_right = 124.786
 margin_bottom = -17.662
 grow_vertical = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.443137, 0.305882, 0.305882, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Limitar Comercios"
@@ -209,7 +207,6 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="TextureRect/XButton" to="." method="_on_XButton_pressed"]
 [connection signal="ready" from="TextureRect/XButton" to="." method="_on_XButton_ready"]
 [connection signal="pressed" from="TextureRect/CheckButton" to="." method="_on_CheckButton_pressed"]
