@@ -13,10 +13,10 @@ const scene_numbers_bars = {
 	"Cultural": 3,
 }
 const colors = {
-	"Economico": Color(1, 0.090196, 0.090196),
-	"Salud": Color(0.30508, 0.886719, 0.040699),
-	"Social": Color(0.040699, 0.391004, 0.886719),
-	"Cultural": Color(0.860281, 0.886719, 0.040699)
+	"Economico": Color(1, 0.090196, 0.090196, 0.75),
+	"Salud": Color(0.30508, 0.886719, 0.040699, 0.75),
+	"Social": Color(0.040699, 0.391004, 0.886719, 0.75),
+	"Cultural": Color(0.860281, 0.886719, 0.040699, 0.75)
 }
 var card_type
 var card_efects
@@ -25,9 +25,12 @@ var actual_bar
 var game_over
 var main_node
 var animation
+var shadow 
 
 func initialize(type, title, description, efects, main, has_lost = false) -> void:
 	animation = $AnimationPlayer
+	shadow = $Shadow
+	shadow.hide()
 	card_type = type
 	print(card_type)
 	card_efects = efects
@@ -40,6 +43,8 @@ func initialize(type, title, description, efects, main, has_lost = false) -> voi
 
 func _ready() -> void:
 	var card = $TextureRect
+	var border = $ColorRect
+	var shadow = $Shadow
 	var viewport_size_y = get_viewport().get_visible_rect().size.y
 	var project_size_y = ProjectSettings.get_setting("display/window/size/height")
 
@@ -47,8 +52,12 @@ func _ready() -> void:
 	var scale_factor = (card.rect_scale.y * desired_size) / card.rect_size.y
 
 	card.rect_scale = Vector2(scale_factor, scale_factor)
+	border.rect_scale = Vector2(scale_factor, scale_factor)
+	shadow.rect_scale = Vector2(scale_factor, scale_factor)
 	var difference = (card.rect_size.y - desired_size) / 2
 	card.rect_position += Vector2(difference, difference)
+	border.rect_position += Vector2(difference, difference)
+	shadow.rect_position += Vector2(difference, difference)
 
 func _on_CheckButton_pressed() -> void:
 	if game_over:
@@ -119,6 +128,7 @@ func _set_texture_beigeLight():
 func _set_color_by_type(type):
 	var color_rect = $ColorRect
 	if colors.has(type):
+		shadow.show()
 		animation.play("shiny")
 		color_rect.modulate = colors[type]
 

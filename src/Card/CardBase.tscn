@@ -83,10 +83,14 @@ __meta__ = {
 }
 
 [node name="Shadow" type="Panel" parent="."]
-margin_left = 357.0
-margin_top = 109.0
-margin_right = 766.0
-margin_bottom = 420.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -156.36
+margin_top = -190.813
+margin_right = 252.64
+margin_bottom = 120.187
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -207,6 +211,7 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="TextureRect/XButton" to="." method="_on_XButton_pressed"]
 [connection signal="ready" from="TextureRect/XButton" to="." method="_on_XButton_ready"]
 [connection signal="pressed" from="TextureRect/CheckButton" to="." method="_on_CheckButton_pressed"]
