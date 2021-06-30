@@ -1,67 +1,88 @@
 extends Node
 
 onready var card_scene = preload("res://src/Card/CardBase.tscn")
-
+onready var user_name = PedestrianDatabase.get_user_name()
 #Multipliers order Cultural, Economico, Salud, Social
 #[0.0, 0.0, 0.0, 0.0]
+#: [".", "\n\n .", [0.005, 0.005, 0.005, 0.005]],
 
-var firstRound = true
-var initial_deck_empty
-var current_deck
-var current_used_deck
-var main
+var INTRO_DECK = {
+	"Introduccion": [ "Bienvenidx a tu peor pesadilla.", "\n\n No solo estas viviendo en una pandemia mundial, sino que ahora vas a jugar que estas en otra, si leíste la ayuda o esta info ya la conoces podés saltearla con la X, sino presta atención porque no la voy a volver a repetir", [0.00, 0.00, 0.00, 0.00]],
+	"RoundResume": ["Resumen", "", [0.005, 0.005, 0.005, 0.005]]
+}
 
-const INFO_DECK = {
-	'Introduccion': ["Sos el nuevo encargado de la ciudad.\n Debes aceptar decisiones o rechazarlas, estas tendrán un efecto inamovible por 15 días, así que elegí bien.\n Espero que hayas entendido por que quieras o no vamos a empezar", [0.0, 0.0, 0.0, 0.0]],
-	'RoundResume': ["Resumen", "estadísticas"]
+const TUTORIAL_DECK = {
+	"Introduccion": {
+		"I0": ["Vivimos en una sociedad.", "\n\n Tus ciudadanos son básicos, así que se categorizan a la sociedad en: Cultural, Económico, Salud y Social. Encontra el balance para ver que los hace felices.", [0.005, 0.005, 0.005, 0.005]],
+		"I1": ["Ahora VOS estas a cargo.", "\n\n Empezas con 1 carta por cada categoría. Las decisiones no son lineales así que todo afecta a todo solo que en distinta medida.", [0.005, 0.005, 0.005, 0.005]],
+		"I2": ["Pensá bien que elegís.", "\n\n Cada decisión va a tener efecto durante una FASE (15 días). Las primeras 4 son en las UNICAS que aceptar es positivo y rechazar negativo.", [0.005, 0.005, 0.005, 0.005]],
+		"I3": ["Vas a tener que madrugar.", "\n\n Todos los días a las 8AM tendrás que tomar alguna decisión. Pero... la cosa no va a ser tan clara, solo vas a saber en dónde es su efecto principal.", [0.005, 0.005, 0.005, 0.005]],
+		"I4": ["Que paso ahora, LPM.", "\n\n La idea es que sobrevivas 5 FASES. Si aguantaste, ya te aseguras estar preparado, para las vacunas, inmunidad natural o la extinción de la raza humana.", [0.005, 0.005, 0.005, 0.005]],
+		"I5": ["Bueno, vamo a juga.", "\n\n No pierdas la paciencia ya te dejamos empezar a hacer cagadas. Pero te repito por última vez, lee bien y analiza cada decisión, usa tu experiencia por que las cosas no son tan fáciles y directas como parecen. Buena suerte, la vas a necesitar.", [0.005, 0.005, 0.005, 0.005]]
+	},
+	"BadEvent": {
+		"BE1": ["Felicitaciones, sos un desastre.", "\n\n Que no panda el cunico. Después de todo esto es un intento de apocalipsis, pero más aburrido que en las películas.", [0.005, 0.005, 0.005, 0.005]],
+		"BE2": ["En caso de emergencia, romper...", "\n\n Tenes la chance de camuflar el desastre, aceptar estas cartas va a aumentar el valor de la categoría, pero no como se siente la gente. Tenés que mejorar las decisiones para que las cosas dejen de empeorar", [0.005, 0.005, 0.005, 0.005]],
+		"BE3": ["Bases y condiciones.", "\n\n Si no las lees te jodes porque la sociedad se la va a bancar, pero todo tiene un límite. En estos casos, por fase solo vas a poder salvar a cada barra una vez. Y en el total de las fases solo 3 veces cada una, después de eso a rezar", [0.005, 0.005, 0.005, 0.005]]
+	},
+	"GoodEvent": {
+		"GE1": ["Todo está bien, demasiado bien.", "\n\n Nada bueno dura mucho tiempo, están tan felices que la cosa se empieza a descontrolar. Lo peor de todo, es que no podés hacer nada al respecto ", [0.005, 0.005, 0.005, 0.005]],
+		"GE2": ["Keep calm and drink mate.", "\n\n Estate tranquilo, solo va a afectar el valor de esta categoría, pero no como se siente la gente. Y si, te damos las opciones solo de placebo", [0.005, 0.005, 0.005, 0.005]]
+	},
+	"RoundResume": {
+		"RR1": ["Duraste más de lo pensado.", "\n\n La verdad que no te teníamos fe, pero ahora tu sociedad está más cerca de poder ver otra temporada de 'Almorzando con Mirtha'.", [0.005, 0.005, 0.005, 0.005]],
+		"RR2": ["Ah shit, here we go again.", "\n\n Vas a empezar una nueva fase, pero como podrás ver las barras se van a mantener en su posición y vas a traer también una pequeña secuela. Tené en cuenta que mientras más avances, peor va a ser esta, la paciencia se acaba...", [0.005, 0.005, 0.005, 0.005]]
+	}
 }
 
 const INITIAL_DECK = {
-	"Cultural": ['Las cartas con la categoría "Cultural"\n determinarán si tus ciudadanos aprenderán algo u olvidarán todo lo aprendido', [0.05, 0.01, -0.05, 0.03]],
-	"Economico": ['Las cartas con la categoría "Economico"\n determinarán si lo que te importa es solo la plata', [0.02, 0.05, -0.2, 0.01]],
-	"Salud": ['Las cartas con la categoría "Salud"\n determinarán si es un salvese quien pueda en el fin del mundo ', [0.02, -0.06, 0.04, 0.03]],
-	"Social": ['Las cartas con esta categoría "Social"\n determinarán que tan mal o bien queres tratar a tus ciudadanos', [0.03, 0.02, -0.05, 0.05]]
+	"Cultural": ["Cultura", "Wikipedia dice que cultura tiene 164 significados, pero para nosotros va a ser solo 1: Que tanto querés que sepa tu sociedad?", [0.05, 0.01, -0.05, 0.03]],
+	"Economico": ["Económico", "Acá vas a decidir que tanto querés que le cueste a tu sociedad llegar a fin de mes", [0.02, 0.05, -0.2, 0.01]],
+	"Salud": ["Salud", "Bueno, estamos en una pandemia, si tu prioridad no es la salud una de dos: querés perder o estas tan bien que te podés dar el lujo de que deje de ser un ministerio", [0.02, -0.06, 0.04, 0.03]],
+	"Social": ["Social", "Para que te guíes, si hay que pensar en los extremos de esto solo pensá que un extremo es dictadura y otro comunismo. Dejo a tu criterio cual es el peor y cual el mejor", [0.03, 0.02, -0.05, 0.05]]
 }
 
 # Remaining attempts -> Frase
 const BAD_EVENTS_FRASES = {
-	1: "Último intento\nMás no te puedo ayudar.",
-	2: "Segundo intento\nLa gente te va a bancar solo una vez más eh.",
-	3: "Primer intento\nHay que levantar esa barra.\nUn error lo tiene cualquiera, no?"
+	1: ["Último intento: \n", "\n \n Más no te puedo ayudar. \n\n"],
+	2: ["Segundo intento: \n", "\n \n La gente te va a bancar solo una vez más eh. \n\n"],
+	3: ["Primer intento: \n", "\n \n Hay que levantar esa barra.\n Un error lo tiene cualquiera, no? \n\n"]
 }
 
-const GAME_OVER_CARDS = {
-	"Cultural": ['Lograste tu cometido. Según las últimas encuentas\n a la gente, 2+2 = 5', [0.0, 0.0, 0.0, 0.0]],
-	"Economico": ['Y si, perdiste. Destruiste la economía (chocolate por la noticia)\n En un momento así, solo se puede reir.', [0.0, 0.0, 0.0, 0.0]],
-	"Salud": ['Decidiste vacunar a tu perro así que se te desbordaron los hospitales\n', [0.0, 0.0, 0.0, 0.0]],
-	"Social": ['Te censuraron tu Twitter, Instagram, Facebook, MySpace y Fotolog\n', [0.0, 0.0, 0.0, 0.0]]
+const GAME_OVER_PHRASES = {
+	"Cultural": "Lograste tu cometido. Según las últimas encuestas a la gente, 2+2 = 5 y la capital de Argentina es Avellaneda.",
+	"Economico": "Y sí, perdiste. Destruiste la economía (igual ya estamos acostumbrados). En un momento así, solo se puede reír.",
+	"Salud": "Creiste que con un té caliente se solucionaba todo y decidiste vacunar a tu perro. Se te desbordaron los hospitales.",
+	"Social": "La gente no te banca más. Te censuraron tu Twitter, Instagram, Facebook, MySpace y Fotolog. Solo te quedan las cadenas nacionales."
 }
+
+const GAME_OVER_RESTART_PHRASE = "\n\nQueres seguir jugando? Vas a tener que recargar, porque todavía no tenemos botón de restart."
 
 var RANDOM_DECK = {
 
 	"Cultural": [
-		["Cerrar Escuelas\n--------------------\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes\n--------------------\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre\n--------------------\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["Cerrar Escuelas", "\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
+		["Prohibir Deportes", "\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
+		["Prohibir Actividades al Aire Libre", "\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["La gente está triste", "¿Les dejamos ver a Tinelli?", [-0.03, 0.02, 0.4, -0.01]]
 	],
 
 	"Economico": [
-		["Planes Sociales\n--------------------\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos\n--------------------\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio\n--------------------\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Planes Sociales", "Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
+		["Reducir Impuestos", "Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
+		["Libre Comercio", "Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
 	],
 
 	"Salud": [
-		["Ayuda a Esenciales\n--------------------\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigación\n--------------------\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversión en Suplementos\n--------------------\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste\n--------------------\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Ayuda a Esenciales", "Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
+		["Aumento de Investigación", "Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
+		["Inversión en Suplementos", "A traer más barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
 	],
 
 	"Social": [
-		["Limitar Comercios\n--------------------\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulación\n--------------------\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos\n--------------------\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Limitar Comercios", "A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
+		["Limitar Circulación", "No más salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
+		["Prohibir Eventos", "Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
 	]
 }
 
@@ -75,28 +96,29 @@ var USED_RANDOM_DECK = {
 var GOOD_EVENT_DECK = {
 
 	"Cultural": [
-		["Cerrar Escuelas\n--------------------\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes\n--------------------\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre\n--------------------\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["Llegaron los ovnis", "\n \n Mentira no llegaron, o si… \n La cuestión es que por unas imágenes medio raras se armó una conspiración y se descontrolo un poco todo", [-20]],
+		["Tenias un obelisco?", "\n \n Te apareció un monumento en el medio de la nada. \n Nadie sabe porque está ahí ni como llego, mas paranoia en el medio de la pandemia", [-25]],
+		["Restaurando", "\n \n Mandaste a arreglar escultura famosa y no salió muy bien que digamos", [-30]],
 	],
 
 	"Economico": [
-		["Planes Sociales\n--------------------\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos\n--------------------\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio\n--------------------\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Al parecer tenían frio", "\n \n Veníamos tan bien que un magnate asustado quiso aumentar su riqueza.\n Ahora tenés varios bosques con árboles luminosos", [-20]],
+		["Tik Tok ahora paga?", "\n \n Te sacaron una nueva moneda electrónica y miles de influencers empezaron a facturar.\n Los boomers se están enojando", [-25]],
+		["Hijo o robot", "\n \n Empresario mundialmente conocido nombra a su ¿hijo? \n Las acciones mundiales se enloquecen ", [-30]],
 	],
 
 	"Salud": [
-		["Ayuda a Esenciales\n--------------------\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigación\n--------------------\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversión en Suplementos\n--------------------\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste\n--------------------\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["SUPON QUE…", "\n \n ”Famosos” se juntan para cantar por los esenciales pero la verdad es que suben las consultas al otorrino", [-20]],
+		["La ley de la selva", "\n \n Mantuviste bien a la gente, pero por eso la naturaleza gano poder, ahora tenés una invasión de animales en la ciudad", [-25]],
+		["A las palmas", "\n \n Felices por el esfuerzo de todos, la gente empieza a aplaudir todos los días, esto solo genera caos entre vecinos", [-35]],
+		["Balconeando", "\n \n Fiestas, conciertos, clases de spinning. \n Los edificios se pueblan de todo tipo de actividades", [-15]]
 	],
 
 	"Social": [
-		["Limitar Comercios\n--------------------\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulación\n--------------------\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos\n--------------------\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Que buena onda la NASA", "\n \n Cuantos apocalipsis juntos podés soportar? \n Porque dicen que se puede venir un asteroide", [-20]],
+		["Hablemos sin saber", "\n \n Un supuesto periodista bardeo a un streamer famoso y ahora hicieron huelga. Miles de pibes embolados no saben qué hacer", [-25]],
+		["A los memes", "\n \n Salen a la luz algunas declaraciones, los memes las viralizan y se va al carajo la reputación", [-15]],
+		["Que en paz…", "\n \n Muere deportista ídolo mundial, y su despedida parece haber curado la pandemia, o no…", [-30]],
 	]
 }
 
@@ -110,28 +132,28 @@ var USED_GOOD_EVENT_DECK = {
 var BAD_EVENT_DECK = {
 
 	"Cultural": [
-		["Cerrar Escuelas\n--------------------\n\n Los docentes a las aulas... virtuales", [-0.19, 0.0, 0.07, -0.04]],
-		["Prohibir Deportes\n--------------------\n\n Excepto las canchitas de fulbo 5", [-0.15, 0.0, 0.06, -0.06]],
-		["Prohibir Actividades al Aire Libre\n--------------------\n\n Adiós runners", [-0.17, 0.0, 0.05, -0.08]],
+		["De vuelta juntos", "Junta a cast de serie para hacer una reunión, hablar boludeces y distraer a la gente", [20, -0.05]],
+		["Tortas a donde mires", "Nuevo trend de memes para hacer que todos duden de su realidad, ¿acaso yo soy una torta?", [25, -0.1]],
+		["La pelota no se contagia", "Das rienda suelta a la liga profesional de futbol, por lo menos se distraen un poco", [35, -0.15]],
 	],
 
 	"Economico": [
-		["Planes Sociales\n--------------------\n\n Al país se lo saca laburando?", [0.0, -0.17, 0.02, 0.06]],
-		["Reducir Impuestos\n--------------------\n\n Vas a dar una mano al pueblo, estás seguro?", [-0.03, -0.19, -0.04, 0.07]],
-		["Libre Comercio\n--------------------\n\n Aduana quién te conoce", [0.04, -0.14, 0.1, -0.03]],
+		["Nos vamos a la Internet", "Impulsas la moneda virtual a pesar de que nadie tiene idea como funciona", [20, -0.05]],
+		["No te dejes influenciar", "Impuestos a los creadores de contenido, porque ante la duda que paguen", [25, -0.1]],
+		["Si hay que llorar, llora", "Vamos a tener que pedirle más tiempo al FMI porque si no hay que vender alguna provincia", [35, -0.15]],
 	],
 
 	"Salud": [
-		["Ayuda a Esenciales\n--------------------\n\n Y no, los políticos no entramos acá", [0.0, -0.07, 0.15, 0.04]],
-		["Aumento de Investigación\n--------------------\n\n Es esto o tener fe de no salir hablando ruso", [0.03, -0.06, 0.17, 0.0]],
-		["Inversión en Suplementos\n--------------------\n\n A traer mas barbijos, y enseñar como usarlos", [0.02, -0.08, 0.19, 0.03]],
-		["La gente está triste\n--------------------\n\n ¿ Les dejamos ver a Tinelli ?", [-0.03, 0.02, 0.4, -0.01]]
+		["Vamos el verde", "No estamos hablando de “María”. Por fin sacas adelante la ley del aborto", [20, -0.05]],
+		["Ahora si es ESE verde", "Por pedido del pueblo te resignas y habilitas el consumo.\n Por lo menos la gente está más feliz", [25, -0.1]],
+		["Se vienen las vacunas?", "En realidad no sabes, pero casi seguro que están más cerca así que digamos eso", [35, -0.2]],
+		["Aceptamos caridad", "Llegan donaciones de dudosa precedencia, pero como estamos en las últimas, las aceptamos y después vemos que onda", [30, -0.15]]
 	],
 
 	"Social": [
-		["Limitar Comercios\n--------------------\n\n A usar MercadoLibre y Rappi", [0.0, -0.08, 0.05, -0.04]],
-		["Limitar Circulación\n--------------------\n\n No mas salidas, sólo clandestinas", [-0.02, -0.05, 0.06, -0.14]],
-		["Prohibir Eventos\n--------------------\n\n Bienvenidos los Zoomples", [-0.04, 0.0, 0.05, -0.018]],
+		["Un aDIOS", "La pandemia no importa si hablamos de un símbolo, así que juntemos millones de personas para despedir a un ídolo", [20, -0.05]],
+		["No era el hotel", "Reservas a propósito una florería para tu próximo discurso.\n Que se concentren en los memes", [25, -0.1]],
+		["De acá a Japón", "Sacas a la venta boletos para un futuro viaje a la estratosfera", [35, -0.15]],
 	]
 }
 
@@ -141,112 +163,3 @@ var USED_BAD_EVENT_DECK = {
 	"Salud": [],
 	"Social": []
 }
-
-#Getters & Setters
-func _set_deck(deck):
-	current_deck = deck
-
-func set_main(parent):
-	main = parent
-
-func _get_deck():
-	return current_deck
-
-func _get_used_deck():
-	return current_used_deck
-
-func _set_current_used_deck(deck):
-	current_used_deck = deck
-
-func get_types(deck):
-	return deck.keys()
-
-#Deck inicial para quincena
-func set_initial_deck(optionalContent):
-	current_deck = INITIAL_DECK.duplicate()
-	initial_deck_empty = false
-	var card
-	if firstRound:
-		card = _get_card_instance_from_info('Introduccion', INFO_DECK['Introduccion'])
-		firstRound = false
-	else:
-		INFO_DECK['RoundResume'] = [optionalContent, [0.0, 0.0, 0.0, 0.0]]
-		card = _get_card_instance_from_info('RoundResume', INFO_DECK['RoundResume'])
-	return card
-
-func _get_card_instance_from_info(card_type, card_info:Array):
-	var card = card_scene.instance()
-	card.initialize(card_type, card_info[0], card_info[1], main)
-	return card
-
-func get_next_initial_card():
-	var card_type = _get_deck().keys().front()
-	var card = _get_card_instance_from_info(card_type, _get_deck()[card_type])
-	_get_deck().erase(card_type)
-	if _get_deck().keys().empty():
-		initial_deck_empty = true
-	return card
-
-func has_more_initial_cards():
-	return ! initial_deck_empty
-
-# Retorna una carta random de un tipo de carta random.
-func get_random_card_and_type(deck, usedDeck):
-	return _get_random_card(deck, usedDeck, _get_random_type(deck, usedDeck))
-
-# Retorna un tipo de carta random
-func _get_random_type(deck, usedDeck):
-	if get_types(deck).empty():
-		_restart_deck(deck, usedDeck)
-	return _get_random(get_types(deck))
-
-#Random de lista
-func _get_random(list:Array):
-	return list[randi() % list.size()]
-
-# Retorna una carta del tipo solicitado del random deck y la mueve al used deck.
-# Si la carta es la ultima de su tipo, elimina a dicho tipo del random deck
-# El tipo de carta debe existir en el random deck
-func _get_random_card(deck, usedDeck, card_type:String, move_to_used = true):
-	var cards = deck[card_type]
-	var index = randi() % cards.size()
-	var card_info = cards[index]
-	cards.remove(index)
-	if move_to_used:
-		usedDeck[card_type].append(card_info)
-	if deck[card_type].empty():
-		deck.erase(card_type)
-	return _get_card_instance_from_info(card_type, card_info)
-
-# Retorna una carta random del tipo solicitado. Si no hay cartas de ese tipo disponibles
-# en el random deck, se sacan del used deck.
-func get_random_card_from_type(deck, usedDeck, card_type:String, move_to_used = true):
-	if get_types(deck).has(card_type):
-		return _get_random_card(deck, usedDeck, card_type, move_to_used)
-	else:
-		var card_info = _get_random(usedDeck[card_type])
-		return _get_card_instance_from_info(card_type, card_info)
-
-# Retorno carta random de evento negativo
-func get_low_event_card_from_type(card_type:String, attempts:int):
-	var card = get_random_card_from_type(BAD_EVENT_DECK, USED_BAD_EVENT_DECK, card_type)
-	card.prepend_to_description(get_text_from_attempts(attempts))
-	return card
-
-func get_good_event_card_from_type(card_type:String):
-	var card = get_random_card_from_type(GOOD_EVENT_DECK, USED_GOOD_EVENT_DECK, card_type)
-	return card
-
-func get_game_over_card(card_type):
-	var card_info = GAME_OVER_CARDS[card_type]
-	var card = card_scene.instance()
-	card.initialize(card_type, card_info[0], card_info[1], main, true)
-	return card
-
-func _restart_deck(deck, usedDeck):
-	for key in usedDeck.keys():
-		deck[key] = usedDeck[key]
-		usedDeck[key] = []
-
-func get_text_from_attempts(attemps:int):
-	return BAD_EVENTS_FRASES[attemps]

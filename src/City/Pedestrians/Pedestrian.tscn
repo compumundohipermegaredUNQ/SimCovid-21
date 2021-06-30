@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/City/Pedestrians/PedestrianSpriteFrames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://assets/Fonts/The Snowday.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Pedestrians/bubble-speech.png" type="Texture" id=3]
 [ext_resource path="res://src/City/Pedestrians/Pedestrian.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 41.7644, 60.5016 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 90
+outline_color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
+font_data = ExtResource( 2 )
+
 [node name="Pedestrian" type="AnimatedSprite"]
 position = Vector2( -47.9458, 471.967 )
+z_as_relative = false
 frames = ExtResource( 1 )
 animation = "male_walk"
 playing = true
@@ -17,3 +25,28 @@ script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -1.90735e-06, 0.749126 )
+scale = Vector2( 4.14644, 6.16916 )
+
+[node name="BubbleSpeech" type="Sprite" parent="."]
+position = Vector2( 89.138, -70.4882 )
+scale = Vector2( 0.208825, 0.283266 )
+texture = ExtResource( 3 )
+offset = Vector2( -400, 0 )
+
+[node name="Label" type="Label" parent="BubbleSpeech"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -748.0
+margin_top = -149.0
+margin_right = -832.0
+margin_bottom = -272.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

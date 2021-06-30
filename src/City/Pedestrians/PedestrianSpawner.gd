@@ -5,6 +5,7 @@ export (PackedScene) var PedestrianScene
 onready var rng = RandomNumberGenerator.new()
 const nightfall_movement = 0.3
 const sunrise_movement = 1
+var health_bar_group
 var min_y_position
 var max_y_position
 var y_position_diff
@@ -13,10 +14,13 @@ var movement_percentage = 0.3
 var salud_bar_value = 0.5
 var timer
 var main
+var bar_names = ['cultural_bar', 'economia_bar', 'salud_bar', 'social_bar']
+var iterator = 0
 
-func initialize(main_timer:Timer, main_node:Node):
+func initialize(main_timer:Timer, main_node:Node, health_bar_group2):
 	timer = main_timer
 	main = main_node
+	health_bar_group = health_bar_group2
 	timer.connect("timeout", self, "spawn_pedestrian")
 
 func spawn_pedestrian():
@@ -25,8 +29,10 @@ func spawn_pedestrian():
 	if randf() < movement_percentage:
 		var person = PedestrianScene.instance()
 		var person_position = get_random_position()
-		person.initialize()
-		person.set_random_animation(is_sick())
+		var best_or_worst_bar_and_value = health_bar_group.get_best_or_worst_bar()
+		person.initialize(best_or_worst_bar_and_value[1], best_or_worst_bar_and_value[0])
+		person.set_random_animation()
+		person.set_random_phrase()
 		person.set_position_and_movement_direction(person_position)
 		person.set_z_index(get_z_index_from_position(person_position.y))
 		main.add_child(person)
@@ -49,10 +55,6 @@ func set_sunrise_movement():
 
 func set_salud_current_value(salud_value):
 	salud_bar_value = salud_value / 100
-
-func is_sick():
-	randomize()
-	return randf() > salud_bar_value
 
 func _set_position():
 	var screenSize = get_viewport().get_visible_rect().size

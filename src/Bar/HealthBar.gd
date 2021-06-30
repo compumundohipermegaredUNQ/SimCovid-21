@@ -7,21 +7,26 @@ signal game_over(bar_type)
 var bar_red = preload("res://assets/Bar/barHorizontal_red.png")
 var bar_green = preload("res://assets/Bar/barHorizontal_green.png")
 var bar_yellow = preload("res://assets/Bar/barHorizontal_yellow.png")
+var neutro = preload("res://assets/Bar/checkbox_example.png")
+var positive = preload("res://assets/Bar/checkbox2_example.png")
+var negative = preload("res://assets/Bar/checkbox3_example.png")
 
 export (float) var multiplier = 0
 export (String) var label = ""
 export (float) var percentage = 1
 
-onready var healthbar = $HealthBar
+#onready var healthbar = $HealthBar 
 onready var healthbar_textlabel = $HealthBarLabel
 onready var good_event_decider = GoodEventDecider
+onready var box = $TextureRect
 
 var global_clock
 var speed_multiplier
 var remaining_ticks_before_emit = 10
 var remaining_attempts = 3
+var fase_attempt = true
 
-func initialize(timer:Timer, clock:Node2D, deck_multiplier):
+func initialize(timer:Timer, clock:Node2D, deck_multiplier, main_node):
 	good_event_decider.set_timer(timer)
 	speed_multiplier = 1
 	multiplier = deck_multiplier
@@ -31,14 +36,11 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier):
 	timer.connect("timeout", self, "_update_value")
 	self.connect("low_bar", DeckOfCards, "raise_low_card")
 	self.connect("high_bar", DeckOfCards, "raise_high_card")
-	self.connect("game_over", DeckOfCards, "game_over_card")
+	self.connect("game_over", main_node, "game_over")
 
-func set_value(value:float):
+func set_healthbar_value(value:float):
 	self.value = value
 	_update_healthbar()
-
-func get_value():
-	return self.value
 
 func get_healthbar_value():
 	return self.value
@@ -63,17 +65,23 @@ func _is_high():
 
 func _update_value():
 	self.value = self.value + speed_multiplier * multiplier
-	if self.value == 0:
+	if self.value < 1:
 		emit_signal("game_over", healthbar_textlabel.text)
 	remaining_ticks_before_emit = clamp(remaining_ticks_before_emit-1, 0, 10)
 	if _can_emit():
 		if _is_low() && _can_emit_low_event() && _is_bar_decreasing():
 			_restart_emit_count()
 			emit_signal("low_bar", healthbar_textlabel.text, remaining_attempts)
-			remaining_attempts -= 1
 		if !_is_at_max_value() && _is_high() && GoodEventDecider.can_emit():
 			emit_signal("high_bar", healthbar_textlabel.text)
 	_update_healthbar()
+
+func actualize_attempts():
+	remaining_attempts -= 1
+	actualize_fase_attempt()
+
+func actualize_fase_attempt():
+	fase_attempt = false
 
 func _is_at_max_value():
 	return self.value == self.max_value
@@ -82,7 +90,7 @@ func _can_emit():
 	return remaining_ticks_before_emit == 0
 
 func _can_emit_low_event() -> bool:
-	return remaining_attempts != 0
+	return remaining_attempts != 0 && fase_attempt
 
 func _is_bar_decreasing() -> bool:
 	return multiplier < 0
@@ -99,6 +107,11 @@ func _update_healthbar():
 		self.texture_progress = bar_yellow
 	if self.value < self.max_value * 0.35:
 		self.texture_progress = bar_red
+	if _is_bar_decreasing():
+		box.texture = negative
+	else:
+		box.texture = positive
+		
 
 func change_textlabel():
 	healthbar_textlabel.clear()
@@ -108,9 +121,15 @@ func update_state():
 	healthbar_textlabel.set_text(label)
 
 func reset_remaining_attempts():
-	remaining_attempts = 3
+	fase_attempt = true
 
 func restart():
 	self.value = 50
 	restart_attempts()
 	_restart_emit_count()
+
+# Si la barra tiene un valor mayor a 50, me da ese valor.
+# Si es menor, le resto ese valor a 100. La idea es siempre tener valores
+# mayores a 50
+func get_max_value():
+	return self.value if self.value > 50 else 100 - self.value
