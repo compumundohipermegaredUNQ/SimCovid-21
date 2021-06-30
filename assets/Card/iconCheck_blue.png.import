@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/check_grey.png-1c1f5ca3bf9772c6fab2e3097faeb480.stex"
+path="res://.import/iconCheck_blue.png-6617393a012a49e3eef59bb7465dee3b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Card/check_grey.png"
-dest_files=[ "res://.import/check_grey.png-1c1f5ca3bf9772c6fab2e3097faeb480.stex" ]
+source_file="res://assets/Card/iconCheck_blue.png"
+dest_files=[ "res://.import/iconCheck_blue.png-6617393a012a49e3eef59bb7465dee3b.stex" ]
 
 [params]
 

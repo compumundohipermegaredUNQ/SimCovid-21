@@ -11,8 +11,12 @@ const scene_numbers_bars = {
 	"Social": 2,
 	"Cultural": 3,
 }
-#onready var ok_sfx = get_node("Ok")
-#onready var no_sfx = get_node("No")
+const positions = {
+	"Economico": Vector2(-700,-100),
+	"Salud": Vector2(-400,-100),
+	"Social": Vector2(-100,-100),
+	"Cultural": Vector2(250,-100)
+}
 var card_type
 var card_efects
 var bar_group
@@ -22,12 +26,27 @@ var main_node
 
 func initialize(type, title, description, efects, main, has_lost = false) -> void:
 	card_type = type
+	print(card_type)
 	card_efects = efects
 	bar_group = main.get_child(2)
-	$TitleLabel.text = title
-	$TextLabel.text = description
+	$TextureRect/TitleLabel.text = title
+	$TextureRect/TextLabel.text = description 
+	_set_texture(type)
+	#_set_position_by_type(type)
 	game_over = has_lost
 	main_node = main
+
+func _ready() -> void:
+	var card = $TextureRect
+	var viewport_size_y = get_viewport().get_visible_rect().size.y
+	var project_size_y = ProjectSettings.get_setting("display/window/size/height")
+
+	var desired_size = (card.rect_size.y * viewport_size_y) / project_size_y
+	var scale_factor = (card.rect_scale.y * desired_size) / card.rect_size.y
+
+	card.rect_scale = Vector2(scale_factor, scale_factor)
+	var difference = (card.rect_size.y - desired_size) / 2
+	card.rect_position += Vector2(difference, difference)
 
 func _on_CheckButton_pressed() -> void:
 	if game_over:
@@ -59,11 +78,29 @@ func _update_if_exists_actual_bar() -> void:
 		actual_bar.update_state()
 
 func prepend_to_description(title:String, description:String):
-	$TitleLabel.text = $TitleLabel.text.insert(0, title)
-	$TextLabel.text = $TextLabel.text.insert(0, description)
+	$TextureRect/TitleLabel.text = $TextureRect/TitleLabel.text.insert(0, title)
+	$TextureRect/TextLabel.text = $TextureRect/TextLabel.text.insert(0, description)
 
 func _on_CheckButton_ready() -> void:
 	self.feedback()
 
 func _on_XButton_ready() -> void:
 	self.feedback()
+
+func _set_texture(type):
+	if type == 'Introducción' || type == 'RoundResume':
+		$TextureRect.texture = load('res://assets/Card/panel_blue.png')
+		$TextureRect/CheckButton.texture_normal = load('res://assets/Card/iconCheck_grey.png')
+		$TextureRect/CheckButton.texture_pressed = load('res://assets/Card/iconCheck_bronze.png')
+		$TextureRect/CheckButton.texture_hover = load('res://assets/Card/iconCheck_beige.png')
+		$TextureRect/CheckButton.texture_focused = load('res://assets/Card/iconCheck_bronze.png')
+		$TextureRect/XButton.texture_normal = load('res://assets/Card/iconCross_grey.png')
+		$TextureRect/XButton.texture_pressed = load('res://assets/Card/iconCross_bronze.png')
+		$TextureRect/XButton.texture_hover = load('res://assets/Card/iconCross_beige.png')
+		$TextureRect/XButton.texture_focused = load('res://assets/Card/iconCross_bronze.png')
+
+""" func _set_position_by_type(type):
+	var card = $TextureRect
+	if type != 'Introducción' && type != 'RoundResume':
+		card.set_position(positions[type])
+ """

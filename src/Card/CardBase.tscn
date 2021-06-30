@@ -1,22 +1,24 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Fonts/The Snowday.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/Card/Card.gd" type="Script" id=2]
-[ext_resource path="res://assets/Card/check_grey.png" type="Texture" id=4]
-[ext_resource path="res://assets/Card/background_text.png" type="Texture" id=5]
-[ext_resource path="res://assets/Card/x_grey.png" type="Texture" id=6]
-[ext_resource path="res://assets/Card/check_green.png" type="Texture" id=7]
-[ext_resource path="res://assets/Card/x_red.png" type="Texture" id=8]
+[ext_resource path="res://assets/Card/iconCheck_grey.png" type="Texture" id=3]
+[ext_resource path="res://assets/Card/iconCheck_bronze.png" type="Texture" id=4]
+[ext_resource path="res://assets/Card/panel_beige.png" type="Texture" id=5]
+[ext_resource path="res://assets/Card/iconCross_brown.png" type="Texture" id=6]
+[ext_resource path="res://assets/Card/iconCheck_blue.png" type="Texture" id=7]
+[ext_resource path="res://assets/Card/iconCross_blue.png" type="Texture" id=8]
+[ext_resource path="res://assets/Card/iconCross_grey.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/Fonts/The Snowday.ttf"
 
 [sub_resource type="DynamicFont" id=2]
-size = 30
+size = 35
 font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 20
+size = 25
 font_data = ExtResource( 1 )
 
 [node name="CardBase" type="Control"]
@@ -34,66 +36,65 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -151.786
 margin_top = -183.338
-margin_right = -58.7864
-margin_bottom = -89.3378
-rect_scale = Vector2( 3, 3 )
+margin_right = 248.214
+margin_bottom = 116.662
 texture = ExtResource( 5 )
-stretch_mode = 4
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckButton" type="TextureButton" parent="."]
+[node name="XButton" type="TextureButton" parent="TextureRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 55.3167
-margin_top = 52.6983
-margin_right = 105.317
-margin_bottom = 102.698
-rect_scale = Vector2( 0.7, 0.7 )
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 7 )
-texture_focused = ExtResource( 7 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="XButton" type="TextureButton" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -114.224
-margin_top = 52.6983
-margin_right = -64.2237
-margin_bottom = 102.698
+margin_left = -165.214
+margin_top = 86.036
+margin_right = -115.214
+margin_bottom = 136.036
 grow_horizontal = 0
 grow_vertical = 0
 rect_scale = Vector2( 0.7, 0.7 )
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 8 )
-texture_focused = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 9 )
+texture_focused = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="CheckButton" type="TextureButton" parent="TextureRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -138.737
-margin_top = -150.0
-margin_right = 116.263
-margin_bottom = -130.0
+margin_left = 124.786
+margin_top = 86.036
+margin_right = 174.786
+margin_bottom = 136.036
+rect_scale = Vector2( 0.7, 0.7 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+texture_focused = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.214
+margin_top = -122.662
+margin_right = 124.786
+margin_bottom = -90.662
 grow_vertical = 2
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.466667, 0.301961, 0.223529, 1 )
@@ -106,15 +107,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextLabel" type="Label" parent="."]
+[node name="TextLabel" type="Label" parent="TextureRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -138.737
-margin_top = -80.0
-margin_right = 116.263
-margin_bottom = -60.0
+margin_left = -130.214
+margin_top = -41.662
+margin_right = 124.786
+margin_bottom = -17.662
 grow_vertical = 2
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.443137, 0.305882, 0.305882, 1 )
@@ -127,7 +128,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="CheckButton" to="." method="_on_CheckButton_pressed"]
-[connection signal="ready" from="CheckButton" to="." method="_on_CheckButton_ready"]
-[connection signal="pressed" from="XButton" to="." method="_on_XButton_pressed"]
-[connection signal="ready" from="XButton" to="." method="_on_XButton_ready"]
+[connection signal="pressed" from="TextureRect/XButton" to="." method="_on_XButton_pressed"]
+[connection signal="ready" from="TextureRect/XButton" to="." method="_on_XButton_ready"]
+[connection signal="pressed" from="TextureRect/CheckButton" to="." method="_on_CheckButton_pressed"]
+[connection signal="ready" from="TextureRect/CheckButton" to="." method="_on_CheckButton_ready"]
