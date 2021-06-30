@@ -59,10 +59,10 @@ func set_random_animation():
 	rng.randomize()
 	var pedestrian = ''
 	var gender = animations[randi() % animations.size()]
-	if percentage < 33:
+	if percentage < 40:
 		pedestrian = PedestrianDatabase.PEDESTRIANS.low[pedestrian_bar_name]
 		self.play(pedestrian+'_'+gender)
-	elif percentage > 66:
+	elif percentage > 60:
 		pedestrian = PedestrianDatabase.PEDESTRIANS.high[pedestrian_bar_name]
 		self.play(pedestrian+'_'+gender)
 	else:

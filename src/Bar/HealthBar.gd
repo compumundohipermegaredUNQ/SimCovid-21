@@ -127,3 +127,9 @@ func restart():
 	self.value = 50
 	restart_attempts()
 	_restart_emit_count()
+
+# Si la barra tiene un valor mayor a 50, me da ese valor.
+# Si es menor, le resto ese valor a 100. La idea es siempre tener valores
+# mayores a 50
+func get_max_value():
+	return self.value if self.value > 50 else 100 - self.value
