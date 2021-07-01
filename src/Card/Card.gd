@@ -44,7 +44,7 @@ func initialize(type, title, description, efects, main, has_lost = false) -> voi
 func _ready() -> void:
 	var card = $TextureRect
 	var border = $ColorRect
-	var shadow = $Shadow
+	shadow = $Shadow
 	var viewport_size_y = get_viewport().get_visible_rect().size.y
 	var project_size_y = ProjectSettings.get_setting("display/window/size/height")
 

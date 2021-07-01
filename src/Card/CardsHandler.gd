@@ -35,7 +35,7 @@ func _set_tutorial(boolean):
 	if boolean:
 		INFO_BOOL["FirstRound"] = false
 		deck_on_deck(CardsDatabase.TUTORIAL_DECK["Introduccion"])
-		current_deck = CardsDatabase.INITIAL_DECK.duplicate()
+		deck_on_deck(CardsDatabase.INITIAL_DECK.duplicate())
 	else:
 		for key in INFO_BOOL.keys():
 			INFO_BOOL[key] = false

@@ -1,6 +1,7 @@
 extends Node
 
 var bar_names
+var tutorial
 
 onready var protests = {
 	'Cultural': false,
@@ -10,13 +11,23 @@ onready var protests = {
 }
 
 func initialize():
+	tutorial = $Animations/TutorialAnimation
+	
 	bar_names = {
 		'Cultural': $Animations/CulturaAnimation,
 		'Economico': $Animations/EconomiaAnimation,
 		'Salud': $Animations/SaludAnimation,
 		'Social': $Animations/SocialAnimation,
-		'Protesta': $Animations/ProtestaAnimation
+		'Protesta': $Animations/ProtestaAnimation,
 	}
+
+func tutorial_city(category):
+	for k in bar_names.values():
+		k.stop()
+#	if bar_names.keys().has(category):
+#		bar_names[category].play("Tutorial")
+#	else:
+#		tutorial.play("Tutorial")
 
 func low_effect_city(category, _value):
 	bar_names[category].play("BadEvent")

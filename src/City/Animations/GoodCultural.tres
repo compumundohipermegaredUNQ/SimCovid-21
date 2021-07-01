@@ -5,23 +5,23 @@
 
 [resource]
 resource_name = "GoodEvent"
-length = 0.7
+length = 0.5
 loop = true
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Cine:rect_size")
+tracks/0/path = NodePath("Cine:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.55 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 404, 154 ), Vector2( 406, 156 ), Vector2( 402, 152 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Cine:texture")
+tracks/1/path = NodePath("Cafe:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -30,29 +30,29 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 2 ) ]
+"values": [ ExtResource( 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Cafe:rect_size")
+tracks/2/path = NodePath("Cine:rect_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.25, 0.55 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 171, 134 ), Vector2( 173, 136 ), Vector2( 171, 132 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.02, 1.02 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Cafe:texture")
+tracks/3/path = NodePath("Cafe:rect_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 1 ) ]
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.02, 1.02 ) ]
 }

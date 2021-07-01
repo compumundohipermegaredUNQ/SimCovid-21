@@ -88,9 +88,9 @@ func _update_value():
 	_update_healthbar()
 
 func affect_city():
-	if get_value() < 40:
+	if get_value() < 35:
 		emit_signal("low_effect_city", healthbar_textlabel.text, healthbar.value)
-	elif get_value() > 65:
+	elif get_value() > 70:
 		emit_signal("high_effect_city", healthbar_textlabel.text, healthbar.value)
 	else:
 		emit_signal("normal_city", healthbar_textlabel.text, healthbar.value)
