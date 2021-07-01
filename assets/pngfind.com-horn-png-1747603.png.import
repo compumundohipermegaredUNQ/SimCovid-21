@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pngfind.com-horn-png-1747603.png-4dd84b5bdab4509358d3826d472b0751.stex"
+path="res://.import/pngfind.com-horn-png-1747603.png-5b5260741f36e843be66789bbcd9b9c1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Bar/pngfind.com-horn-png-1747603.png"
-dest_files=[ "res://.import/pngfind.com-horn-png-1747603.png-4dd84b5bdab4509358d3826d472b0751.stex" ]
+source_file="res://assets/pngfind.com-horn-png-1747603.png"
+dest_files=[ "res://.import/pngfind.com-horn-png-1747603.png-5b5260741f36e843be66789bbcd9b9c1.stex" ]
 
 [params]
 
