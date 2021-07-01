@@ -110,6 +110,7 @@ func restart_game():
 func get_percentage_by_name(bar_name):
 	return bar_names[bar_name].get_value()
 
+
 func _get_max_best_or_worst_dict():
 	return {
 		cultural_bar.get_max_value() + 0.001: 'cultural_bar',
