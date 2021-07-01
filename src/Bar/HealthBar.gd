@@ -14,15 +14,23 @@ var neutro = preload("res://assets/Bar/checkbox_example.png")
 var positive = preload("res://assets/Bar/checkbox2_example.png")
 var negative = preload("res://assets/Bar/checkbox3_example.png")
 
+const colors = {
+	"Economico": Color(1, 0.090196, 0.090196, 0.75),
+	"Salud": Color(0.30508, 0.886719, 0.040699, 0.75),
+	"Social": Color(0.040699, 0.391004, 0.886719, 0.75),
+	"Cultural": Color(0.860281, 0.886719, 0.040699, 0.75)
+}
+
 export (float) var multiplier = 0
 export (String) var label = ""
 export (float) var percentage = 1
 
-#onready var healthbar = $HealthBar 
 onready var healthbar_textlabel = $HealthBarLabel
 onready var healthbar = $ProgressBar
 onready var good_event_decider = GoodEventDecider
 onready var box = $TextureRect
+onready var bar_boder = $BarBorder
+onready var animation = $AnimationPlayer
 
 var global_clock
 var speed_multiplier
@@ -31,6 +39,7 @@ var remaining_attempts = 3
 var fase_attempt = true
 
 func initialize(timer:Timer, clock:Node2D, deck_multiplier, main_node, city):
+	bar_boder.modulate = colors[healthbar_textlabel.text]
 	good_event_decider.set_timer(timer)
 	speed_multiplier = 1
 	multiplier = deck_multiplier
@@ -130,13 +139,20 @@ func _update_healthbar():
 		box.texture = negative
 	else:
 		box.texture = positive
-		
+
+func _play_animation():
+	animation.play("shine")
+
+func _stop_animation():
+	animation.stop()
 
 func change_textlabel():
+#	_play_animation()
 	healthbar_textlabel.clear()
 	healthbar_textlabel.append_bbcode("[wave amp=25 freq=10][color=blue]"+label+"[/color][/wave]")
 
 func update_state():
+#	_stop_animation()
 	healthbar_textlabel.set_text(label)
 
 func reset_remaining_attempts():
