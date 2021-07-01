@@ -30,7 +30,7 @@ var remaining_ticks_before_emit = 10
 var remaining_attempts = 3
 var fase_attempt = true
 
-func initialize(timer:Timer, clock:Node2D, deck_multiplier, main_node):
+func initialize(timer:Timer, clock:Node2D, deck_multiplier, main_node, city):
 	good_event_decider.set_timer(timer)
 	speed_multiplier = 1
 	multiplier = deck_multiplier
@@ -41,9 +41,9 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier, main_node):
 	self.connect("low_bar", DeckOfCards, "raise_low_card")
 	self.connect("high_bar", DeckOfCards, "raise_high_card")
 	self.connect("game_over", main_node, "game_over")
-	self.connect("low_effect_city", City, "low_effect_city")
-	self.connect("high_effect_city", City, "high_effect_city")
-	self.connect("normal_city", City, "normal_city")
+	self.connect("low_effect_city", city, "low_effect_city")
+	self.connect("high_effect_city", city, "high_effect_city")
+	self.connect("normal_city", city, "normal_city")
 
 func set_healthbar_value(value:float):
 	healthbar.value = value
@@ -88,9 +88,9 @@ func _update_value():
 	_update_healthbar()
 
 func affect_city():
-	if _is_low():
+	if get_value() < 40:
 		emit_signal("low_effect_city", healthbar_textlabel.text, healthbar.value)
-	elif _is_high():
+	elif get_value() > 65:
 		emit_signal("high_effect_city", healthbar_textlabel.text, healthbar.value)
 	else:
 		emit_signal("normal_city", healthbar_textlabel.text, healthbar.value)
