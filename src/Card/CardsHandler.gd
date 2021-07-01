@@ -59,8 +59,9 @@ func set_initial_deck(optionalContent):
 		CardsDatabase.INTRO_DECK['RoundResume'] = optionalContent
 		DeckOfCards.add_to_local_deck(_get_card_instance_from_info('RoundResume', CardsDatabase.INTRO_DECK['RoundResume']))
 		deck_on_deck(CardsDatabase.INITIAL_DECK)
-	card._set_texture_beigeLight()
-	card._unset_visible_border()
+	if card:
+		card._set_texture_beigeLight()
+		card._unset_visible_border()
 	return card
 
 func _get_card_instance_from_info(card_type, card_info:Array):
@@ -74,8 +75,9 @@ func get_next_initial_card():
 	_get_deck().erase(card_type)
 	if _get_deck().keys().empty():
 		initial_deck_empty = true
-	card._set_texture_beigeLight()
-	card._unset_visible_border()
+	if card:
+		card._set_texture_beigeLight()
+		card._unset_visible_border()
 	return card
 
 func has_more_initial_cards():
