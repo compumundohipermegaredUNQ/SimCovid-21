@@ -20,12 +20,12 @@ var economia_weight = 0.3
 var salud_weight = 0.4
 var social_weight = 0.2
 
-func initialize(timer:Timer, clock:Node2D, multipliers, spawner, main_node):
+func initialize(timer:Timer, clock:Node2D, multipliers, spawner, main_node, city):
 	pedestrian_spawner = spawner
-	cultural_bar.initialize(timer, clock, multipliers['Cultural'], main_node)
-	economia_bar.initialize(timer, clock, multipliers['Economia'], main_node)
-	salud_bar.initialize(timer, clock, multipliers['Salud'], main_node)
-	social_bar.initialize(timer, clock, multipliers['Social'], main_node)
+	cultural_bar.initialize(timer, clock, multipliers['Cultural'], main_node, city)
+	economia_bar.initialize(timer, clock, multipliers['Economia'], main_node, city)
+	salud_bar.initialize(timer, clock, multipliers['Salud'], main_node, city)
+	social_bar.initialize(timer, clock, multipliers['Social'], main_node, city)
 	_update_overall_value()
 	timer.connect("timeout", self, "_update_overall_value")
 	rng = RandomNumberGenerator.new()
