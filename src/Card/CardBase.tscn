@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/Card/iconCross_grey.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.188235, 0.160784, 0.160784, 0.580392 )
+bg_color = Color( 0.188235, 0.160784, 0.160784, 0.458824 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
@@ -211,7 +211,6 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="TextureRect/XButton" to="." method="_on_XButton_pressed"]
 [connection signal="ready" from="TextureRect/XButton" to="." method="_on_XButton_ready"]
 [connection signal="pressed" from="TextureRect/CheckButton" to="." method="_on_CheckButton_pressed"]
