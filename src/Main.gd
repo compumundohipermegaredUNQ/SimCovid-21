@@ -28,6 +28,7 @@ func _ready():
 func _startGame(multipliers):
 	clock.initialize(timer, pedestrian_spawner, clock_label, fase_label)
 	background.initialize(clock)
+	City.initialize()
 	# Esto eventualmente se elegirá desde el menú antes de arrancar
 	pedestrian_spawner.initialize(timer, self, healt_bar_group)
 	healt_bar_group.initialize(timer, clock, multipliers, pedestrian_spawner, self)

@@ -1,8 +1,11 @@
-extends TextureProgress
+extends Control
 
 signal low_bar(bar_type, attempts)
 signal high_bar(bar_type)
 signal game_over(bar_type)
+signal low_effect_city(bar_type, value)
+signal normal_city(bar_type, value)
+signal high_effect_city(bar_type, value)
 
 var bar_red = preload("res://assets/Bar/barHorizontal_red.png")
 var bar_green = preload("res://assets/Bar/barHorizontal_green.png")
@@ -40,6 +43,7 @@ func initialize(timer:Timer, clock:Node2D, deck_multiplier, main_node):
 	self.connect("game_over", main_node, "game_over")
 	self.connect("low_effect_city", City, "low_effect_city")
 	self.connect("high_effect_city", City, "high_effect_city")
+	self.connect("normal_city", City, "normal_city")
 
 func set_healthbar_value(value:float):
 	healthbar.value = value
@@ -85,9 +89,11 @@ func _update_value():
 
 func affect_city():
 	if _is_low():
-		emit_signal("low_effect_city", healthbar_textlabel, healthbar.value)
+		emit_signal("low_effect_city", healthbar_textlabel.text, healthbar.value)
 	elif _is_high():
-		emit_signal("high_effect_city", healthbar_textlabel, healthbar.value)
+		emit_signal("high_effect_city", healthbar_textlabel.text, healthbar.value)
+	else:
+		emit_signal("normal_city", healthbar_textlabel.text, healthbar.value)
 
 func actualize_attempts():
 	remaining_attempts -= 1
@@ -145,4 +151,4 @@ func restart():
 # Si es menor, le resto ese valor a 100. La idea es siempre tener valores
 # mayores a 50
 func get_max_value():
-	return self.value if self.value > 50 else 100 - self.value
+	return healthbar.value if healthbar.value > 50 else 100 - healthbar.value

@@ -1,0 +1,40 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/City/Animations/Gendarmeria.tres" type="Animation" id=1]
+[ext_resource path="res://src/City/Animations/Protest.tres" type="Animation" id=2]
+[ext_resource path="res://src/City/Animations/GoodEconomia.tres" type="Animation" id=3]
+[ext_resource path="res://src/City/City.gd" type="Script" id=4]
+[ext_resource path="res://src/City/Animations/GoodCultural.tres" type="Animation" id=5]
+[ext_resource path="res://src/City/Animations/GoodSalud.tres" type="Animation" id=6]
+[ext_resource path="res://src/City/Animations/Picarla.tres" type="Animation" id=7]
+[ext_resource path="res://src/City/Animations/BadSalud.tres" type="Animation" id=8]
+[ext_resource path="res://src/City/Animations/GoodSocial.tres" type="Animation" id=9]
+[ext_resource path="res://src/City/Animations/BadCultura.tres" type="Animation" id=10]
+[ext_resource path="res://src/City/Animations/BadSocial.tres" type="Animation" id=11]
+[ext_resource path="res://src/City/Animations/BadEconomia.tres" type="Animation" id=12]
+
+[node name="CityAnimation" type="Node"]
+script = ExtResource( 4 )
+
+[node name="CulturaAnimation" type="AnimationPlayer" parent="."]
+anims/BadCultura = ExtResource( 10 )
+anims/BadEvent = ExtResource( 10 )
+anims/GoodEvent = ExtResource( 5 )
+
+[node name="EconomiaAnimation" type="AnimationPlayer" parent="."]
+anims/BadEvent = ExtResource( 12 )
+anims/GoodEvent = ExtResource( 3 )
+
+[node name="SaludAnimation" type="AnimationPlayer" parent="."]
+anims/BadEvent = ExtResource( 8 )
+anims/GoodEvent = ExtResource( 6 )
+
+[node name="SocialAnimation" type="AnimationPlayer" parent="."]
+anims/BadEvent = ExtResource( 11 )
+anims/GoodEvent = ExtResource( 9 )
+
+[node name="ProtestaAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+anims/Gendarmeria = ExtResource( 1 )
+anims/Picarla = ExtResource( 7 )
+anims/Protest = ExtResource( 2 )
