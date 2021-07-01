@@ -25,7 +25,7 @@ var actual_bar
 var game_over
 var main_node
 var animation
-var shadow 
+var shadow
 
 func initialize(type, title, description, efects, main, has_lost = false) -> void:
 	animation = $AnimationPlayer
@@ -36,7 +36,7 @@ func initialize(type, title, description, efects, main, has_lost = false) -> voi
 	card_efects = efects
 	bar_group = main.get_child(4)
 	$TextureRect/TitleLabel.text = title
-	$TextureRect/TextLabel.text = description 
+	$TextureRect/TextLabel.text = description
 	_set_color_by_type(type)
 	game_over = has_lost
 	main_node = main

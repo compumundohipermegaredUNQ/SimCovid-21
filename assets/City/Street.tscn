@@ -1,0 +1,347 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/City/Fixed/Road.png" type="Texture" id=1]
+[ext_resource path="res://assets/City/Fixed/City3-Dia.png" type="Texture" id=2]
+[ext_resource path="res://assets/City/Fixed/City2-Dia.png" type="Texture" id=3]
+[ext_resource path="res://assets/City/Economia/Rueda-Dia.png" type="Texture" id=4]
+[ext_resource path="res://assets/City/Economia/Basurero-Dia.png" type="Texture" id=5]
+[ext_resource path="res://assets/City/Economia/Negocios-Dia.png" type="Texture" id=6]
+[ext_resource path="res://assets/City/Economia/Bar-Dia.png" type="Texture" id=7]
+[ext_resource path="res://assets/City/Salud/Hospital-Dia.png" type="Texture" id=8]
+[ext_resource path="res://assets/City/Salud/Casas-Dia.png" type="Texture" id=9]
+[ext_resource path="res://assets/City/Cultura/Chori-Dia.png" type="Texture" id=10]
+[ext_resource path="res://assets/City/Social/Cafe-Dia.png" type="Texture" id=11]
+[ext_resource path="res://assets/City/Cultura/Teatro-Dia.png" type="Texture" id=12]
+[ext_resource path="res://assets/City/Fixed/Floor.png" type="Texture" id=13]
+[ext_resource path="res://assets/City/Fixed/crosswalk.png" type="Texture" id=14]
+[ext_resource path="res://src/City/City.gd" type="Script" id=15]
+
+[node name="City" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.007
+margin_left = -9.0
+margin_right = 1.0
+margin_bottom = -0.200073
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CityFarFarAway" type="TextureRect" parent="."]
+anchor_left = 0.008
+anchor_top = 0.166
+anchor_right = 1.0
+anchor_bottom = 0.679
+margin_left = -5.272
+margin_top = 0.735992
+margin_right = -1.0
+margin_bottom = -0.115997
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CityFarAway" type="TextureRect" parent="."]
+anchor_left = 0.002
+anchor_top = 0.308
+anchor_right = 0.998
+anchor_bottom = 0.818
+margin_left = -0.0680001
+margin_top = -0.0320129
+margin_right = 0.0679932
+margin_bottom = -0.0720215
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrossWalk" type="Control" parent="."]
+anchor_top = 0.561
+anchor_right = 1.0
+anchor_bottom = 0.805
+margin_top = 0.155975
+margin_right = -1.0
+margin_bottom = -0.220032
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Floor" type="TextureRect" parent="CrossWalk"]
+modulate = Color( 1, 1, 1, 0.827451 )
+anchor_right = 1.005
+anchor_bottom = 1.0
+margin_top = 2.0
+margin_right = -0.165039
+margin_bottom = 2.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cross1" type="TextureRect" parent="CrossWalk"]
+anchor_left = 0.136
+anchor_top = 0.272
+anchor_right = 0.205
+anchor_bottom = 0.966
+margin_left = -5.48801
+margin_top = 0.0159988
+margin_right = 0.234985
+margin_bottom = -0.0019989
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cross2" type="TextureRect" parent="CrossWalk"]
+anchor_left = 0.207
+anchor_top = 0.612
+anchor_right = 0.302
+anchor_bottom = 0.966
+margin_left = 0.168976
+margin_top = 0.0359955
+margin_right = 0.0339966
+margin_bottom = -0.0019989
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cross3" type="TextureRect" parent="CrossWalk"]
+anchor_left = 0.313
+anchor_top = 0.476
+anchor_right = 0.406
+anchor_bottom = 0.959
+margin_left = -0.32901
+margin_top = 0.0279999
+margin_right = -0.39801
+margin_bottom = 0.0269928
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Cross4" type="TextureRect" parent="CrossWalk"]
+anchor_left = 0.434
+anchor_top = 0.136
+anchor_right = 0.51
+anchor_bottom = 1.0
+margin_left = -0.322021
+margin_top = 0.00799942
+margin_right = 0.169922
+margin_bottom = -4.0
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cross5" type="TextureRect" parent="CrossWalk"]
+anchor_left = 0.521
+anchor_top = 0.646
+anchor_right = 0.565
+anchor_bottom = 0.966
+margin_left = -0.193054
+margin_top = 0.0379944
+margin_right = 0.35498
+margin_bottom = -0.0019989
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Cross6" type="TextureRect" parent="CrossWalk"]
+anchor_left = 0.688
+anchor_top = 0.034
+anchor_right = 0.754
+anchor_bottom = 0.959
+margin_left = 0.295959
+margin_top = 0.00199986
+margin_right = 0.117981
+margin_bottom = 0.0269928
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cross7" type="TextureRect" parent="CrossWalk"]
+anchor_left = 0.773
+anchor_top = 0.653
+anchor_right = 0.831
+anchor_bottom = 0.959
+margin_left = 0.490967
+margin_top = 0.00899506
+margin_right = -0.423035
+margin_bottom = 0.0269928
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Negocios" type="TextureRect" parent="."]
+anchor_left = 0.004
+anchor_top = 0.364
+anchor_right = 0.269
+anchor_bottom = 0.641
+margin_left = 0.864
+margin_top = 0.143982
+margin_right = -0.146027
+margin_bottom = -0.164032
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Negocios"]
+
+[node name="Cine" type="TextureRect" parent="."]
+anchor_left = 0.405
+anchor_top = 0.363
+anchor_right = 0.798
+anchor_bottom = 0.618
+margin_left = 0.22998
+margin_top = -0.251999
+margin_right = -0.132019
+margin_bottom = -0.272034
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Cine"]
+
+[node name="Hospital" type="TextureRect" parent="."]
+anchor_left = 0.826
+anchor_top = 0.257
+anchor_right = 1.109
+anchor_bottom = 0.614
+margin_left = -0.0840454
+margin_top = -0.227997
+margin_right = 0.293945
+margin_bottom = 0.143982
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="Hospital"]
+
+[node name="Bar" type="TextureRect" parent="."]
+anchor_left = 0.735
+anchor_top = 0.477
+anchor_right = 1.028
+anchor_bottom = 0.758
+margin_left = 0.0100098
+margin_top = -0.108002
+margin_right = 0.0479736
+margin_bottom = 0.167999
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="Bar"]
+
+[node name="CasaDeGobierno" type="TextureRect" parent="."]
+anchor_left = 0.287
+anchor_top = 0.412
+anchor_right = 0.428
+anchor_bottom = 0.68
+margin_left = 0.242004
+margin_top = 0.151978
+margin_right = 0.447968
+margin_bottom = 0.279999
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer5" type="AnimationPlayer" parent="CasaDeGobierno"]
+
+[node name="Cafe" type="TextureRect" parent="."]
+anchor_left = 0.504
+anchor_top = 0.53
+anchor_right = 0.671
+anchor_bottom = 0.752
+margin_left = -0.135986
+margin_top = -0.120026
+margin_right = 0.185974
+margin_bottom = -0.208008
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer6" type="AnimationPlayer" parent="Cafe"]
+
+[node name="Chori" type="TextureRect" parent="."]
+light_mask = -2147483647
+anchor_left = 0.205
+anchor_top = 0.623
+anchor_right = 0.322
+anchor_bottom = 0.76
+margin_left = 0.0299835
+margin_top = -0.292023
+margin_right = 0.0519714
+margin_bottom = -0.0400391
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer7" type="AnimationPlayer" parent="Chori"]
+
+[node name="Ruedas" type="TextureRect" parent="."]
+anchor_left = 0.869
+anchor_top = 0.528
+anchor_right = 1.017
+anchor_bottom = 0.853
+margin_left = 12.0437
+margin_top = 0.0248413
+margin_right = 0.0115967
+margin_bottom = -0.275146
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer8" type="AnimationPlayer" parent="Ruedas"]
+
+[node name="Basurero" type="TextureRect" parent="."]
+light_mask = 2
+anchor_top = 0.579
+anchor_right = 0.219
+anchor_bottom = 0.886
+margin_left = 11.0
+margin_top = -6.71603
+margin_right = 7.55399
+margin_bottom = -7.14404
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer9" type="AnimationPlayer" parent="Basurero"]
+
+[node name="Street" type="TextureRect" parent="."]
+anchor_left = 0.005
+anchor_top = 0.738
+anchor_right = 1.0
+anchor_bottom = 0.988
+margin_left = -0.170001
+margin_top = 0.247986
+margin_right = -2.0
+margin_bottom = 0.247986
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

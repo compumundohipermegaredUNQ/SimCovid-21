@@ -1,7 +1,7 @@
 extends Node
 
-var cultural 
-var economia 
+var cultural
+var economia
 var salud
 var social
 var protesta
@@ -53,7 +53,7 @@ func high_effect_city(category, _value):
 	bar_names[category].play("goodEvent")
 	beggin_protest(category)
 	stop_protest(category)
-	
+
 func beggin_protest(category):
 	if protests.values().has(true):
 		#empeorar (hacer mas visible) animacion de tacho y ruedas
@@ -64,7 +64,7 @@ func beggin_protest(category):
 		$ProtestaAnimation.play("Protest")
 		$ProtestaAnimation.play("Picarla")
 	protests[category] = true
-	
+
 func stop_protest(category):
 	if protests.values().has(true):
 		#mejorar (hacer mas visible) animacion de tacho y ruedas

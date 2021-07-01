@@ -75,7 +75,7 @@ func _is_high():
 
 func _update_value():
 	healthbar.value = healthbar.value + speed_multiplier * multiplier
-	if healthbar.value < 1:
+	if healthbar.value == 0:
 		emit_signal("game_over", healthbar_textlabel.text)
 	remaining_ticks_before_emit = clamp(remaining_ticks_before_emit-1, 0, 10)
 	affect_city()
