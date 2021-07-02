@@ -31,6 +31,7 @@ onready var good_event_decider = GoodEventDecider
 onready var box = $TextureRect
 onready var bar_boder = $BarBorder
 onready var animation = $AnimationPlayer
+onready var shadow = $BarBorder/Shadow
 
 var global_clock
 var speed_multiplier
@@ -141,18 +142,21 @@ func _update_healthbar():
 		box.texture = positive
 
 func play_animation():
+
 	animation.play("shine")
 
 func stop_animation():
 	animation.stop()
 
 func change_textlabel():
-#	play_animation()
+	shadow.show()
+	play_animation()
 	healthbar_textlabel.clear()
 	healthbar_textlabel.append_bbcode("[wave amp=25 freq=10][color=blue]"+label+"[/color][/wave]")
 
 func update_state():
-#	stop_animation()
+	shadow.hide()
+	stop_animation()
 	healthbar_textlabel.set_text(label)
 
 func reset_remaining_attempts():
