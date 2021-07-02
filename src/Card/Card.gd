@@ -32,7 +32,6 @@ func initialize(type, title, description, efects, main, has_lost = false) -> voi
 	shadow = $Shadow
 	shadow.hide()
 	card_type = type
-	print(card_type)
 	card_efects = efects
 	bar_group = main.get_child(4)
 	$TextureRect/TitleLabel.text = title

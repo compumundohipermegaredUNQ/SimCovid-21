@@ -110,7 +110,6 @@ func restart_game():
 func get_percentage_by_name(bar_name):
 	return bar_names[bar_name].get_value()
 
-
 func _get_max_best_or_worst_dict():
 	return {
 		cultural_bar.get_max_value() + 0.001: 'cultural_bar',
@@ -136,10 +135,8 @@ func _get_position_from_random():
 
 func get_best_or_worst_bar():
 	var max_values = _get_max_best_or_worst_dict()
-	print(max_values)
 	var max_values_sorted = max_values.keys()
 	max_values_sorted.sort()
-	print(max_values_sorted)
 	var max_value = max_values_sorted[_get_position_from_random()]
 	var best_or_worst_bar = max_values[max_value]
 	return [best_or_worst_bar, bar_names[best_or_worst_bar].get_value()]
