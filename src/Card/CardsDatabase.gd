@@ -68,7 +68,7 @@ var RANDOM_DECK = {
 	],
 
 	"Economico": [
-		["Planes Sociales", "Al país se lo saca laburando", [0.0, -0.17, 0.02, 0.06]],
+		["Planes Sociales", "Al país se lo saca laburando.\n ¿Seguimos dando planes sociales?", [0.0, -0.17, 0.02, 0.06]],
 		["Reducir Impuestos", "Vas a dar una mano al pueblo. ¿Estás seguro?\n ¿Les reducimos el IVA?", [-0.03, -0.19, -0.04, 0.07]],
 		["Libre Comercio", "Aduana quién te conoce.\n ¿Abrimos las exportaciones?", [0.04, -0.14, 0.1, -0.03]],
 	],
