@@ -6,7 +6,7 @@ const TICK_COUNT = 15
 
 var global_timer;
 var remaining_ticks_before_emit = TICK_COUNT
-var good_event_percentage_chances = 0.7
+var good_event_percentage_chances = 0.4
 
 func set_timer(timer:Timer):
 	if !global_timer:

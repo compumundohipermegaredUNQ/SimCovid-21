@@ -4,8 +4,6 @@ onready var cultural_bar = $BottomPanel/HBoxContainer/Cultural
 onready var economia_bar = $BottomPanel/HBoxContainer/Economico
 onready var salud_bar = $BottomPanel/HBoxContainer/Salud
 onready var social_bar = $BottomPanel/HBoxContainer/Social
-onready var overall_bar = $TopPanel/HBoxContainer/OverallBar
-
 var rng
 var global_timer
 var pedestrian_spawner
@@ -22,12 +20,12 @@ var economia_weight = 0.3
 var salud_weight = 0.4
 var social_weight = 0.2
 
-func initialize(timer:Timer, clock:Node2D, multipliers, spawner, main_node):
+func initialize(timer:Timer, clock:Node2D, multipliers, spawner, main_node, city):
 	pedestrian_spawner = spawner
-	cultural_bar.initialize(timer, clock, multipliers['Cultural'], main_node)
-	economia_bar.initialize(timer, clock, multipliers['Economia'], main_node)
-	salud_bar.initialize(timer, clock, multipliers['Salud'], main_node)
-	social_bar.initialize(timer, clock, multipliers['Social'], main_node)
+	cultural_bar.initialize(timer, clock, multipliers['Cultural'], main_node, city)
+	economia_bar.initialize(timer, clock, multipliers['Economia'], main_node, city)
+	salud_bar.initialize(timer, clock, multipliers['Salud'], main_node, city)
+	social_bar.initialize(timer, clock, multipliers['Social'], main_node, city)
 	_update_overall_value()
 	timer.connect("timeout", self, "_update_overall_value")
 	rng = RandomNumberGenerator.new()
@@ -61,8 +59,8 @@ func _update_overall_value():
 	salud_weight = clamp(salud_weight, 0.1, 0.6)
 	social_weight = clamp(social_weight, 0.1, 0.4)
 
-	var overall_value = cultural_bar.get_healthbar_value() * cultural_weight + economia_bar.get_healthbar_value() * economia_weight + salud_bar.get_healthbar_value() * salud_weight + social_bar.get_healthbar_value() * social_weight
-	overall_bar.set_healthbar_value(overall_value)
+	#var overall_value = cultural_bar.get_healthbar_value() * cultural_weight + economia_bar.get_healthbar_value() * economia_weight + salud_bar.get_healthbar_value() * salud_weight + social_bar.get_healthbar_value() * social_weight
+	#overall_bar.set_healthbar_value(overall_value)
 
 func get_percentages():
 	var percentages = []
@@ -137,10 +135,14 @@ func _get_position_from_random():
 
 func get_best_or_worst_bar():
 	var max_values = _get_max_best_or_worst_dict()
-	print(max_values)
 	var max_values_sorted = max_values.keys()
 	max_values_sorted.sort()
-	print(max_values_sorted)
 	var max_value = max_values_sorted[_get_position_from_random()]
 	var best_or_worst_bar = max_values[max_value]
 	return [best_or_worst_bar, bar_names[best_or_worst_bar].get_value()]
+
+func _on_HSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Master"),
+		linear2db(value)
+	)

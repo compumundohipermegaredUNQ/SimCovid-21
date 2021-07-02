@@ -1,0 +1,21 @@
+[gd_resource type="Animation" load_steps=3 format=2]
+
+[ext_resource path="res://assets/City/Economia/Negocios-Noche.png" type="Texture" id=5]
+[ext_resource path="res://assets/City/Economia/Negocios-Dia.png" type="Texture" id=12]
+
+[resource]
+resource_name = "Tutorial"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Negocios:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 12 ) ]
+}

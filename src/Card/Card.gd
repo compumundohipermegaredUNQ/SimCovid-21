@@ -7,10 +7,10 @@ extends Control
 # escenas hijas de las barras
 
 const scene_numbers_bars = {
-	"Economico": 0,
-	"Salud": 1,
-	"Social": 2,
-	"Cultural": 3,
+	"Cultural": 0,
+	"Economico": 1,
+	"Salud": 2,
+	"Social": 3,
 }
 const colors = {
 	"Economico": Color(1, 0.090196, 0.090196, 0.75),
@@ -25,18 +25,17 @@ var actual_bar
 var game_over
 var main_node
 var animation
-var shadow 
+var shadow
 
 func initialize(type, title, description, efects, main, has_lost = false) -> void:
 	animation = $AnimationPlayer
 	shadow = $Shadow
 	shadow.hide()
 	card_type = type
-	print(card_type)
 	card_efects = efects
 	bar_group = main.get_child(4)
 	$TextureRect/TitleLabel.text = title
-	$TextureRect/TextLabel.text = description 
+	$TextureRect/TextLabel.text = description
 	_set_color_by_type(type)
 	game_over = has_lost
 	main_node = main
@@ -44,7 +43,7 @@ func initialize(type, title, description, efects, main, has_lost = false) -> voi
 func _ready() -> void:
 	var card = $TextureRect
 	var border = $ColorRect
-	var shadow = $Shadow
+	shadow = $Shadow
 	var viewport_size_y = get_viewport().get_visible_rect().size.y
 	var project_size_y = ProjectSettings.get_setting("display/window/size/height")
 

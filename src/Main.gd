@@ -2,8 +2,8 @@ extends Node
 
 onready var timer = $Timer
 onready var healt_bar_group = $HealthBarGroup
-onready var clock_label = $HealthBarGroup/TopPanel/HBoxContainer/Clock
-onready var fase_label = $HealthBarGroup/TopPanel/HBoxContainer/Fase
+onready var clock_label = $HealthBarGroup/TopPanel/HBoxContainer/ClockContainer/Clock
+onready var fase_label = $HealthBarGroup/TopPanel/HBoxContainer/FaseContainer/Fase
 onready var clock = $Clock
 onready var pedestrian_spawner = $PedestrianSpawner
 onready var background = $Background
@@ -16,6 +16,7 @@ onready var fade_animation = $Fade/FadeAnimation
 onready var text_animation = $GameOverScreen/VBoxContainer/Text/TextAnimation
 onready var game_over_text = $GameOverScreen/VBoxContainer/Text/GameOverText
 onready var background_music = $Background/BackgroundMusic
+onready var city = $Background/CITY
 
 export (float) var seconds_per_day = 15
 var round_number= 1
@@ -30,7 +31,7 @@ func _startGame(multipliers):
 	background.initialize(clock)
 	# Esto eventualmente se elegirá desde el menú antes de arrancar
 	pedestrian_spawner.initialize(timer, self, healt_bar_group)
-	healt_bar_group.initialize(timer, clock, multipliers, pedestrian_spawner, self)
+	healt_bar_group.initialize(timer, clock, multipliers, pedestrian_spawner, self, city)
 	clock.set_seconds_per_day(seconds_per_day)
 
 func set_multipliers(multipliers):
@@ -70,7 +71,8 @@ func restart_game():
 #	_ready()
 
 func _on_ContinueButton_pressed():
-	DeckOfCards.initialize(self, timer)
+	city.initialize()
+	DeckOfCards.initialize(self, timer, city)
 
 func game_over(card_type):
 	# workaround horrible al no poder eliminar a las personas del arbol de nodos

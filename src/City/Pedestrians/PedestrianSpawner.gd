@@ -59,6 +59,6 @@ func set_salud_current_value(salud_value):
 func _set_position():
 	var screenSize = get_viewport().get_visible_rect().size
 	min_y_position = screenSize.y * 0.8
-	max_y_position = screenSize.y - 110
+	max_y_position = screenSize.y - 120
 	y_position_diff = max_y_position - min_y_position
 	x_positions = [screenSize.x + 40, -10.0]

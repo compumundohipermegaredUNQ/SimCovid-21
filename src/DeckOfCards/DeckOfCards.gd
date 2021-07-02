@@ -2,6 +2,8 @@ extends Node2D
 
 export (PackedScene) var cardScene
 
+signal tutorial(bar_type)
+
 var parent
 var main_timer
 var local_deck = []
@@ -13,11 +15,13 @@ var multipliers = {
 	'Social': 0.05
 }
 
-func initialize(main, timer):
+func initialize(main, timer, city):
 	parent = main
 	main_timer = timer
+	self.connect("tutorial", city, "tutorial_city")
 	CardsHandler.set_main(parent)
 	parent.add_child(CardsHandler.set_initial_deck(''))
+	emit_signal("tutorial", '')
 	
 func get_next_initial_card():
 	var card = CardsHandler.get_next_initial_card()
@@ -29,7 +33,9 @@ func checked(card_type, effects, positive):
 	if card_type == 'Introduccion':
 		CardsHandler._set_tutorial(positive)
 	elif ! local_deck.empty():
-		parent.add_child(local_deck.front())
+		var next_card = local_deck.front()
+		parent.add_child(next_card)
+		emit_signal("tutorial", next_card.card_type)
 #	elif CardsHandler.has_more_initial_cards():
 #		get_next_initial_card()
 	elif game_started:
@@ -44,13 +50,11 @@ func apply_effects(card_type, effects, positive):
 	if (effects.size() == 4):
 		if(!positive):
 			effects = [-effects[0], -effects[1], -effects[2], -effects[3]]
-		print(multipliers)
 		var index = 0
 		for m in multipliers:
 			multipliers[m] += effects[index]
 			multipliers[m] = clamp(multipliers[m], -0.3, 0.3)
 			index += 1
-		print(multipliers)
 	elif(effects.size() == 2):
 		parent.set_badevent_effect(card_type, effects, positive)
 	elif (effects.size() == 1):
@@ -60,6 +64,7 @@ func add_to_local_deck(card):
 	main_timer.stop()
 	if local_deck.empty():
 		parent.add_child(card)
+		emit_signal("tutorial", card.card_type)
 	local_deck.append(card)
 
 func raise_card():
