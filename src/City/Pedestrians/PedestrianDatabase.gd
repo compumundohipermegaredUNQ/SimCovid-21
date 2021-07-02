@@ -24,6 +24,7 @@ const PHRASES = [
 	"{user_name}, abrime las escuelas!",
 	"Quiero ver rápidos y furiosos 9 en el cine!",
 	"{user_name} dijo que los de Brasil salieron de la selva",
+	"{user_name} deja de trabajar a las 19 y se va a ver Netflix",
 
 #Economico
 	"{user_name} me aumentó el monotributo, RETROACTIVO",
@@ -42,6 +43,12 @@ const PHRASES = [
 	"{user_name} me quiere encerrar de nuevo",
 	"{user_name}, habilitame los bares!",
 	"No aguanto más a mis hijos en casa",
+
+#Random
+	"Estoy full vicio con el QuilmesPoly!!",
+	"Aguante The Programator! Soy Full Stack ahora!",
+	"Jugué a Espi and The Rescue Crusade. Quilmes me da miedo",
+	"Dicen que Cuvikingo va directo a la E3"
 ]
 
 func set_user_name(name):
