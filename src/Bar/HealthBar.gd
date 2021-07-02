@@ -140,19 +140,19 @@ func _update_healthbar():
 	else:
 		box.texture = positive
 
-func _play_animation():
+func play_animation():
 	animation.play("shine")
 
-func _stop_animation():
+func stop_animation():
 	animation.stop()
 
 func change_textlabel():
-#	_play_animation()
+#	play_animation()
 	healthbar_textlabel.clear()
 	healthbar_textlabel.append_bbcode("[wave amp=25 freq=10][color=blue]"+label+"[/color][/wave]")
 
 func update_state():
-#	_stop_animation()
+#	stop_animation()
 	healthbar_textlabel.set_text(label)
 
 func reset_remaining_attempts():

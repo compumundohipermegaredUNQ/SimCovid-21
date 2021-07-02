@@ -67,7 +67,6 @@ func set_random_animation():
 		self.play(pedestrian+'_'+gender)
 	else:
 		self.play(gender)
-	print(pedestrian+'_'+gender)
 
 func set_random_phrase():
 	rng.randomize()

@@ -48,7 +48,6 @@ func beggin_protest(category):
 	if ! protests.values().has(true):
 		#que aparezcan los tachos y ruedas
 		bar_names["Protesta"].play("Protest")
-		print($Basurero.rect_position)
 	bar_names["Protesta"].play("Picarla", -1, exponential, false)
 	protests[category] = true	
 
